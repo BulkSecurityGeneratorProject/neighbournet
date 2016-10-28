@@ -7,22 +7,24 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Router from 'react-routing/src/Router';
-import fetch from './core/fetch';
-import App from './components/App';
-import ContentPage from './components/ContentPage';
-import ContactPage from './components/ContactPage';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorPage from './components/ErrorPage';
+import React from "react";
+import Router from "react-routing/src/Router";
+import fetch from "./core/fetch";
+import App from "./components/App";
+import ContentPage from "./components/ContentPage";
+import ContactPage from "./components/ContactPage";
+import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
+import NotFoundPage from "./components/NotFoundPage";
+import ErrorPage from "./components/ErrorPage";
 
 const router = new Router(on => {
   on('*', async (state, next) => {
     const component = await next();
     return component && <App context={state.context}>{component}</App>;
   });
+
+  on('/add', async() => <ContactPage />)
 
   on('/contact', async () => <ContactPage />);
 

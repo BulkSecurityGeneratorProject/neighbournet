@@ -10,14 +10,14 @@
 @import '../variables.scss';
 
 .root {
-  background: #333;
   color: #fff;
+  background: #333;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 20px 15px;
   max-width: $max-content-width;
+  padding: 20px 15px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -26,8 +26,9 @@
 }
 
 .textMuted {
-  composes: text;
   color: rgba(255, 255, 255, .3);
+
+  composes: text;
 }
 
 .spacer {
