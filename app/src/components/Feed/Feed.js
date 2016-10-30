@@ -13,13 +13,21 @@ import Item from "../FeedItem";
 var items = [
   {
     id: '1',
-    name: 'A',
+    name: 'Lorem ipsum',
     lat: '',
     long: ''
   },
   {
     id: '2',
-    name: 'description 2'
+    name: 'Lorem ipsum',
+    lat: '',
+    long: ''
+  },
+  {
+    id: '3',
+    name: 'Lorem ipsum',
+    lat: '',
+    long: ''
   }
 ];
 

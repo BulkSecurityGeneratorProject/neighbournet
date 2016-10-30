@@ -11,7 +11,6 @@ import React, {Component, PropTypes} from "react";
 import emptyFunction from "fbjs/lib/emptyFunction";
 import s from "./App.scss";
 import Header from "../Header";
-import Feedback from "../Feedback";
 import Footer from "../Footer";
 import {deepOrange500} from "material-ui/styles/colors";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
@@ -68,7 +67,6 @@ class App extends Component {
         <div>
           <Header />
           {this.props.children}
-          <Feedback />
           <Footer />
         </div>
       </MuiThemeProvider>
