@@ -13,6 +13,7 @@ import withStyles from "isomorphic-style-loader/lib/withStyles";
 import s from "./Navigation.scss";
 import Link from "../Link";
 import TextBox from "../TextBox";
+import RaisedButton from "material-ui/RaisedButton";
 
 class Navigation extends Component {
 
@@ -23,6 +24,9 @@ class Navigation extends Component {
   render() {
     return (
       <div className={cx(s.root, this.props.className)} role="navigation">
+        <RaisedButton
+          label="Super Secret Password"
+        />
         <TextBox maxLines={1}/>
         <Link className={s.link} to="/about">Filter</Link>
         <Link className={s.link} to="/add">New</Link>

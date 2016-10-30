@@ -7,12 +7,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import 'babel-polyfill';
-import ReactDOM from 'react-dom';
-import FastClick from 'fastclick';
-import Router from './routes';
-import Location from './core/Location';
-import { addEventListener, removeEventListener } from './core/DOMUtils';
+import "babel-polyfill";
+import ReactDOM from "react-dom";
+import FastClick from "fastclick";
+import Router from "./routes";
+import Location from "./core/Location";
+import {addEventListener, removeEventListener} from "./core/DOMUtils";
+import injectTapEventPlugin from "react-tap-event-plugin";
+
+injectTapEventPlugin();
 
 let cssContainer = document.getElementById('css');
 const appContainer = document.getElementById('app');

@@ -14,7 +14,6 @@ class FeedItem extends Component {
 
 
   render() {
-
     return (
       <div className={s.title}>
         <h1>This is an item</h1>

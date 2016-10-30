@@ -7,12 +7,21 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import emptyFunction from 'fbjs/lib/emptyFunction';
-import s from './App.scss';
-import Header from '../Header';
-import Feedback from '../Feedback';
-import Footer from '../Footer';
+import React, {Component, PropTypes} from "react";
+import emptyFunction from "fbjs/lib/emptyFunction";
+import s from "./App.scss";
+import Header from "../Header";
+import Feedback from "../Feedback";
+import Footer from "../Footer";
+import {deepOrange500} from "material-ui/styles/colors";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accent1Color: deepOrange500,
+  },
+});
 
 class App extends Component {
 
@@ -45,7 +54,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const { insertCss } = this.props.context;
+    const {insertCss} = this.props.context;
     this.removeCss = insertCss(s);
   }
 
@@ -55,12 +64,14 @@ class App extends Component {
 
   render() {
     return !this.props.error ? (
-      <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <Header />
+          {this.props.children}
+          <Feedback />
+          <Footer />
+        </div>
+      </MuiThemeProvider>
     ) : this.props.children;
   }
 
