@@ -8,17 +8,25 @@
  */
 
 import React, {Component, PropTypes} from "react";
-import s from "./FeedItem.scss";
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from "material-ui/Card";
 
 class FeedItem extends Component {
 
 
   render() {
     return (
-      <div className={s.title}>
-        <h1>This is an item</h1>
-        <p>{this.props.description}</p>
-      </div>
+      <Card>
+        <CardHeader
+          title="URL Avatar"
+          subtitle={this.props.distance / 1000 + 'km'}
+          avatar="http://placehold.it/75x75"
+        />
+        <CardMedia
+          overlay={<CardTitle title={this.props.description} subtitle="Overlay subtitle"/>}
+        >
+          <img src="http://placehold.it/1000x500"/>
+        </CardMedia>
+      </Card>
     );
   }
 

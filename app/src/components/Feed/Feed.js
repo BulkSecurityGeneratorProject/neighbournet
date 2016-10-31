@@ -10,27 +10,6 @@
 import React, {Component, PropTypes} from "react";
 import Item from "../FeedItem";
 
-var items = [
-  {
-    id: '1',
-    name: 'Lorem ipsum',
-    lat: '',
-    long: ''
-  },
-  {
-    id: '2',
-    name: 'Lorem ipsum',
-    lat: '',
-    long: ''
-  },
-  {
-    id: '3',
-    name: 'Lorem ipsum',
-    lat: '',
-    long: ''
-  }
-];
-
 class Feed extends Component {
 
   static propTypes = {
@@ -38,9 +17,10 @@ class Feed extends Component {
   };
 
   render() {
-    var map = items.map(item => <Item description={item.name}/>);
+    var map = this.props.items.map(item => <Item description={item.name} distance={item.distance} key={item.key}/>);
     return (
       <div>
+        <span>{'Total results '}{this.props.items.length}</span>
         {map}
       </div>
     );
