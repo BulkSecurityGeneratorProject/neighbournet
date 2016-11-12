@@ -123,18 +123,7 @@ public class JHipsterProperties {
     }
 
     public static class Cache {
-
-        private int timeToLiveSeconds = 3600;
-
         private final Ehcache ehcache = new Ehcache();
-
-        public int getTimeToLiveSeconds() {
-            return timeToLiveSeconds;
-        }
-
-        public void setTimeToLiveSeconds(int timeToLiveSeconds) {
-            this.timeToLiveSeconds = timeToLiveSeconds;
-        }
 
         public Ehcache getEhcache() {
             return ehcache;
@@ -174,7 +163,6 @@ public class JHipsterProperties {
         public Authentication getAuthentication() {
             return authentication;
         }
-
         public static class Authentication {
 
             private final Jwt jwt = new Jwt();
@@ -188,6 +176,7 @@ public class JHipsterProperties {
                 private String secret;
 
                 private long tokenValidityInSeconds = 1800;
+
                 private long tokenValidityInSecondsForRememberMe = 2592000;
 
                 public String getSecret() {
@@ -525,7 +514,6 @@ public class JHipsterProperties {
             }
         }
     }
-
 
     public static class Ribbon {
 

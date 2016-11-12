@@ -1,9 +1,9 @@
 package be.sandervl.neighbournet.config;
 
-
 import be.sandervl.neighbournet.security.AuthoritiesConstants;
 import be.sandervl.neighbournet.security.jwt.JWTConfigurer;
 import be.sandervl.neighbournet.security.jwt.TokenProvider;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -28,14 +28,14 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-           .antMatchers(HttpMethod.OPTIONS, "/**")
-           .antMatchers("/app/**/*.{js,html}")
-           .antMatchers("/bower_components/**")
-           .antMatchers("/i18n/**")
-           .antMatchers("/content/**")
-           .antMatchers("/swagger-ui/index.html")
-           .antMatchers("/test/**")
-           .antMatchers("/h2-console/**");
+            .antMatchers(HttpMethod.OPTIONS, "/**")
+            .antMatchers("/app/**/*.{js,html}")
+            .antMatchers("/bower_components/**")
+            .antMatchers("/i18n/**")
+            .antMatchers("/content/**")
+            .antMatchers("/swagger-ui/index.html")
+            .antMatchers("/test/**")
+            .antMatchers("/h2-console/**");
     }
 
     @Override
@@ -46,17 +46,16 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
             .headers()
             .frameOptions()
             .disable()
-            .and()
+        .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
+        .and()
             .authorizeRequests()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/swagger-resources/configuration/ui").permitAll()
-            .and()
+        .and()
             .apply(securityConfigurerAdapter());
-
     }
 
     private JWTConfigurer securityConfigurerAdapter() {
@@ -68,5 +67,3 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
         return new SecurityEvaluationContextExtension();
     }
 }
-
-

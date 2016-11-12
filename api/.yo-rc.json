@@ -1,25 +1,30 @@
 {
-    "generator-jhipster": {
-        "jhipsterVersion": "3.6.1",
-        "baseName": "api",
-        "packageName": "be.sandervl.neighbournet",
-        "packageFolder": "be/sandervl/neighbournet",
-        "serverPort": "8080",
-        "authenticationType": "jwt",
-        "hibernateCache": "ehcache",
-        "databaseType": "sql",
-        "devDatabaseType": "h2Disk",
-        "prodDatabaseType": "mysql",
-        "searchEngine": "elasticsearch",
-        "buildTool": "maven",
-        "jwtSecretKey": "9cb1c2a31edac712babb18af1adf30cf7ff5063a",
-        "enableTranslation": false,
-        "applicationType": "microservice",
-        "testFrameworks": [
-            "gatling"
-        ],
-        "jhiPrefix": "jhi",
-        "skipClient": true,
-        "skipUserManagement": true
-    }
+  "generator-jhipster": {
+    "jhipsterVersion": "3.10.0",
+    "baseName": "api",
+    "packageName": "be.sandervl.neighbournet",
+    "packageFolder": "be/sandervl/neighbournet",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "ehcache",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "buildTool": "maven",
+    "jwtSecretKey": "9cb1c2a31edac712babb18af1adf30cf7ff5063a",
+    "enableTranslation": false,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "skipClient": true,
+    "skipUserManagement": true,
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "enableSocialSignIn": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka"
+  }
 }

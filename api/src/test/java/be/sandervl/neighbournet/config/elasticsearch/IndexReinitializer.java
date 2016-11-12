@@ -14,6 +14,7 @@ import static java.lang.System.currentTimeMillis;
 public class IndexReinitializer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Inject
     private ElasticsearchTemplate elasticsearchTemplate;
 

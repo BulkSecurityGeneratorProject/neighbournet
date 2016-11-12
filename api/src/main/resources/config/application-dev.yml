@@ -23,6 +23,9 @@ eureka:
             defaultZone: http://admin:admin@localhost:8761/eureka/
 
 spring:
+    profiles:
+        active: dev
+        include: swagger
     devtools:
         restart:
             enabled: true
@@ -65,8 +68,6 @@ spring:
         cache-seconds: 1
     thymeleaf:
         cache: false
-    profiles:
-        include: swagger # automatically set the 'swagger' profile
 
 liquibase:
     contexts: dev
@@ -80,7 +81,6 @@ server:
 
 jhipster:
     cache: # Hibernate 2nd level cache, used by CacheConfiguration
-        timeToLiveSeconds: 3600
         ehcache:
             maxBytesLocalHeap: 16M
     security:

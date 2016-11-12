@@ -13,9 +13,9 @@
     <diskStore path="java.io.tmpdir"/>
 
     <defaultCache
-        eternal="false"
-        overflowToDisk="false"
-    />
+            eternal="false"
+            overflowToDisk="false"
+            />
 
     <cache name="be.sandervl.neighbournet.domain.User"
            timeToLiveSeconds="3600">
@@ -36,4 +36,6 @@
     <cache name="be.sandervl.neighbournet.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
+    
+    <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>
