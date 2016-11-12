@@ -7,21 +7,21 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import 'babel-polyfill';
-import path from 'path';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import expressJwt from 'express-jwt';
-import expressGraphQL from 'express-graphql';
-import jwt from 'jsonwebtoken';
-import ReactDOM from 'react-dom/server';
-import PrettyError from 'pretty-error';
-import passport from './core/passport';
-import schema from './data/schema';
-import Router from './routes';
-import assets from './assets';
-import { port, auth, analytics } from './config';
+import "babel-polyfill";
+import path from "path";
+import express from "express";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import expressJwt from "express-jwt";
+import expressGraphQL from "express-graphql";
+import jwt from "jsonwebtoken";
+import ReactDOM from "react-dom/server";
+import PrettyError from "pretty-error";
+import passport from "./core/passport";
+import schema from "./data/schema";
+import Router from "./routes";
+import assets from "./assets";
+import {port, auth, analytics} from "./config";
 
 const server = global.server = express();
 

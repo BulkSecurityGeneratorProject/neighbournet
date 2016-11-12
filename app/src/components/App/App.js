@@ -15,12 +15,19 @@ import Footer from "../Footer";
 import {deepOrange500} from "material-ui/styles/colors";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import createLogger from "redux-logger";
+import {Provider} from "react-redux";
+import {applyMiddleware, createStore} from "redux";
+import app from "../../reducers/app";
 
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: deepOrange500,
   },
 });
+
+const logger = createLogger();
+let store = createStore(app, applyMiddleware(logger));
 
 class App extends Component {
 
@@ -63,13 +70,15 @@ class App extends Component {
 
   render() {
     return !this.props.error ? (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <Header />
-          {this.props.children}
-          <Footer />
-        </div>
-      </MuiThemeProvider>
+      <Provider store={store}>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            <Header />
+            {this.props.children}
+            <Footer />
+          </div>
+        </MuiThemeProvider>
+      </Provider>
     ) : this.props.children;
   }
 

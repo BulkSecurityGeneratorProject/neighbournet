@@ -17,25 +17,30 @@ import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
 import NotFoundPage from "./components/NotFoundPage";
 import ErrorPage from "./components/ErrorPage";
+import {connect} from "react-redux";
 
 const router = new Router(on => {
-  on('*', async (state, next) => {
+  function updateItem(item) {
+    items.push(item)
+  }
+
+  on('*', async(state, next) => {
     const component = await next();
     return component && <App context={state.context}>{component}</App>;
   });
 
-  on('/add', async() => <ContactPage />)
+  on('/add', async() => <ContactPage updateItem={updateItem}/>)
 
-  on('/contact', async () => <ContactPage />);
+  on('/contact', async() => <ContactPage />);
 
-  on('/login', async () => <LoginPage />);
+  on('/login', async() => <LoginPage />);
 
-  on('/register', async () => <RegisterPage />);
+  on('/register', async() => <RegisterPage />);
 
-  on('*', async (state) => {
+  on('*', async(state) => {
     const query = `/graphql?query={content(path:"${state.path}"){path,title,content,component}}`;
     const response = await fetch(query);
-    const { data } = await response.json();
+    const {data} = await response.json();
     return data && data.content && <ContentPage {...data.content} />;
   });
 

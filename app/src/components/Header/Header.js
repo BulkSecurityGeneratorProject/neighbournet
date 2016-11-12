@@ -12,8 +12,18 @@ import withStyles from "isomorphic-style-loader/lib/withStyles";
 import s from "./Header.scss";
 import Link from "../Link";
 import Navigation from "../Navigation";
+import {connect} from "react-redux";
 
-class Header extends Component {
+class HeaderContainer extends Component {
+
+  componentWillMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+          this.props.onLocationLoad(position.coords.latitude, position.coords.longitude)
+        }
+      )
+    }
+  }
 
   render() {
     return (
@@ -34,5 +44,23 @@ class Header extends Component {
   }
 
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLocationLoad: (lat, long) => {
+      dispatch({
+        type: 'SET_LOCATION',
+        lat: lat,
+        long: long
+      })
+    }
+  }
+}
+
+const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
 
 export default withStyles(Header, s);

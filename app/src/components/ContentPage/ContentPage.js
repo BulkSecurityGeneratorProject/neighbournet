@@ -13,30 +13,9 @@ import s from "./ContentPage.scss";
 import Feed from "../Feed";
 import FilterPane from "../FilterPane";
 import autoBind from "react-autobind";
+import {connect} from "react-redux";
 
-var items = [
-  {
-    key: '1',
-    name: 'Groen Rood Katelijne',
-    lat: 51.048271,
-    long: 4.503724
-  },
-  {
-    key: '2',
-    name: 'Foreach BVBA',
-    lat: 51.243423,
-    long: 4.447637
-  },
-  {
-    key: '3',
-    name: 'Beijing',
-    lat: 39.871125,
-    long: 116.361717
-  }
-];
-
-
-class ContentPage extends Component {
+class ContentPageContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -65,22 +44,6 @@ class ContentPage extends Component {
     onSetTitle: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        this.setCurrentLocation(position.coords.latitude, position.coords.longitude);
-      }.bind(this));
-    }
-  }
-
-  setCurrentLocation(lat, long) {
-    console.debug("setting current location", lat, long);
-    this.setState({
-      lat: lat,
-      long: long
-    });
-  }
-
   setRadiusFilter(value) {
     this.setState(
       {
@@ -90,15 +53,14 @@ class ContentPage extends Component {
   }
 
   render() {
-
     var displayedItems = [];
-    items.forEach(item => {
-      var φ1 = this.state.lat.toRadians(), φ2 = item.lat.toRadians(), Δλ = (item.long - this.state.long).toRadians(), R = 6371e3; // gives d in metres
-      var d = Math.acos(Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ)) * R;
-      if (d <= this.state.radius * 1000) {
-        item.distance = d;
+    this.props.feed.forEach(item => {
+      //var φ1 = this.state.lat.toRadians(), φ2 = item.lat.toRadians(), Δλ = (item.long - this.state.long).toRadians(), R = 6371e3; // gives d in metres
+      //var d = Math.acos(Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ)) * R;
+      //if (d <= this.state.radius * 1000) {
+      // item.distance = d;
         displayedItems.push(item);
-      }
+      //}
     }, this);
 
 
@@ -118,7 +80,21 @@ class ContentPage extends Component {
 
 }
 
-export
-default
+const mapStateToProps = (state) => {
+  return {
+    feed: state.feed
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+const ContentPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContentPageContainer);
+
+export default ContentPage;
 
 withStyles(ContentPage, s);
