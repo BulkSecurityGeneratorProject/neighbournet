@@ -5,9 +5,9 @@ import org.springframework.web.cors.CorsConfiguration;
 
 /**
  * Properties specific to JHipster.
+ *
  * <p>
- * <p>
- * Properties are configured in the application.yml file.
+ *     Properties are configured in the application.yml file.
  * </p>
  */
 @ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
@@ -145,7 +145,7 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String from = "api@localhost";
+        private String from = "NeighbournetApi@localhost";
 
         public String getFrom() {
             return from;
@@ -208,9 +208,9 @@ public class JHipsterProperties {
 
     public static class Swagger {
 
-        private String title = "api API";
+        private String title = "NeighbournetApi API";
 
-        private String description = "api API documentation";
+        private String description = "NeighbournetApi API documentation";
 
         private String version = "0.0.1";
 
@@ -379,7 +379,7 @@ public class JHipsterProperties {
 
             private int port = 2003;
 
-            private String prefix = "api";
+            private String prefix = "NeighbournetApi";
 
             public boolean isEnabled() {
                 return enabled;
@@ -492,25 +492,6 @@ public class JHipsterProperties {
 
             public void setQueueSize(int queueSize) {
                 this.queueSize = queueSize;
-            }
-        }
-
-        private final SpectatorMetrics spectatorMetrics = new SpectatorMetrics();
-
-        public SpectatorMetrics getSpectatorMetrics() {
-            return spectatorMetrics;
-        }
-
-        public static class SpectatorMetrics {
-
-            private boolean enabled = false;
-
-            public boolean isEnabled() {
-                return enabled;
-            }
-
-            public void setEnabled(boolean enabled) {
-                this.enabled = enabled;
             }
         }
     }

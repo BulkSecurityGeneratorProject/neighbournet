@@ -10,21 +10,15 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-eureka:
-    client:
-        enabled: false
-    instance:
-        appname: api
-        instanceId: api:${spring.application.instance_id:${random.value}}
 
 spring:
     application:
-        name: api
+        name: NeighbournetApi
     jackson:
         serialization.write_dates_as_timestamps: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:api;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:NeighbournetApi;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -42,14 +36,6 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.hbm2ddl.auto: validate
-    data:
-        elasticsearch:
-            cluster-name:
-            cluster-nodes:
-            properties:
-                path:
-                  logs: target/elasticsearch/log
-                  data: target/elasticsearch/data
     mail:
         host: localhost
     mvc:
@@ -81,14 +67,14 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 9cb1c2a31edac712babb18af1adf30cf7ff5063a
+                secret: c9a4f481fb5cf3c65988491d9c09472e8adca72b
                 # Token is valid 24 hours
                 tokenValidityInSeconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
     swagger:
-        title: api API
-        description: api API documentation
+        title: NeighbournetApi API
+        description: NeighbournetApi API documentation
         version: 0.0.1
         termsOfServiceUrl:
         contactName:

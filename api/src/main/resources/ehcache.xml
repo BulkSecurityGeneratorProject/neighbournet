@@ -36,6 +36,10 @@
     <cache name="be.sandervl.neighbournet.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
-    
+
+    <cache name="be.sandervl.neighbournet.domain.FeedItem"
+           timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

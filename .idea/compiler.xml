@@ -22,12 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="api" />
+        <module name="neighbournet-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.8" />
       <module name="neighbournet" target="1.8" />
+      <module name="neighbournet-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

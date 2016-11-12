@@ -16,8 +16,8 @@ public final class HeaderUtil {
 
     public static HttpHeaders createAlert(String message, String param) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-apiApp-alert", message);
-        headers.add("X-apiApp-params", param);
+        headers.add("X-neighbournetApiApp-alert", message);
+        headers.add("X-neighbournetApiApp-params", param);
         return headers;
     }
 
@@ -36,8 +36,8 @@ public final class HeaderUtil {
     public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
         log.error("Entity creation failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-apiApp-error", defaultMessage);
-        headers.add("X-apiApp-params", entityName);
+        headers.add("X-neighbournetApiApp-error", defaultMessage);
+        headers.add("X-neighbournetApiApp-params", entityName);
         return headers;
     }
 }

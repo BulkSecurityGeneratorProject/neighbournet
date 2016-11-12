@@ -1,6 +1,6 @@
 package be.sandervl.neighbournet.config;
 
-import be.sandervl.neighbournet.config.metrics.SpectatorLogMetricWriter;
+
 import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Slf4jReporter;
@@ -8,7 +8,6 @@ import com.codahale.metrics.graphite.Graphite;
 import com.codahale.metrics.graphite.GraphiteReporter;
 import com.codahale.metrics.health.HealthCheckRegistry;
 import com.codahale.metrics.jvm.*;
-import com.netflix.spectator.api.Registry;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,12 +15,7 @@ import fr.ippon.spark.metrics.SparkReporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.ExportMetricReader;
-import org.springframework.boot.actuate.autoconfigure.ExportMetricWriter;
-import org.springframework.boot.actuate.metrics.writer.MetricWriter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.cloud.netflix.metrics.spectator.SpectatorMetricReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -151,19 +145,4 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
         }
     }
 
-    /* Spectator metrics log reporting */
-    @Bean
-    @ConditionalOnProperty("jhipster.logging.spectator-metrics.enabled")
-    @ExportMetricReader
-    public SpectatorMetricReader SpectatorMetricReader(Registry registry) {
-        log.info("Initializing Spectator Metrics Log reporting");
-        return new SpectatorMetricReader(registry);
-    }
-
-    @Bean
-    @ConditionalOnProperty("jhipster.logging.spectator-metrics.enabled")
-    @ExportMetricWriter
-    MetricWriter metricWriter() {
-        return new SpectatorLogMetricWriter();
-    }
 }

@@ -1,30 +1,28 @@
 {
   "generator-jhipster": {
     "jhipsterVersion": "3.10.0",
-    "baseName": "api",
+      "baseName": "NeighbournetApi",
     "packageName": "be.sandervl.neighbournet",
     "packageFolder": "be/sandervl/neighbournet",
     "serverPort": "8080",
     "authenticationType": "jwt",
     "hibernateCache": "ehcache",
+      "clusteredHttpSession": false,
+      "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
     "prodDatabaseType": "mysql",
-    "searchEngine": "elasticsearch",
+      "searchEngine": false,
+      "messageBroker": false,
     "buildTool": "maven",
-    "jwtSecretKey": "9cb1c2a31edac712babb18af1adf30cf7ff5063a",
-    "enableTranslation": false,
-    "applicationType": "microservice",
+      "enableSocialSignIn": false,
+      "jwtSecretKey": "c9a4f481fb5cf3c65988491d9c09472e8adca72b",
+      "useSass": false,
+      "applicationType": "monolith",
     "testFrameworks": [
       "gatling"
     ],
     "jhiPrefix": "jhi",
-    "skipClient": true,
-    "skipUserManagement": true,
-    "clusteredHttpSession": false,
-    "websocket": false,
-    "enableSocialSignIn": false,
-    "messageBroker": false,
-    "serviceDiscoveryType": "eureka"
+      "enableTranslation": false
   }
 }
