@@ -11,7 +11,7 @@ import org.springframework.boot.actuate.autoconfigure.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
@@ -25,7 +25,7 @@ import java.util.Collection;
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
 @EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
-@EnableEurekaClient
+@EnableDiscoveryClient
 public class ApiApp {
 
     private static final Logger log = LoggerFactory.getLogger(ApiApp.class);
@@ -66,7 +66,7 @@ public class ApiApp {
         Environment env = app.run(args).getEnvironment();
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application '{}' is running! Access URLs:\n\t" +
-                "Local: \t\thttp://127.0.0.1:{}\n\t" +
+                "Local: \t\thttp://localhost:{}\n\t" +
                 "External: \thttp://{}:{}\n----------------------------------------------------------",
             env.getProperty("spring.application.name"),
             env.getProperty("server.port"),
@@ -78,5 +78,4 @@ public class ApiApp {
         "Config Server: \t{}\n----------------------------------------------------------",
             configServerStatus == null ? "Not found or not setup for this application" : configServerStatus);
     }
-
 }

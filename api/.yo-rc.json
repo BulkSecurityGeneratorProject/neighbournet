@@ -1,6 +1,6 @@
 {
   "generator-jhipster": {
-    "jhipsterVersion": "3.6.1",
+    "jhipsterVersion": "3.10.0",
     "baseName": "api",
     "packageName": "be.sandervl.neighbournet",
     "packageFolder": "be/sandervl/neighbournet",
@@ -21,8 +21,10 @@
     "jhiPrefix": "jhi",
     "skipClient": true,
     "skipUserManagement": true,
-    "clusteredHttpSession": "no",
-    "websocket": "no",
-    "enableSocialSignIn": false
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "enableSocialSignIn": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka"
   }
 }
