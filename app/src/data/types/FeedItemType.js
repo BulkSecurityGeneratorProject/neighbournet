@@ -16,10 +16,16 @@ import {
 
 const FeedItemType = new ObjectType({
   name: 'FeedItem',
-  fields: {
-    id: {type: new NonNull(ID)},
-    text: {type: StringType},
-  },
+  fields: () => ({
+    id: {
+      type: new NonNull(ID),
+      resolve: (feed) => feed.id
+    },
+    text: {
+      type: StringType,
+      resolve: (feed) => feed.text
+    },
+  }),
 });
 
 export default FeedItemType;

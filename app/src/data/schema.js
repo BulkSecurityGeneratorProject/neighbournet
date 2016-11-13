@@ -7,13 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import {
-  GraphQLSchema as Schema,
-  GraphQLObjectType as ObjectType,
-} from 'graphql';
-
-import me from './queries/me';
-import content from './queries/content';
+import {GraphQLSchema as Schema, GraphQLObjectType as ObjectType} from "graphql";
+import me from "./queries/me";
+import content from "./queries/content";
+import feed from "./queries/feed";
 
 const schema = new Schema({
   query: new ObjectType({
@@ -21,6 +18,7 @@ const schema = new Schema({
     fields: {
       me,
       content,
+      feed
     },
   }),
 });
