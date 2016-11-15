@@ -9,66 +9,87 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-            .state('site', {
+            .state('attribute', {
                 parent: 'entity',
-                url: '/site',
+                url: '/attribute?page&sort&search',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Sites'
+                    pageTitle: 'Attributes'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/entities/site/sites.html',
-                        controller: 'SiteController',
+                        templateUrl: 'app/entities/attribute/attributes.html',
+                        controller: 'AttributeController',
                         controllerAs: 'vm'
-                }
+                    }
                 },
-                resolve: {}
+                params: {
+                    page: {
+                        value: '1',
+                        squash: true
+                    },
+                    sort: {
+                        value: 'id,asc',
+                        squash: true
+                    },
+                    search: null
+                },
+                resolve: {
+                    pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                        return {
+                            page: PaginationUtil.parsePage($stateParams.page),
+                            sort: $stateParams.sort,
+                            predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                            ascending: PaginationUtil.parseAscending($stateParams.sort),
+                            search: $stateParams.search
+                        };
+                    }]
+                }
             })
-            .state('site-detail', {
+            .state('attribute-detail', {
                 parent: 'entity',
-                url: '/site/{id}',
+                url: '/attribute/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Site'
+                    pageTitle: 'Attribute'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/entities/site/site-detail.html',
-                        controller: 'SiteDetailController',
+                        templateUrl: 'app/entities/attribute/attribute-detail.html',
+                        controller: 'AttributeDetailController',
                         controllerAs: 'vm'
                     }
                 },
                 resolve: {
-                    entity: ['$stateParams', 'Site', function ($stateParams, Site) {
-                        return Site.get({id: $stateParams.id}).$promise;
+                    entity: ['$stateParams', 'Attribute', function ($stateParams, Attribute) {
+                        return Attribute.get({id: $stateParams.id}).$promise;
                     }],
                     previousState: ["$state", function ($state) {
                         var currentStateData = {
-                            name: $state.current.name || 'site',
+                            name: $state.current.name || 'attribute',
                             params: $state.params,
                             url: $state.href($state.current.name, $state.params)
                         };
                         return currentStateData;
-                }]
+                    }]
                 }
             })
-            .state('site-detail.edit', {
-                parent: 'site-detail',
+            .state('attribute-detail.edit', {
+                parent: 'attribute-detail',
                 url: '/detail/edit',
                 data: {
                     authorities: ['ROLE_USER']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/site/site-dialog.html',
-                        controller: 'SiteDialogController',
+                        templateUrl: 'app/entities/attribute/attribute-dialog.html',
+                        controller: 'AttributeDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            entity: ['Site', function (Site) {
-                                return Site.get({id: $stateParams.id}).$promise;
+                            entity: ['Attribute', function (Attribute) {
+                                return Attribute.get({id: $stateParams.id}).$promise;
                             }]
                         }
                     }).result.then(function () {
@@ -78,79 +99,78 @@
                     });
                 }]
             })
-            .state('site.new', {
-                parent: 'site',
+            .state('attribute.new', {
+                parent: 'attribute',
                 url: '/new',
                 data: {
                     authorities: ['ROLE_USER']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/site/site-dialog.html',
-                        controller: 'SiteDialogController',
+                        templateUrl: 'app/entities/attribute/attribute-dialog.html',
+                        controller: 'AttributeDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
                             entity: function () {
                                 return {
-                                    name: null,
-                                    regex: null,
+                                    value: null,
                                     id: null
                                 };
-                        }
+                            }
                         }
                     }).result.then(function () {
-                        $state.go('site', null, {reload: 'site'});
+                        $state.go('attribute', null, {reload: 'attribute'});
                     }, function () {
-                        $state.go('site');
+                        $state.go('attribute');
                     });
                 }]
             })
-            .state('site.edit', {
-                parent: 'site',
+            .state('attribute.edit', {
+                parent: 'attribute',
                 url: '/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/site/site-dialog.html',
-                        controller: 'SiteDialogController',
+                        templateUrl: 'app/entities/attribute/attribute-dialog.html',
+                        controller: 'AttributeDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            entity: ['Site', function (Site) {
-                                return Site.get({id: $stateParams.id}).$promise;
+                            entity: ['Attribute', function (Attribute) {
+                                return Attribute.get({id: $stateParams.id}).$promise;
                             }]
                         }
                     }).result.then(function () {
-                        $state.go('site', null, {reload: 'site'});
+                        $state.go('attribute', null, {reload: 'attribute'});
                     }, function () {
                         $state.go('^');
                     });
                 }]
             })
-            .state('site.delete', {
-                parent: 'site',
+            .state('attribute.delete', {
+                parent: 'attribute',
                 url: '/{id}/delete',
                 data: {
                     authorities: ['ROLE_USER']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/site/site-delete-dialog.html',
-                        controller: 'SiteDeleteController',
+                        templateUrl: 'app/entities/attribute/attribute-delete-dialog.html',
+                        controller: 'AttributeDeleteController',
                         controllerAs: 'vm',
                         size: 'md',
                         resolve: {
-                            entity: ['Site', function (Site) {
-                                return Site.get({id: $stateParams.id}).$promise;
+                            entity: ['Attribute', function (Attribute) {
+                                return Attribute.get({id: $stateParams.id}).$promise;
                             }]
                         }
                     }).result.then(function () {
-                        $state.go('site', null, {reload: 'site'});
+                        $state.go('attribute', null, {reload: 'attribute'});
                     }, function () {
                         $state.go('^');
                     });

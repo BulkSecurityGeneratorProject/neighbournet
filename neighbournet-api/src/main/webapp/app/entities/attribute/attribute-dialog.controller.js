@@ -3,14 +3,14 @@
 
     angular
         .module('neighbournetApiApp')
-        .controller('SiteDialogController', SiteDialogController);
+        .controller('AttributeDialogController', AttributeDialogController);
 
-    SiteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Site', 'Document', 'Selector'];
+    AttributeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Attribute', 'Document', 'Selector'];
 
-    function SiteDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Site, Document, Selector) {
+    function AttributeDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Attribute, Document, Selector) {
         var vm = this;
 
-        vm.site = entity;
+        vm.attribute = entity;
         vm.clear = clear;
         vm.save = save;
         vm.documents = Document.query();
@@ -26,15 +26,15 @@
 
         function save() {
             vm.isSaving = true;
-            if (vm.site.id !== null) {
-                Site.update(vm.site, onSaveSuccess, onSaveError);
+            if (vm.attribute.id !== null) {
+                Attribute.update(vm.attribute, onSaveSuccess, onSaveError);
             } else {
-                Site.save(vm.site, onSaveSuccess, onSaveError);
+                Attribute.save(vm.attribute, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess(result) {
-            $scope.$emit('neighbournetApiApp:siteUpdate', result);
+            $scope.$emit('neighbournetApiApp:attributeUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

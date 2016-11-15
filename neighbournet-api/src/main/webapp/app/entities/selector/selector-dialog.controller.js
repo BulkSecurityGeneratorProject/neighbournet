@@ -3,18 +3,17 @@
 
     angular
         .module('neighbournetApiApp')
-        .controller('SiteDialogController', SiteDialogController);
+        .controller('SelectorDialogController', SelectorDialogController);
 
-    SiteDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Site', 'Document', 'Selector'];
+    SelectorDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Selector', 'Site'];
 
-    function SiteDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Site, Document, Selector) {
+    function SelectorDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Selector, Site) {
         var vm = this;
 
-        vm.site = entity;
+        vm.selector = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.documents = Document.query();
-        vm.selectors = Selector.query();
+        vm.sites = Site.query();
 
         $timeout(function () {
             angular.element('.form-group:eq(1)>input').focus();
@@ -26,15 +25,15 @@
 
         function save() {
             vm.isSaving = true;
-            if (vm.site.id !== null) {
-                Site.update(vm.site, onSaveSuccess, onSaveError);
+            if (vm.selector.id !== null) {
+                Selector.update(vm.selector, onSaveSuccess, onSaveError);
             } else {
-                Site.save(vm.site, onSaveSuccess, onSaveError);
+                Selector.save(vm.selector, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess(result) {
-            $scope.$emit('neighbournetApiApp:siteUpdate', result);
+            $scope.$emit('neighbournetApiApp:selectorUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

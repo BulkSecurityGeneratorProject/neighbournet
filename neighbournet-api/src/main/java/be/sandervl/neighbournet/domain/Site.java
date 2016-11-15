@@ -38,6 +38,11 @@ public class Site implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Document> pages = new HashSet<>();
 
+    @OneToMany(mappedBy = "site")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Selector> selectors = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -95,6 +100,31 @@ public class Site implements Serializable {
 
     public void setPages(Set<Document> documents) {
         this.pages = documents;
+    }
+
+    public Set<Selector> getSelectors() {
+        return selectors;
+    }
+
+    public Site selectors(Set<Selector> selectors) {
+        this.selectors = selectors;
+        return this;
+    }
+
+    public Site addSelectors(Selector selector) {
+        selectors.add(selector);
+        selector.setSite(this);
+        return this;
+    }
+
+    public Site removeSelectors(Selector selector) {
+        selectors.remove(selector);
+        selector.setSite(null);
+        return this;
+    }
+
+    public void setSelectors(Set<Selector> selectors) {
+        this.selectors = selectors;
     }
 
     @Override

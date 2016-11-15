@@ -6,6 +6,12 @@
             "otherEntityName": "document",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "site"
+        },
+        {
+            "relationshipName": "selectors",
+            "otherEntityName": "selector",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "site"
         }
     ],
     "fields": [

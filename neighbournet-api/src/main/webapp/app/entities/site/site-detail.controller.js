@@ -5,9 +5,9 @@
         .module('neighbournetApiApp')
         .controller('SiteDetailController', SiteDetailController);
 
-    SiteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Site', 'Document'];
+    SiteDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Site', 'Document', 'Selector'];
 
-    function SiteDetailController($scope, $rootScope, $stateParams, previousState, entity, Site, Document) {
+    function SiteDetailController($scope, $rootScope, $stateParams, previousState, entity, Site, Document, Selector) {
         var vm = this;
 
         vm.site = entity;

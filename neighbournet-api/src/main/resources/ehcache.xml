@@ -41,10 +41,6 @@
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="be.sandervl.neighbournet.domain.Site"
-           timeToLiveSeconds="3600">
-    </cache>
-
     <cache name="be.sandervl.neighbournet.domain.Document"
            timeToLiveSeconds="3600">
     </cache>
@@ -53,7 +49,23 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="be.sandervl.neighbournet.domain.Selector"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Site"
+           timeToLiveSeconds="3600">
+    </cache>
+
     <cache name="be.sandervl.neighbournet.domain.Site.pages"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Site.selectors"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Attribute"
            timeToLiveSeconds="3600">
     </cache>
 

@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function () {
 
-    describe('Site Management Detail Controller', function () {
+    describe('Selector Management Detail Controller', function () {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockSite, MockDocument, MockSelector;
+        var MockEntity, MockPreviousState, MockSelector, MockSite;
         var createController;
 
         beforeEach(inject(function ($injector) {
@@ -12,9 +12,8 @@ describe('Controller Tests', function () {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockSite = jasmine.createSpy('MockSite');
-            MockDocument = jasmine.createSpy('MockDocument');
             MockSelector = jasmine.createSpy('MockSelector');
+            MockSite = jasmine.createSpy('MockSite');
 
 
             var locals = {
@@ -22,19 +21,18 @@ describe('Controller Tests', function () {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Site': MockSite,
-                'Document': MockDocument,
-                'Selector': MockSelector
+                'Selector': MockSelector,
+                'Site': MockSite
             };
             createController = function () {
-                $injector.get('$controller')("SiteDetailController", locals);
+                $injector.get('$controller')("SelectorDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function () {
             it('Unregisters root scope listener upon scope destruction', function () {
-                var eventType = 'neighbournetApiApp:siteUpdate';
+                var eventType = 'neighbournetApiApp:selectorUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);
