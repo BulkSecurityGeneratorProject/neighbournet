@@ -41,5 +41,21 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="be.sandervl.neighbournet.domain.Site"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Document"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Document.matches"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Site.pages"
+           timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

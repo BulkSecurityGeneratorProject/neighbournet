@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="neighbournet-api:war">
+    <output-path>$PROJECT_DIR$/neighbournet-api/target</output-path>
+    <root id="archive" name="neighbournet-api-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="neighbournet-api:war exploded" />
+    </root>
+  </artifact>
+</component>
