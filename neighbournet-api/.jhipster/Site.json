@@ -28,6 +28,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "seed",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20161115193428",

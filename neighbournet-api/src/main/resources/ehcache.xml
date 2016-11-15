@@ -69,5 +69,17 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="be.sandervl.neighbournet.domain.Site"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Site.pages"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Site.selectors"
+           timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

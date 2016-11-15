@@ -33,6 +33,9 @@ public class Site implements Serializable {
     @Column(name = "regex", nullable = false)
     private String regex;
 
+    @Column(name = "seed")
+    private String seed;
+
     @OneToMany(mappedBy = "site")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -75,6 +78,19 @@ public class Site implements Serializable {
 
     public void setRegex(String regex) {
         this.regex = regex;
+    }
+
+    public String getSeed() {
+        return seed;
+    }
+
+    public Site seed(String seed) {
+        this.seed = seed;
+        return this;
+    }
+
+    public void setSeed(String seed) {
+        this.seed = seed;
     }
 
     public Set<Document> getPages() {
@@ -153,6 +169,7 @@ public class Site implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", regex='" + regex + "'" +
+            ", seed='" + seed + "'" +
             '}';
     }
 }

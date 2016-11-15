@@ -68,7 +68,7 @@ class SiteGatlingTest extends Simulation {
             .exec(http("Create new site")
             .post("/api/sites")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "regex":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "regex":"SAMPLE_TEXT", "seed":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_site_url"))).exitHereIfFailed
             .pause(10)

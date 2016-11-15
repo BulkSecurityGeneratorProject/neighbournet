@@ -42,6 +42,9 @@ public class SiteResourceIntTest {
     private static final String DEFAULT_REGEX = "AAAAA";
     private static final String UPDATED_REGEX = "BBBBB";
 
+    private static final String DEFAULT_SEED = "AAAAA";
+    private static final String UPDATED_SEED = "BBBBB";
+
     @Inject
     private SiteRepository siteRepository;
 
@@ -77,7 +80,8 @@ public class SiteResourceIntTest {
     public static Site createEntity(EntityManager em) {
         Site site = new Site()
             .name(DEFAULT_NAME)
-            .regex(DEFAULT_REGEX);
+            .regex(DEFAULT_REGEX)
+            .seed(DEFAULT_SEED);
         return site;
     }
 
@@ -104,6 +108,7 @@ public class SiteResourceIntTest {
         Site testSite = sites.get(sites.size() - 1);
         assertThat(testSite.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testSite.getRegex()).isEqualTo(DEFAULT_REGEX);
+        assertThat(testSite.getSeed()).isEqualTo(DEFAULT_SEED);
     }
 
     @Test
@@ -154,7 +159,8 @@ public class SiteResourceIntTest {
                        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                        .andExpect(jsonPath("$.[*].id").value(hasItem(site.getId().intValue())))
                        .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                       .andExpect(jsonPath("$.[*].regex").value(hasItem(DEFAULT_REGEX.toString())));
+                       .andExpect(jsonPath("$.[*].regex").value(hasItem(DEFAULT_REGEX.toString())))
+                       .andExpect(jsonPath("$.[*].seed").value(hasItem(DEFAULT_SEED.toString())));
     }
 
     @Test
@@ -169,7 +175,8 @@ public class SiteResourceIntTest {
                        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                        .andExpect(jsonPath("$.id").value(site.getId().intValue()))
                        .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-                       .andExpect(jsonPath("$.regex").value(DEFAULT_REGEX.toString()));
+                       .andExpect(jsonPath("$.regex").value(DEFAULT_REGEX.toString()))
+                       .andExpect(jsonPath("$.seed").value(DEFAULT_SEED.toString()));
     }
 
     @Test
@@ -191,7 +198,8 @@ public class SiteResourceIntTest {
         Site updatedSite = siteRepository.findOne(site.getId());
         updatedSite
             .name(UPDATED_NAME)
-            .regex(UPDATED_REGEX);
+            .regex(UPDATED_REGEX)
+            .seed(UPDATED_SEED);
 
         restSiteMockMvc.perform(put("/api/sites")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -204,6 +212,7 @@ public class SiteResourceIntTest {
         Site testSite = sites.get(sites.size() - 1);
         assertThat(testSite.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testSite.getRegex()).isEqualTo(UPDATED_REGEX);
+        assertThat(testSite.getSeed()).isEqualTo(UPDATED_SEED);
     }
 
     @Test

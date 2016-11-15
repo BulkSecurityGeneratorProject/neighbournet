@@ -37,7 +37,7 @@
                         templateUrl: 'app/entities/site/site-detail.html',
                         controller: 'SiteDetailController',
                         controllerAs: 'vm'
-                    }
+                }
                 },
                 resolve: {
                     entity: ['$stateParams', 'Site', function ($stateParams, Site) {
@@ -96,6 +96,7 @@
                                 return {
                                     name: null,
                                     regex: null,
+                                    seed: null,
                                     id: null
                                 };
                         }

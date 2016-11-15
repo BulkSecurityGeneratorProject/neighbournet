@@ -1,5 +1,6 @@
 package be.sandervl.neighbournet.domain;
 
+import groovy.transform.builder.Builder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +15,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "attribute")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Builder
 public class Attribute implements Serializable {
 
     private static final long serialVersionUID = 1L;
