@@ -388,6 +388,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
         </dependency>
         <!-- web crawler https://github.com/yasserg/crawler4j-->
         <dependency>
