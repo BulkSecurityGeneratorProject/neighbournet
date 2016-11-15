@@ -17,7 +17,7 @@ class Feed extends Component {
   };
 
   render() {
-    var map = this.props.items.map(item => <Item description={item.name} distance={item.distance} key={item.id}/>);
+    var map = this.props.items.map(item => <Item text={item.text} distance={item.distance} key={item.id}/>);
     return (
       <div>
         <span>{'Total results '}{this.props.items.length}</span>

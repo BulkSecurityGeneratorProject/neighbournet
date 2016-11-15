@@ -22,7 +22,7 @@ class FeedItem extends Component {
           avatar="http://placehold.it/75x75"
         />
         <CardMedia
-          overlay={<CardTitle title={this.props.description} subtitle="Overlay subtitle"/>}
+          overlay={<CardTitle title={this.props.text} subtitle="Overlay subtitle"/>}
         >
           <img src="http://placehold.it/1000x500"/>
         </CardMedia>

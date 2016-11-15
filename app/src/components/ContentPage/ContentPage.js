@@ -52,6 +52,11 @@ class ContentPageContainer extends Component {
     );
   }
 
+  componentDidMount() {
+    console.log("initFeed "+this.props.initFeed);
+    this.props.setFeed(this.props.initFeed);
+  }
+
   render() {
     var displayedItems = [];
     this.props.feed.forEach(item => {
@@ -59,7 +64,7 @@ class ContentPageContainer extends Component {
       //var d = Math.acos(Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ)) * R;
       //if (d <= this.state.radius * 1000) {
       // item.distance = d;
-        displayedItems.push(item);
+      displayedItems.push(item);
       //}
     }, this);
 
@@ -87,7 +92,18 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    setFeed: (feed) => {
+      feed.forEach((item) =>
+        dispatch({
+          type: 'ADD_ITEM',
+          text: item.text,
+          lat: 1,
+          long: 1
+        })
+      )
+    }
+  }
 }
 
 const ContentPage = connect(

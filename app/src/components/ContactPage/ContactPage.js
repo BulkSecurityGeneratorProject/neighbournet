@@ -106,11 +106,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(newVar)
     }
   }
-}
+};
 
-const ContantPage = connect(
+const ContactPage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ContactPageContainer);
 
-export default ContantPage;
+export default ContactPage;
