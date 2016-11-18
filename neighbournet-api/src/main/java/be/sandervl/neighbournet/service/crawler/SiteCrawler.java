@@ -1,33 +1,74 @@
 package be.sandervl.neighbournet.service.crawler;
 
 import be.sandervl.neighbournet.domain.Attribute;
+import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.domain.Site;
+import be.sandervl.neighbournet.repository.DocumentRepository;
+import be.sandervl.neighbournet.repository.SelectorRepository;
 import be.sandervl.neighbournet.service.AttributeService;
+import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.url.WebURL;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
+import org.jsoup.examples.HtmlToPlainText;
 import org.jsoup.nodes.Document;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
-public class SiteCrawler extends WebCrawler {
+@Component
+@Scope("prototype")
+public class SiteCrawler extends WebCrawler implements Crawler {
 
     private final static Pattern EXTENSIONS_TO_EXCLUDE = Pattern.compile(".*(\\.(css|js|gif|jpg"
         + "|png|mp3|mp3|zip|gz))$");
 
-    private final Pattern pattern;
-    private final Site site;
-    private final AttributeService attributeService;
-    private CrawlStats stats;
+    private Pattern pattern;
+    private Site site;
 
-    public SiteCrawler(Site site, AttributeService attributeService) {
+    private CrawlStats stats = new CrawlStats();
+    private CrawlConfig config;
+
+    @Inject
+    private AttributeService attributeService;
+
+    @Inject
+    private SelectorRepository selectorRepository;
+
+    @Inject
+    private DocumentRepository documentRepository;
+
+    @Inject
+    private SiteCrawlerController controller;
+
+    @Override
+    public SiteCrawler setUp(Site site, CrawlConfig config) {
         this.site = site;
+        this.config = config;
         this.pattern = Pattern.compile(site.getRegex());
-        this.attributeService = attributeService;
+        return this;
+    }
+
+    @Override
+    public void onStart() {
         this.stats = new CrawlStats();
+        this.stats.setStatus(CrawlStatus.RUNNING);
+        this.stats.setTotal(this.config.getMaxPagesToFetch());
+        super.onStart();
+    }
+
+    @Override
+    public void onBeforeExit() {
+        this.stats.setStatus(CrawlStatus.NOT_RUNNING);
+        super.onBeforeExit();
     }
 
     /**
@@ -42,6 +83,7 @@ public class SiteCrawler extends WebCrawler {
      */
     @Override
     public boolean shouldVisit(Page referringPage, WebURL url) {
+        this.stats.incNumberVisited();
         String href = url.getURL().toLowerCase();
         return !EXTENSIONS_TO_EXCLUDE.matcher(href).matches()
             && pattern.matcher(href).matches();
@@ -58,23 +100,38 @@ public class SiteCrawler extends WebCrawler {
         this.stats.incNumberProcessed();
         try {
             Document jsoupDocument = Jsoup.connect(url).get();
-            be.sandervl.neighbournet.domain.Document document = new be.sandervl.neighbournet.domain.Document();
+            be.sandervl.neighbournet.domain.Document document = documentRepository
+                .findByUrl(url)
+                .orElse(new be.sandervl.neighbournet.domain.Document());
             document.setSite(site);
             document.setCreated(LocalDate.now());
             document.setUrl(url);
-            site.getSelectors()
-                .forEach(selector -> {
-                    Attribute attribute = new Attribute();
-                    attribute.setValue(jsoupDocument.select(selector.getValue()).html());
-                    attribute.setSelector(selector);
-                    attribute.setDocument(document);
-                    logger.trace("Found attribute {}", attribute);
-                    attributeService.save(attribute);
-                });
-
+            documentRepository.save(document);
+            Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
+            selectorRepository.findBySite(site)
+                              .forEach(selector -> {
+                                  Attribute attribute = exitingAttributes
+                                      .stream()
+                                      .filter(attributesFromSelectorName(selector))
+                                      .findAny()
+                                      .orElse(new Attribute());
+                                  String attributeValueWithHtml = jsoupDocument.select(selector.getValue()).html();
+                                  attribute.setValue(new HtmlToPlainText().getPlainText(Jsoup.parse(attributeValueWithHtml)));
+                                  attribute.setSelector(selector);
+                                  attribute.setDocument(document);
+                                  logger.trace("Found attribute {}", attribute);
+                                  if (StringUtils.isNotBlank(attribute.getValue())) {
+                                      attributeService.save(attribute);
+                                  }
+                              });
+            controller.sendCrawlStatus(this.stats);
         } catch (IOException e) {
             logger.error("Unable to get url {}", url, e);
         }
+    }
+
+    private Predicate<Attribute> attributesFromSelectorName(Selector selector) {
+        return attr -> attr.getSelector().getName().equals(selector.getName());
     }
 
     @Override

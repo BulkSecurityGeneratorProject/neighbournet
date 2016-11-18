@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet.repository;
 
 import be.sandervl.neighbournet.domain.Selector;
+import be.sandervl.neighbournet.domain.Site;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,4 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @SuppressWarnings("unused")
 public interface SelectorRepository extends JpaRepository<Selector, Long> {
 
+    Iterable<Selector> findBySite(Site site);
 }

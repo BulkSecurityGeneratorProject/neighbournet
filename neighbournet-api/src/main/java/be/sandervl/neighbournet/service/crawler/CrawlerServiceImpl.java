@@ -2,7 +2,6 @@ package be.sandervl.neighbournet.service.crawler;
 
 import be.sandervl.neighbournet.config.CrawlerProperties;
 import be.sandervl.neighbournet.domain.Site;
-import be.sandervl.neighbournet.service.AttributeService;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -10,20 +9,22 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Optional;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 /**
  * @author: sander
  * @date: 15/11/2016
  */
 @Slf4j
+@Service
 public class CrawlerServiceImpl implements CrawlerService {
-    @Autowired
-    private AttributeService attributeService;
 
     @Autowired
     private CrawlerProperties crawlerProperties;
+
+    @Autowired
+    private ApplicationContext context;
 
     private CrawlController controller;
 
@@ -33,6 +34,7 @@ public class CrawlerServiceImpl implements CrawlerService {
             CrawlConfig config = new CrawlConfig();
             config.setCrawlStorageFolder(crawlerProperties.getCrawlStorageFolder());
             config.setMaxPagesToFetch(crawlerProperties.getMaxPagesToFetch());
+            config.setResumableCrawling(false);
 
             /*
              * Instantiate the controller for this crawl.
@@ -52,15 +54,8 @@ public class CrawlerServiceImpl implements CrawlerService {
                  * Start the crawl. This is a blocking operation, meaning that your code
                  * will reach the line after this only when crawling is finished.
                  */
-            controller.startNonBlocking(() -> new SiteCrawler(site, attributeService), crawlerProperties.getNumberOfCrawlers());
-        }
-    }
 
-    @Override
-    public Optional<CrawlStats> getStats() {
-        if (controller != null && !controller.isFinished()) {
-            return Optional.of((CrawlStats) controller.getCrawlersLocalData());
+            controller.startNonBlocking(() -> context.getBean(Crawler.class).setUp(site, config), crawlerProperties.getNumberOfCrawlers());
         }
-        return Optional.empty();
     }
 }

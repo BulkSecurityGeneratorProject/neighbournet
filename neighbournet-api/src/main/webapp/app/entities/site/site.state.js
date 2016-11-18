@@ -21,7 +21,7 @@
                         templateUrl: 'app/entities/site/sites.html',
                         controller: 'SiteController',
                         controllerAs: 'vm'
-                }
+                    }
                 },
                 resolve: {}
             })
@@ -37,7 +37,7 @@
                         templateUrl: 'app/entities/site/site-detail.html',
                         controller: 'SiteDetailController',
                         controllerAs: 'vm'
-                }
+                    }
                 },
                 resolve: {
                     entity: ['$stateParams', 'Site', function ($stateParams, Site) {
@@ -50,8 +50,14 @@
                             url: $state.href($state.current.name, $state.params)
                         };
                         return currentStateData;
+                    }]
+                },
+                onEnter: ['SiteWS', function (SiteWS) {
+                    SiteWS.subscribe();
+                }],
+                onExit: ['SiteWS', function (SiteWS) {
+                    SiteWS.unsubscribe();
                 }]
-                }
             })
             .state('site-detail.edit', {
                 parent: 'site-detail',
@@ -99,7 +105,7 @@
                                     seed: null,
                                     id: null
                                 };
-                        }
+                            }
                         }
                     }).result.then(function () {
                         $state.go('site', null, {reload: 'site'});

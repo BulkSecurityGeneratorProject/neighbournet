@@ -9,10 +9,15 @@ import lombok.Data;
 @Data
 public class CrawlStats {
 
-    private int numberProcessed;
+    private int numberProcessed = 0;
+    private int total = 0, numberVisited = 0;
+    private CrawlStatus status = CrawlStatus.NOT_RUNNING;
 
-    public void incNumberProcessed() {
+    public synchronized void incNumberProcessed() {
         this.numberProcessed++;
     }
 
+    public synchronized void incNumberVisited() {
+        this.numberVisited++;
+    }
 }

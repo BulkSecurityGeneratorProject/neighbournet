@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet;
 
 import be.sandervl.neighbournet.config.Constants;
+import be.sandervl.neighbournet.config.CrawlerProperties;
 import be.sandervl.neighbournet.config.DefaultProfileUtil;
 import be.sandervl.neighbournet.config.JHipsterProperties;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
-@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class})
+@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class, CrawlerProperties.class})
 public class NeighbournetApiApp {
 
     private static final Logger log = LoggerFactory.getLogger(NeighbournetApiApp.class);

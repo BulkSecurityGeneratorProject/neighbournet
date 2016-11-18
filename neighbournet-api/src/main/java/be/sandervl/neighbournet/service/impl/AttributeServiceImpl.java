@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet.service.impl;
 
 import be.sandervl.neighbournet.domain.Attribute;
+import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.repository.AttributeRepository;
 import be.sandervl.neighbournet.service.AttributeService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Set;
 
 /**
  * Service Implementation for managing Attribute.
@@ -70,5 +72,11 @@ public class AttributeServiceImpl implements AttributeService {
     public void delete(Long id) {
         log.debug("Request to delete Attribute : {}", id);
         attributeRepository.delete(id);
+    }
+
+    @Override
+    public Set<Attribute> findByDocument(Document document) {
+        log.debug("Request to get Attribute by document {} : ", document);
+        return attributeRepository.findByDocument(document);
     }
 }
