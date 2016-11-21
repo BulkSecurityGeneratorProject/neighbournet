@@ -105,7 +105,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
                 .orElse(new be.sandervl.neighbournet.domain.Document());
             document.setSite(site);
             document.setCreated(LocalDate.now());
-            document.setUrl(url);
+            document.setUrl(page.getWebURL().getPath());
             documentRepository.save(document);
             Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
             selectorRepository.findBySite(site)
