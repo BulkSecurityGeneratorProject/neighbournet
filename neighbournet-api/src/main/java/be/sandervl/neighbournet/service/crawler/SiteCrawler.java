@@ -6,19 +6,16 @@ import be.sandervl.neighbournet.domain.Site;
 import be.sandervl.neighbournet.repository.DocumentRepository;
 import be.sandervl.neighbournet.repository.SelectorRepository;
 import be.sandervl.neighbournet.service.AttributeService;
+import be.sandervl.neighbournet.service.jsoup.JsoupService;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.url.WebURL;
 import org.apache.commons.lang3.StringUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.examples.HtmlToPlainText;
-import org.jsoup.nodes.Document;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -48,6 +45,9 @@ public class SiteCrawler extends WebCrawler implements Crawler {
 
     @Inject
     private SiteCrawlerController controller;
+
+    @Inject
+    private JsoupService jsoupService;
 
     @Override
     public SiteCrawler setUp(Site site, CrawlConfig config) {
@@ -98,8 +98,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         String url = page.getWebURL().getURL();
         logger.debug("Fetching URL: " + url);
         this.stats.incNumberProcessed();
-        try {
-            Document jsoupDocument = Jsoup.connect(url).get();
+        jsoupService.getDocumentFromUrl(url).ifPresent(jsoupDocument -> {
             be.sandervl.neighbournet.domain.Document document = documentRepository
                 .findByUrl(url)
                 .orElse(new be.sandervl.neighbournet.domain.Document());
@@ -115,8 +114,8 @@ public class SiteCrawler extends WebCrawler implements Crawler {
                                       .filter(attributesFromSelectorName(selector))
                                       .findAny()
                                       .orElse(new Attribute());
-                                  String attributeValueWithHtml = jsoupDocument.select(selector.getValue()).html();
-                                  attribute.setValue(new HtmlToPlainText().getPlainText(Jsoup.parse(attributeValueWithHtml)));
+                                  String value = jsoupService.getElement(jsoupDocument, selector.getValue());
+                                  attribute.setValue(value);
                                   attribute.setSelector(selector);
                                   attribute.setDocument(document);
                                   logger.trace("Found attribute {}", attribute);
@@ -125,10 +124,9 @@ public class SiteCrawler extends WebCrawler implements Crawler {
                                   }
                               });
             controller.sendCrawlStatus(this.stats);
-        } catch (IOException e) {
-            logger.error("Unable to get url {}", url, e);
-        }
+        });
     }
+
 
     private Predicate<Attribute> attributesFromSelectorName(Selector selector) {
         return attr -> attr.getSelector().getName().equals(selector.getName());
