@@ -1,3 +1,4 @@
+
 <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
@@ -35,6 +36,18 @@
                     This field is required.
                 </p>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_attribute">Attribute</label>
+            <input type="text" class="form-control" name="attribute" id="field_attribute"
+                   ng-model="vm.selector.attribute"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_isPrimary">Is Primary</label>
+            <input type="checkbox" class="form-control" name="isPrimary" id="field_isPrimary"
+                   ng-model="vm.selector.isPrimary"
+            />
         </div>
 
         <div class="form-group">

@@ -34,6 +34,7 @@ public class CrawlerServiceImpl implements CrawlerService {
             CrawlConfig config = new CrawlConfig();
             config.setCrawlStorageFolder(crawlerProperties.getCrawlStorageFolder());
             config.setMaxPagesToFetch(crawlerProperties.getMaxPagesToFetch());
+            config.setPolitenessDelay(crawlerProperties.getPolitenessDelay());
             config.setResumableCrawling(false);
 
             /*

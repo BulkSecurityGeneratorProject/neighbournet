@@ -112,22 +112,30 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         documentRepository.save(document);
         Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
         selectorRepository.findBySite(site)
-                          .forEach(selector -> {
-                              Attribute attribute = exitingAttributes
-                                  .stream()
-                                  .filter(attributesFromSelectorName(selector))
-                                  .findAny()
-                                  .orElse(new Attribute());
-                              String value = jsoupService.getElement(jsoupDocument, selector.getValue());
-                              attribute.setValue(value);
-                              attribute.setSelector(selector);
-                              attribute.setDocument(document);
-                              logger.trace("Found attribute {}", attribute);
-                              if (StringUtils.isNotBlank(attribute.getValue())) {
-                                  attributeService.save(attribute);
-                              }
-                          });
+                          .forEach(selector ->
+                              jsoupService.getElementsFromType(jsoupDocument, selector.getValue(), selector.getAttribute())
+                                          .forEach(value -> {
+                                              Attribute attribute = exitingAttributes
+                                                  .stream()
+                                                  .filter(attributesFromSelectorName(selector))
+                                                  .filter(attributesFromValue(value))
+                                                  .findAny()
+                                                  .orElse(new Attribute());
+                                              attribute.setSelector(selector);
+                                              attribute.setDocument(document);
+
+                                              attribute.setValue(value);
+                                              logger.trace("Found attribute {}", attribute);
+                                              if (StringUtils.isNotBlank(attribute.getValue())) {
+                                                  attributeService.save(attribute);
+                                              }
+                                          })
+                          );
         controller.sendCrawlStatus(this.stats);
+    }
+
+    private Predicate<Attribute> attributesFromValue(String value) {
+        return attribute -> attribute.getValue().equals(value);
     }
 
 

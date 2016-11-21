@@ -29,6 +29,14 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="attribute" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_primary" type="bit">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="site_id" type="bigint">
                 <constraints nullable="false"/>
             </column>

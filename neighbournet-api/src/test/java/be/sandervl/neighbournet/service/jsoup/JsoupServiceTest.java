@@ -33,11 +33,21 @@ public class JsoupServiceTest {
     @Test
     public void getAttributeFromType() throws Exception {
         Optional<Document> actualDoc = jsoupService.getDocumentFromUrl("http://nl.resto.be/restaurant/antwerpen/2000-antwerpen-centrum/1345-kommilfoo/");
-        Set<String> actualElem = jsoupService.getAttributesFromType(actualDoc.get(), ".h-mobile-hidden img[data-src]", "data-src", String.class);
+        Set<String> actualElem = jsoupService.getElementsFromType(actualDoc.get(), ".h-mobile-hidden img[data-src]", "data-src");
 
         assertNotNull(actualElem);
         assertTrue(actualElem.size() > 0);
         assertTrue(actualElem.contains("https://images.resto.com/view?iid=resto.be:ff45f473-6320-4a71-b596-35c29301e4a3&context=default&width=1400&height=605"));
+    }
+
+    @Test
+    public void getHtmlFromType() throws Exception {
+        Optional<Document> actualDoc = jsoupService.getDocumentFromUrl("http://nl.resto.be/restaurant/antwerpen/2000-antwerpen-centrum/1345-kommilfoo/");
+        Set<String> actualElem = jsoupService.getElementsFromType(actualDoc.get(), "h1.cwb-restaurant-name", "");
+
+        assertNotNull(actualElem);
+        assertTrue(actualElem.size() > 0);
+        assertTrue(actualElem.contains("KOMMILFOO"));
     }
 
 }

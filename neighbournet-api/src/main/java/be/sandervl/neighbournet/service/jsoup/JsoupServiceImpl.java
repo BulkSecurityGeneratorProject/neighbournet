@@ -3,6 +3,7 @@ package be.sandervl.neighbournet.service.jsoup;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,30 +18,28 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class JsoupServiceImpl implements JsoupService {
+
     @Override
     public Optional<Document> getDocumentFromUrl(String url) {
         try {
             return Optional.ofNullable(Jsoup.connect(url).get());
         } catch (IOException e) {
-            log.error("Unable to get url {}", url, e);
+            log.error("Unable to get url {}", url);
             return Optional.empty();
         }
     }
 
+
     @Override
-    public <T> T getElementFromType(Document document, String selector, Class<T> type) {
-        String attributeValueWithHtml = document.select(selector).html();
-        return (T) StringUtils.removeHtmlTags(attributeValueWithHtml);
+    public Set<String> getElementsFromType(Document document, String selector, String attribute) {
+        return document.select(selector).stream().map(el -> elementToTextMapper(el, attribute)).collect(Collectors.toSet());
     }
 
-
-    @Override
-    public <T> T getElementFromType(Document document, String selector, String attrName, Class<T> type) {
-        return (T) document.select(selector).attr(attrName);
-    }
-
-    @Override
-    public <T> Set<T> getAttributesFromType(Document document, String selector, String attribute, Class<T> type) {
-        return document.select(selector).stream().map(element -> (T) element.attr(attribute)).collect(Collectors.toSet());
+    private String elementToTextMapper(Element element, String attribute) {
+        if (org.apache.commons.lang3.StringUtils.isBlank(attribute)) {
+            return StringUtils.removeHtmlTags(element.html());
+        } else {
+            return StringUtils.removeHtmlTags(element.attr(attribute));
+        }
     }
 }

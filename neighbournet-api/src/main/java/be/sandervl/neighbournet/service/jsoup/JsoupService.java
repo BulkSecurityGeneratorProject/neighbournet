@@ -13,17 +13,6 @@ public interface JsoupService {
 
     Optional<Document> getDocumentFromUrl(String url);
 
-    <T> T getElementFromType(Document document, String selector, Class<T> type);
+    Set<String> getElementsFromType(Document document, String selector, String attribute);
 
-    <T> T getElementFromType(Document document, String selector, String attribute, Class<T> type);
-
-    <T> Set<T> getAttributesFromType(Document document, String selector, String attribute, Class<T> type);
-
-    default String getElement(Document document, String selector) {
-        return getElementFromType(document, selector, String.class);
-    }
-
-    default String getElement(Document document, String selector, String attribute) {
-        return getElementFromType(document, selector, attribute, String.class);
-    }
 }

@@ -68,7 +68,7 @@ class SelectorGatlingTest extends Simulation {
             .exec(http("Create new selector")
             .post("/api/selectors")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "value":"SAMPLE_TEXT", "name":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "value":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "attribute":"SAMPLE_TEXT", "isPrimary":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_selector_url"))).exitHereIfFailed
             .pause(10)

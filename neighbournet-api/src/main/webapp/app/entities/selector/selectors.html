@@ -21,6 +21,8 @@
                 <th><span>ID</span></th>
                 <th><span>Value</span></th>
                 <th><span>Name</span></th>
+                <th><span>Attribute</span></th>
+                <th><span>Is Primary</span></th>
                 <th><span>Site</span></th>
                 <th></th>
             </tr>
@@ -30,6 +32,8 @@
                 <td><a ui-sref="selector-detail({id:selector.id})">{{selector.id}}</a></td>
                 <td>{{selector.value}}</td>
                 <td>{{selector.name}}</td>
+                <td>{{selector.attribute}}</td>
+                <td>{{selector.isPrimary}}</td>
                 <td>
                     <a ui-sref="site-detail({id:selector.site.id})">{{selector.site.name}}</a>
                 </td>

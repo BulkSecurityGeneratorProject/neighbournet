@@ -19,4 +19,8 @@ public class CrawlerProperties {
     @Setter
     private int maxPagesToFetch;
 
+    @Getter
+    @Setter
+    private int politenessDelay;
+
 }

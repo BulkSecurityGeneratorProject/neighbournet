@@ -21,7 +21,7 @@
                         templateUrl: 'app/entities/selector/selectors.html',
                         controller: 'SelectorController',
                         controllerAs: 'vm'
-                    }
+                }
                 },
                 resolve: {}
             })
@@ -50,7 +50,7 @@
                             url: $state.href($state.current.name, $state.params)
                         };
                         return currentStateData;
-                    }]
+                }]
                 }
             })
             .state('selector-detail.edit', {
@@ -96,9 +96,11 @@
                                 return {
                                     value: null,
                                     name: null,
+                                    attribute: null,
+                                    isPrimary: null,
                                     id: null
                                 };
-                            }
+                        }
                         }
                     }).result.then(function () {
                         $state.go('selector', null, {reload: 'selector'});

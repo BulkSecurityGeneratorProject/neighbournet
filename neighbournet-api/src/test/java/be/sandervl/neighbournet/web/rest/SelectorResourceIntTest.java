@@ -43,6 +43,12 @@ public class SelectorResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
 
+    private static final String DEFAULT_ATTRIBUTE = "AAAAA";
+    private static final String UPDATED_ATTRIBUTE = "BBBBB";
+
+    private static final Boolean DEFAULT_IS_PRIMARY = false;
+    private static final Boolean UPDATED_IS_PRIMARY = true;
+
     @Inject
     private SelectorRepository selectorRepository;
 
@@ -71,14 +77,16 @@ public class SelectorResourceIntTest {
 
     /**
      * Create an entity for this test.
-     * <p>
+     *
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Selector createEntity(EntityManager em) {
         Selector selector = new Selector()
             .value(DEFAULT_VALUE)
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .attribute(DEFAULT_ATTRIBUTE)
+            .isPrimary(DEFAULT_IS_PRIMARY);
         // Add required entity
         Site site = SiteResourceIntTest.createEntity(em);
         em.persist(site);
@@ -110,6 +118,8 @@ public class SelectorResourceIntTest {
         Selector testSelector = selectors.get(selectors.size() - 1);
         assertThat(testSelector.getValue()).isEqualTo(DEFAULT_VALUE);
         assertThat(testSelector.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testSelector.getAttribute()).isEqualTo(DEFAULT_ATTRIBUTE);
+        assertThat(testSelector.isIsPrimary()).isEqualTo(DEFAULT_IS_PRIMARY);
     }
 
     @Test
@@ -160,7 +170,9 @@ public class SelectorResourceIntTest {
                            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                            .andExpect(jsonPath("$.[*].id").value(hasItem(selector.getId().intValue())))
                            .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())))
-                           .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+                           .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                           .andExpect(jsonPath("$.[*].attribute").value(hasItem(DEFAULT_ATTRIBUTE.toString())))
+                           .andExpect(jsonPath("$.[*].isPrimary").value(hasItem(DEFAULT_IS_PRIMARY.booleanValue())));
     }
 
     @Test
@@ -175,7 +187,9 @@ public class SelectorResourceIntTest {
                            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                            .andExpect(jsonPath("$.id").value(selector.getId().intValue()))
                            .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.toString()))
-                           .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+                           .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+                           .andExpect(jsonPath("$.attribute").value(DEFAULT_ATTRIBUTE.toString()))
+                           .andExpect(jsonPath("$.isPrimary").value(DEFAULT_IS_PRIMARY.booleanValue()));
     }
 
     @Test
@@ -197,7 +211,9 @@ public class SelectorResourceIntTest {
         Selector updatedSelector = selectorRepository.findOne(selector.getId());
         updatedSelector
             .value(UPDATED_VALUE)
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .attribute(UPDATED_ATTRIBUTE)
+            .isPrimary(UPDATED_IS_PRIMARY);
 
         restSelectorMockMvc.perform(put("/api/selectors")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -210,6 +226,8 @@ public class SelectorResourceIntTest {
         Selector testSelector = selectors.get(selectors.size() - 1);
         assertThat(testSelector.getValue()).isEqualTo(UPDATED_VALUE);
         assertThat(testSelector.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testSelector.getAttribute()).isEqualTo(UPDATED_ATTRIBUTE);
+        assertThat(testSelector.isIsPrimary()).isEqualTo(UPDATED_IS_PRIMARY);
     }
 
     @Test

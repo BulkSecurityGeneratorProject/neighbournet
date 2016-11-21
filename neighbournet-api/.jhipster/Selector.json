@@ -25,6 +25,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "attribute",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isPrimary",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20161115201433",

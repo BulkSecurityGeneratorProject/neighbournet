@@ -30,6 +30,12 @@ public class Selector implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "attribute")
+    private String attribute;
+
+    @Column(name = "is_primary")
+    private Boolean isPrimary;
+
     @ManyToOne
     @NotNull
     private Site site;
@@ -66,6 +72,32 @@ public class Selector implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public Selector attribute(String attribute) {
+        this.attribute = attribute;
+        return this;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public Boolean isIsPrimary() {
+        return isPrimary;
+    }
+
+    public Selector isPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
+        return this;
+    }
+
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     public Site getSite() {
@@ -107,6 +139,8 @@ public class Selector implements Serializable {
             "id=" + id +
             ", value='" + value + "'" +
             ", name='" + name + "'" +
+            ", attribute='" + attribute + "'" +
+            ", isPrimary='" + isPrimary + "'" +
             '}';
     }
 }
