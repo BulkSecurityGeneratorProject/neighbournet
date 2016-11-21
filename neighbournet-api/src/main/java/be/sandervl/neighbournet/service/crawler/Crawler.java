@@ -8,5 +8,5 @@ import edu.uci.ics.crawler4j.crawler.CrawlConfig;
  * @date: 18/11/2016
  */
 public interface Crawler {
-    SiteCrawler setUp(Site site, CrawlConfig config);
+    SiteCrawler setUp(Site site, CrawlConfig config, CrawlStats stats);
 }

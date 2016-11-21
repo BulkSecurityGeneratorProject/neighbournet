@@ -15,7 +15,7 @@ public interface JsoupService {
 
     <T> T getElementFromType(Document document, String selector, Class<T> type);
 
-    <T> T getAttributeFromType(Document document, String selector, String attribute, Class<T> type);
+    <T> T getElementFromType(Document document, String selector, String attribute, Class<T> type);
 
     <T> Set<T> getAttributesFromType(Document document, String selector, String attribute, Class<T> type);
 
@@ -23,7 +23,7 @@ public interface JsoupService {
         return getElementFromType(document, selector, String.class);
     }
 
-    default String getAttribute(Document document, String selector, String attribute) {
-        return getAttributeFromType(document, selector, attribute, String.class);
+    default String getElement(Document document, String selector, String attribute) {
+        return getElementFromType(document, selector, attribute, String.class);
     }
 }

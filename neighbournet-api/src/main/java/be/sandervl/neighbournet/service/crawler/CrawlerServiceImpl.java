@@ -55,7 +55,9 @@ public class CrawlerServiceImpl implements CrawlerService {
                  * will reach the line after this only when crawling is finished.
                  */
 
-            controller.startNonBlocking(() -> context.getBean(Crawler.class).setUp(site, config), crawlerProperties.getNumberOfCrawlers());
+            // shard stats object for multiple crawlers
+            CrawlStats stats = new CrawlStats();
+            controller.startNonBlocking(() -> context.getBean(Crawler.class).setUp(site, config, stats), crawlerProperties.getNumberOfCrawlers());
         }
     }
 }

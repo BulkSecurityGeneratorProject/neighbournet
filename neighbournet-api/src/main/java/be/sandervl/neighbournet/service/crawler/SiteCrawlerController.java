@@ -35,7 +35,7 @@ public class SiteCrawlerController {
         try {
             crawlerService.crawlSite(site);
         } catch (Exception e) {
-            log.error("Exception occured while starting new crawl for site {}", site, e);
+            log.error("Exception occured while starting new crawl for site {}", site);
         }
         return response;
     }

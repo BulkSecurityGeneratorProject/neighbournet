@@ -3,6 +3,7 @@ package be.sandervl.neighbournet.service.jsoup;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
  * @date: 21/11/2016
  */
 @Slf4j
+@Service
 public class JsoupServiceImpl implements JsoupService {
     @Override
     public Optional<Document> getDocumentFromUrl(String url) {
@@ -33,7 +35,7 @@ public class JsoupServiceImpl implements JsoupService {
 
 
     @Override
-    public <T> T getAttributeFromType(Document document, String selector, String attrName, Class<T> type) {
+    public <T> T getElementFromType(Document document, String selector, String attrName, Class<T> type) {
         return (T) document.select(selector).attr(attrName);
     }
 

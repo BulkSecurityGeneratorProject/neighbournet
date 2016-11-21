@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet.service.crawler;
 
 import be.sandervl.neighbournet.domain.Attribute;
+import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.domain.Site;
 import be.sandervl.neighbournet.repository.DocumentRepository;
@@ -31,7 +32,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     private Pattern pattern;
     private Site site;
 
-    private CrawlStats stats = new CrawlStats();
+    private CrawlStats stats;
     private CrawlConfig config;
 
     @Inject
@@ -50,24 +51,24 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     private JsoupService jsoupService;
 
     @Override
-    public SiteCrawler setUp(Site site, CrawlConfig config) {
+    public SiteCrawler setUp(Site site, CrawlConfig config, CrawlStats crawlStats) {
         this.site = site;
         this.config = config;
+        this.stats = crawlStats;
         this.pattern = Pattern.compile(site.getRegex());
         return this;
     }
 
     @Override
     public void onStart() {
-        this.stats = new CrawlStats();
-        this.stats.setStatus(CrawlStatus.RUNNING);
+        this.stats.incCrawlersRunning();
         this.stats.setTotal(this.config.getMaxPagesToFetch());
         super.onStart();
     }
 
     @Override
     public void onBeforeExit() {
-        this.stats.setStatus(CrawlStatus.NOT_RUNNING);
+        this.stats.decCrawlersRunning();
         super.onBeforeExit();
     }
 
@@ -98,33 +99,35 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         String url = page.getWebURL().getURL();
         logger.debug("Fetching URL: " + url);
         this.stats.incNumberProcessed();
-        jsoupService.getDocumentFromUrl(url).ifPresent(jsoupDocument -> {
-            be.sandervl.neighbournet.domain.Document document = documentRepository
-                .findByUrl(url)
-                .orElse(new be.sandervl.neighbournet.domain.Document());
-            document.setSite(site);
-            document.setCreated(LocalDate.now());
-            document.setUrl(page.getWebURL().getPath());
-            documentRepository.save(document);
-            Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
-            selectorRepository.findBySite(site)
-                              .forEach(selector -> {
-                                  Attribute attribute = exitingAttributes
-                                      .stream()
-                                      .filter(attributesFromSelectorName(selector))
-                                      .findAny()
-                                      .orElse(new Attribute());
-                                  String value = jsoupService.getElement(jsoupDocument, selector.getValue());
-                                  attribute.setValue(value);
-                                  attribute.setSelector(selector);
-                                  attribute.setDocument(document);
-                                  logger.trace("Found attribute {}", attribute);
-                                  if (StringUtils.isNotBlank(attribute.getValue())) {
-                                      attributeService.save(attribute);
-                                  }
-                              });
-            controller.sendCrawlStatus(this.stats);
-        });
+        jsoupService.getDocumentFromUrl(url).ifPresent(jsoupDocument -> processDocument(page, jsoupDocument));
+    }
+
+    private void processDocument(Page page, org.jsoup.nodes.Document jsoupDocument) {
+        Document document = documentRepository
+            .findByUrl(page.getWebURL().getURL())
+            .orElse(new Document());
+        document.setSite(site);
+        document.setCreated(LocalDate.now());
+        document.setUrl(page.getWebURL().getPath());
+        documentRepository.save(document);
+        Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
+        selectorRepository.findBySite(site)
+                          .forEach(selector -> {
+                              Attribute attribute = exitingAttributes
+                                  .stream()
+                                  .filter(attributesFromSelectorName(selector))
+                                  .findAny()
+                                  .orElse(new Attribute());
+                              String value = jsoupService.getElement(jsoupDocument, selector.getValue());
+                              attribute.setValue(value);
+                              attribute.setSelector(selector);
+                              attribute.setDocument(document);
+                              logger.trace("Found attribute {}", attribute);
+                              if (StringUtils.isNotBlank(attribute.getValue())) {
+                                  attributeService.save(attribute);
+                              }
+                          });
+        controller.sendCrawlStatus(this.stats);
     }
 
 
