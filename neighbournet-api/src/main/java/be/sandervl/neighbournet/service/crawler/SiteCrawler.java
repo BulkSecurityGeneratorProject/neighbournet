@@ -26,9 +26,6 @@ import java.util.regex.Pattern;
 @Scope("prototype")
 public class SiteCrawler extends WebCrawler implements Crawler {
 
-    private final static Pattern EXTENSIONS_TO_EXCLUDE = Pattern.compile(".*(\\.(css|js|gif|jpg"
-        + "|png|mp3|mp3|zip|gz))$");
-
     private Pattern pattern;
     private Site site;
 
@@ -86,8 +83,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     public boolean shouldVisit(Page referringPage, WebURL url) {
         this.stats.incNumberVisited();
         String href = url.getURL().toLowerCase();
-        return !EXTENSIONS_TO_EXCLUDE.matcher(href).matches()
-            && pattern.matcher(href).matches();
+        return pattern.matcher(href).matches();
     }
 
     /**
