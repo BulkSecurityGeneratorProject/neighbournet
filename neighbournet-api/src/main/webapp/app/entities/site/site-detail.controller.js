@@ -31,7 +31,7 @@
             }
         });
 
-        $scope.initCrawl = () => {
+        $scope.initCrawl = function () {
             $('.js-start-crawl').addClass('disabled');
             console.log('staring crawl for site ' + entity);
             var data = $.param({
@@ -45,6 +45,6 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             });
-        }
+        }.bind(this)
     }
 })();
