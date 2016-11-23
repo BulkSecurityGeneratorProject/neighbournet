@@ -94,7 +94,9 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     public void visit(Page page) {
         String url = page.getWebURL().getURL();
         logger.debug("Fetching URL: " + url);
-        this.stats.incNumberProcessed();
+        if (this.stats != null) {
+            this.stats.incNumberProcessed();
+        }
         jsoupService.getDocumentFromUrl(url).ifPresent(jsoupDocument -> processDocument(page, jsoupDocument));
     }
 
@@ -104,7 +106,8 @@ public class SiteCrawler extends WebCrawler implements Crawler {
             .orElse(new Document());
         document.setSite(site);
         document.setCreated(LocalDate.now());
-        document.setUrl(page.getWebURL().getPath());
+        //remove protocol and domain
+        document.setUrl(page.getWebURL().getURL().replaceFirst(".*" + page.getWebURL().getDomain(), ""));
         documentRepository.save(document);
         Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
         selectorRepository.findBySite(site)
