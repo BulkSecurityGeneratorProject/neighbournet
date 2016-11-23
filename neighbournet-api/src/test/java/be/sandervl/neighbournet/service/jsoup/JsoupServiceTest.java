@@ -1,14 +1,19 @@
 package be.sandervl.neighbournet.service.jsoup;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
 
 /**
  * @author: sander
@@ -20,7 +25,12 @@ public class JsoupServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        jsoupService = new JsoupServiceImpl();
+        jsoupService = spy(new JsoupServiceImpl());
+        ClassLoader classLoader = getClass().getClassLoader();
+        File input = new File(classLoader.getResource("testinput.html").getFile());
+        Document doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
+
+        doReturn(Optional.of(doc)).when(jsoupService).getDocumentFromUrl(anyString());
     }
 
     @Test
@@ -47,7 +57,7 @@ public class JsoupServiceTest {
 
         assertNotNull(actualElem);
         assertTrue(actualElem.size() > 0);
-        assertTrue(actualElem.contains("KOMMILFOO"));
+        assertTrue(actualElem.contains("Kommilfoo"));
     }
 
 }
