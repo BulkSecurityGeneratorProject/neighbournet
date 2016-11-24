@@ -1,0 +1,4 @@
+id;name;regex;seed
+1;http://www.resto.be;.*;http://nl.resto.be
+2;http://www.redlights.be;.*escort\/dames.*\.html;https://www.redlights.be/escort/dames
+3;http://www.hookers.nl;http://www.hookers.nl/showthread.php?.*t=\d+.*;http://www.hookers.nl/showthread.php?t=274531

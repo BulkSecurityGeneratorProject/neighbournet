@@ -1,0 +1,9 @@
+id;value;name;site_id;attribute;is_primary
+1;h1.cwb-restaurant-name;restaurant name;1;;true
+2;.m-detail-info__adress;address;1;;true
+3;.h-mobile-hidden img[data-src];image;1;data-src;false
+4;.post img;images;2;src;false
+5;.post header h1;name;2;;true
+6;.col-sm-6 .list-unstyled;address;2;;true
+7;.postdetails;topic;3;;false
+8;.threadtitle;name;3;;true
