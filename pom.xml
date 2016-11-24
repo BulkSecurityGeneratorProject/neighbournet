@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>be.sandervl.neighbournet</groupId>
-    <artifactId>neighbournet-api</artifactId>
+    <artifactId>neighbournet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Neighbournet Api</name>
+    <name>Neighbournet</name>
 
     <prerequisites>
         <maven>3.0.0</maven>
