@@ -4,7 +4,6 @@ import be.sandervl.neighbournet.config.CrawlerProperties;
 import be.sandervl.neighbournet.domain.Site;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
-import edu.uci.ics.crawler4j.crawler.authentication.FormAuthInfo;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
@@ -12,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 /**
  * @author: sander
@@ -39,10 +36,6 @@ public class CrawlerServiceImpl implements CrawlerService {
             config.setMaxPagesToFetch(crawlerProperties.getMaxPagesToFetch());
             config.setPolitenessDelay(crawlerProperties.getPolitenessDelay());
             config.setResumableCrawling(false);
-            config.setAuthInfos(
-                Arrays.asList(new FormAuthInfo("breezer007", "breezer007", "http://www.hookers.nl/login.php?do=login", "vb_login_username", "vb_login_password_hint")
-                )
-            );
 
             /*
              * Instantiate the controller for this crawl.
