@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/sandervanloock/neighbournet.svg?branch=master)](https://travis-ci.org/sandervanloock/neighbournet)
 # NeighbourNET
 ## About
 
