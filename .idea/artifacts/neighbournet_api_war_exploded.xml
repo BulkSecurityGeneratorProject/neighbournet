@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="neighbournet-api:war exploded">
-    <output-path>$PROJECT_DIR$/neighbournet-api/target/neighbournet-api-0.0.1-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/target/neighbournet-api-0.0.1-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -185,7 +185,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/neighbournet-api/target/neighbournet-api-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/neighbournet-api-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="neighbournet-api/web/Web" />
     </root>

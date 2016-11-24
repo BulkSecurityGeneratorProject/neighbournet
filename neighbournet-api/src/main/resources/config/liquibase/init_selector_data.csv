@@ -1,4 +1,0 @@
-id;value;name;site_id;attribute;is_primary
-1;h1.cwb-restaurant-name;restaurant name;1;;true
-2;.m-detail-info__adress;address;1;;true
-3;.h-mobile-hidden img[data-src];image;1;data-src;false
