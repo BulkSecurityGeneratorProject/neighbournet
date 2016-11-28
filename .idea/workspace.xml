@@ -2,137 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf623b13-abcf-4449-89c6-d06875550b21" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.babelrc" afterPath="$PROJECT_DIR$/react-app/.babelrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.csscomb.json" afterPath="$PROJECT_DIR$/react-app/.csscomb.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.csslintrc" afterPath="$PROJECT_DIR$/react-app/.csslintrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.editorconfig" afterPath="$PROJECT_DIR$/react-app/.editorconfig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.eslintrc" afterPath="$PROJECT_DIR$/react-app/.eslintrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.flowconfig" afterPath="$PROJECT_DIR$/react-app/.flowconfig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.gitattributes" afterPath="$PROJECT_DIR$/react-app/.gitattributes" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.gitignore" afterPath="$PROJECT_DIR$/react-app/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.jscsrc" afterPath="$PROJECT_DIR$/react-app/.jscsrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/.travis.yml" afterPath="$PROJECT_DIR$/react-app/.travis.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/CHANGELOG.md" afterPath="$PROJECT_DIR$/react-app/CHANGELOG.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/LICENSE.txt" afterPath="$PROJECT_DIR$/react-app/LICENSE.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/README.md" afterPath="$PROJECT_DIR$/react-app/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/README.md" afterPath="$PROJECT_DIR$/react-app/docs/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/data-fetching.md" afterPath="$PROJECT_DIR$/react-app/docs/data-fetching.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/getting-started.md" afterPath="$PROJECT_DIR$/react-app/docs/getting-started.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/how-to-configure-text-editors.md" afterPath="$PROJECT_DIR$/react-app/docs/how-to-configure-text-editors.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/react-style-guide.md" afterPath="$PROJECT_DIR$/react-app/docs/react-style-guide.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/recipes/how-to-implement-routing.md" afterPath="$PROJECT_DIR$/react-app/docs/recipes/how-to-implement-routing.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/recipes/how-to-integrate-disqus.md" afterPath="$PROJECT_DIR$/react-app/docs/recipes/how-to-integrate-disqus.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/docs/recipes/using-npm-and-webpack-as-a-build-tool.md" afterPath="$PROJECT_DIR$/react-app/docs/recipes/using-npm-and-webpack-as-a-build-tool.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/package.json" afterPath="$PROJECT_DIR$/react-app/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/preprocessor.js" afterPath="$PROJECT_DIR$/react-app/preprocessor.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/actions/.gitignore" afterPath="$PROJECT_DIR$/react-app/src/actions/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/client.js" afterPath="$PROJECT_DIR$/react-app/src/client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/App/App.js" afterPath="$PROJECT_DIR$/react-app/src/components/App/App.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/App/App.scss" afterPath="$PROJECT_DIR$/react-app/src/components/App/App.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/App/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/App/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContactPage/ContactPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/ContactPage/ContactPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContactPage/ContactPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/ContactPage/ContactPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContactPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/ContactPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContentPage/ContentPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/ContentPage/ContentPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContentPage/ContentPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/ContentPage/ContentPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ContentPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/ContentPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ErrorPage/ErrorPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/ErrorPage/ErrorPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ErrorPage/ErrorPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/ErrorPage/ErrorPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ErrorPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/ErrorPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Feed/Feed.js" afterPath="$PROJECT_DIR$/react-app/src/components/Feed/Feed.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Feed/Feed.scss" afterPath="$PROJECT_DIR$/react-app/src/components/Feed/Feed.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Feed/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/Feed/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FeedItem/FeedItem.js" afterPath="$PROJECT_DIR$/react-app/src/components/FeedItem/FeedItem.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FeedItem/FeedItem.scss" afterPath="$PROJECT_DIR$/react-app/src/components/FeedItem/FeedItem.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FeedItem/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/FeedItem/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FilterPane/FilterPane.js" afterPath="$PROJECT_DIR$/react-app/src/components/FilterPane/FilterPane.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FilterPane/FilterPane.scss" afterPath="$PROJECT_DIR$/react-app/src/components/FilterPane/FilterPane.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/FilterPane/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/FilterPane/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Footer/Footer.js" afterPath="$PROJECT_DIR$/react-app/src/components/Footer/Footer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Footer/Footer.scss" afterPath="$PROJECT_DIR$/react-app/src/components/Footer/Footer.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Footer/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/Footer/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Header/Header.js" afterPath="$PROJECT_DIR$/react-app/src/components/Header/Header.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Header/Header.scss" afterPath="$PROJECT_DIR$/react-app/src/components/Header/Header.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Header/logo-small.png" afterPath="$PROJECT_DIR$/react-app/src/components/Header/logo-small.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Header/logo-small@2x.png" afterPath="$PROJECT_DIR$/react-app/src/components/Header/logo-small@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Header/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/Header/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ImageUpload/ImageUpload.js" afterPath="$PROJECT_DIR$/react-app/src/components/ImageUpload/ImageUpload.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ImageUpload/ImageUpload.scss" afterPath="$PROJECT_DIR$/react-app/src/components/ImageUpload/ImageUpload.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/ImageUpload/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/ImageUpload/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Link/Link.js" afterPath="$PROJECT_DIR$/react-app/src/components/Link/Link.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Link/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/Link/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/LoginPage/LoginPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/LoginPage/LoginPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/LoginPage/LoginPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/LoginPage/LoginPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/LoginPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/LoginPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Navigation/Navigation.js" afterPath="$PROJECT_DIR$/react-app/src/components/Navigation/Navigation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Navigation/Navigation.scss" afterPath="$PROJECT_DIR$/react-app/src/components/Navigation/Navigation.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/Navigation/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/Navigation/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/NotFoundPage/NotFoundPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/NotFoundPage/NotFoundPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/NotFoundPage/NotFoundPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/NotFoundPage/NotFoundPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/NotFoundPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/NotFoundPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/RegisterPage/RegisterPage.js" afterPath="$PROJECT_DIR$/react-app/src/components/RegisterPage/RegisterPage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/RegisterPage/RegisterPage.scss" afterPath="$PROJECT_DIR$/react-app/src/components/RegisterPage/RegisterPage.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/RegisterPage/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/RegisterPage/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/TextBox/TextBox.js" afterPath="$PROJECT_DIR$/react-app/src/components/TextBox/TextBox.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/TextBox/TextBox.scss" afterPath="$PROJECT_DIR$/react-app/src/components/TextBox/TextBox.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/TextBox/package.json" afterPath="$PROJECT_DIR$/react-app/src/components/TextBox/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/variables.scss" afterPath="$PROJECT_DIR$/react-app/src/components/variables.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/components/withViewport.js" afterPath="$PROJECT_DIR$/react-app/src/components/withViewport.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/config.js" afterPath="$PROJECT_DIR$/react-app/src/config.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/constants/ActionTypes.js" afterPath="$PROJECT_DIR$/react-app/src/constants/ActionTypes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/content/about.jade" afterPath="$PROJECT_DIR$/react-app/src/content/about.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/content/index.jade" afterPath="$PROJECT_DIR$/react-app/src/content/index.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/content/privacy.jade" afterPath="$PROJECT_DIR$/react-app/src/content/privacy.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/DOMUtils.js" afterPath="$PROJECT_DIR$/react-app/src/core/DOMUtils.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/Location.js" afterPath="$PROJECT_DIR$/react-app/src/core/Location.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/db.js" afterPath="$PROJECT_DIR$/react-app/src/core/db.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/fetch/fetch.client.js" afterPath="$PROJECT_DIR$/react-app/src/core/fetch/fetch.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/fetch/fetch.server.js" afterPath="$PROJECT_DIR$/react-app/src/core/fetch/fetch.server.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/fetch/package.json" afterPath="$PROJECT_DIR$/react-app/src/core/fetch/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/core/passport.js" afterPath="$PROJECT_DIR$/react-app/src/core/passport.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/queries/content.js" afterPath="$PROJECT_DIR$/react-app/src/data/queries/content.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/queries/feed.js" afterPath="$PROJECT_DIR$/react-app/src/data/queries/feed.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/queries/me.js" afterPath="$PROJECT_DIR$/react-app/src/data/queries/me.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/schema.js" afterPath="$PROJECT_DIR$/react-app/src/data/schema.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/types/ContentType.js" afterPath="$PROJECT_DIR$/react-app/src/data/types/ContentType.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/types/FeedItemType.js" afterPath="$PROJECT_DIR$/react-app/src/data/types/FeedItemType.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/data/types/UserType.js" afterPath="$PROJECT_DIR$/react-app/src/data/types/UserType.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/apple-touch-icon.png" afterPath="$PROJECT_DIR$/react-app/src/public/apple-touch-icon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/browserconfig.xml" afterPath="$PROJECT_DIR$/react-app/src/public/browserconfig.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/crossdomain.xml" afterPath="$PROJECT_DIR$/react-app/src/public/crossdomain.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/favicon.ico" afterPath="$PROJECT_DIR$/react-app/src/public/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/humans.txt" afterPath="$PROJECT_DIR$/react-app/src/public/humans.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/robots.txt" afterPath="$PROJECT_DIR$/react-app/src/public/robots.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/tile-wide.png" afterPath="$PROJECT_DIR$/react-app/src/public/tile-wide.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/public/tile.png" afterPath="$PROJECT_DIR$/react-app/src/public/tile.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/reducers/app.js" afterPath="$PROJECT_DIR$/react-app/src/reducers/app.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/reducers/feed.js" afterPath="$PROJECT_DIR$/react-app/src/reducers/feed.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/reducers/location.js" afterPath="$PROJECT_DIR$/react-app/src/reducers/location.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/routes.js" afterPath="$PROJECT_DIR$/react-app/src/routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/server.js" afterPath="$PROJECT_DIR$/react-app/src/server.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/stores/.gitignore" afterPath="$PROJECT_DIR$/react-app/src/stores/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/views/error.jade" afterPath="$PROJECT_DIR$/react-app/src/views/error.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/views/index.jade" afterPath="$PROJECT_DIR$/react-app/src/views/index.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/.eslintrc" afterPath="$PROJECT_DIR$/react-app/tools/.eslintrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/README.md" afterPath="$PROJECT_DIR$/react-app/tools/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/build.js" afterPath="$PROJECT_DIR$/react-app/tools/build.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/bundle.js" afterPath="$PROJECT_DIR$/react-app/tools/bundle.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/clean.js" afterPath="$PROJECT_DIR$/react-app/tools/clean.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/copy.js" afterPath="$PROJECT_DIR$/react-app/tools/copy.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/deploy.js" afterPath="$PROJECT_DIR$/react-app/tools/deploy.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/lib/fetch.js" afterPath="$PROJECT_DIR$/react-app/tools/lib/fetch.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/lib/fs.js" afterPath="$PROJECT_DIR$/react-app/tools/lib/fs.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/run.js" afterPath="$PROJECT_DIR$/react-app/tools/run.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/runServer.js" afterPath="$PROJECT_DIR$/react-app/tools/runServer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/start.js" afterPath="$PROJECT_DIR$/react-app/tools/start.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/tools/webpack.config.js" afterPath="$PROJECT_DIR$/react-app/tools/webpack.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/neighbournet_api_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/neighbournet_api_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/neighbournet_api_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/neighbournet_api_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/app.constants.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/app.constants.js" />
     </list>
     <list id="7c187e72-6a5d-45cf-8ecc-8572b8744235" name="brol" comment="" />
     <ignored path="neighbournet.iws" />
@@ -161,28 +32,7 @@
     <favorites_list name="neighbournet" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="530" column="32" selection-start-line="530" selection-start-column="32" selection-end-line="530" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -207,7 +57,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/services/auth/auth.service.js" />
         <option value="$PROJECT_DIR$/neighbournet-api/bower.json" />
         <option value="$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/admin/tracker/tracker.controller.js" />
         <option value="$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/config/SecurityConfiguration.java" />
@@ -258,6 +107,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/webapp/.gitignore" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -695,7 +545,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -716,7 +566,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1354,7 +1204,8 @@
       <workItem from="1479924652671" duration="4425000" />
       <workItem from="1480000108119" duration="367000" />
       <workItem from="1480017618827" duration="892000" />
-      <workItem from="1480018970403" duration="1516000" />
+      <workItem from="1480018970403" duration="3014000" />
+      <workItem from="1480348996296" duration="103000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1477427873636</created>
@@ -1608,7 +1459,21 @@
       <option name="project" value="LOCAL" />
       <updated>1480019909509</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="renamed directories">
+      <created>1480020625791</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1480020625791</updated>
+    </task>
+    <task id="LOCAL-00038" summary="no gulp test for now">
+      <created>1480023252386</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1480023252386</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1644,7 +1509,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135798000" />
+    <option name="totallyTimeSpent" value="137399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -1652,23 +1517,21 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291212" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33026996" sideWeight="0.5032086" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09465241" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07513369" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2469845" sideWeight="0.49679145" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4244687" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32395175" sideWeight="0.49679145" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.408386" sideWeight="0.49545455" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21122995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291212" sideWeight="0.49893048" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1678,9 +1541,11 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291212" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969558" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291212" sideWeight="0.49893048" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1748,9 +1613,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="git config" />
-    <MESSAGE value="Merge branch 'jhipster_upgrade'&#10;&#10;# Conflicts:&#10;#&#9;api/.yo-rc.json&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/ApiApp.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/CacheConfiguration.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/DefaultProfileUtil.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/ElasticSearchConfiguration.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/JacksonConfiguration.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/MicroserviceSecurityConfiguration.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/config/WebConfigurer.java&#10;#&#9;api/src/main/java/be/sandervl/neighbournet/web/rest/ProfileInfoResource.java&#10;#&#9;api/src/main/resources/ehcache.xml&#10;#&#9;api/src/test/java/be/sandervl/neighbournet/web/rest/TestUtil.java&#10;" />
-    <MESSAGE value="new jhipster" />
     <MESSAGE value="graphql working" />
     <MESSAGE value="graphql get" />
     <MESSAGE value="site and document" />
@@ -1773,10 +1635,11 @@
     <MESSAGE value="new jhipster location" />
     <MESSAGE value="build status in readme" />
     <MESSAGE value="bower_components on vcs" />
-    <option name="LAST_COMMIT_MESSAGE" value="bower_components on vcs" />
+    <MESSAGE value="renamed directories" />
+    <MESSAGE value="no gulp test for now" />
+    <MESSAGE value="delete module" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete module" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1822,69 +1685,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="917">
-          <caret line="494" column="14" selection-start-line="494" selection-start-column="14" selection-end-line="494" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/CrawlerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/liquibase/changelog/20161115203609_added_entity_Attribute.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/Jsoup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/helper/HttpConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="521" column="41" selection-start-line="521" selection-start-column="41" selection-end-line="521" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/nodes/Document.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-726">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/select/Selector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2-sources.jar!/org/jsoup/nodes/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1899,13 +1699,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/resources/testinput.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="5473" column="0" selection-start-line="5473" selection-start-column="0" selection-end-line="5473" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/resources/testinput.html" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar!/org/mockito/internal/creation/cglib/MethodInterceptorFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -1913,29 +1707,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/jsoup/JsoupService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/jsoup/JsoupServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/jsoup/JsoupServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="28" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/jsoup/JsoupService.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/jsoup/JsoupServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/jsoup/JsoupServiceTest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/Page.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -1964,13 +1738,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/SiteCrawlerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/SiteCrawlerController.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar!/org/mockito/MockitoAnnotations.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1999,20 +1767,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/security/SecurityUtilsUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/UserServiceIntTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-606">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/security/SecurityUtilsUnitTest.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/UserServiceIntTest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-sources.jar!/org/mockito/InjectMocks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5082">
@@ -2034,100 +1790,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13761">
-          <caret line="417" column="32" selection-start-line="417" selection-start-column="21" selection-end-line="417" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-detail.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1551">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="26" column="86" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/SiteCrawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4092">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/crawler/SiteCrawlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/liquibase/init_site_data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="3" column="70" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/CrawlerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/domain/Attribute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/resources/testattribute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2409">
-          <caret line="73" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-detail.controller.js" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-dialog.html" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/webapp/app/entities/site/site-detail.html" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/SiteCrawler.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/java/be/sandervl/neighbournet/service/crawler/SiteCrawlerTest.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/liquibase/init_site_data.csv" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/service/crawler/CrawlerServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/java/be/sandervl/neighbournet/domain/Attribute.java" />
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/test/resources/testattribute.html" />
     <entry file="file://$PROJECT_DIR$/neighbournet-api/.travis.yml" />
-    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/liquibase/init_selector_data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neighbournet-api/src/main/resources/config/liquibase/init_selector_data.csv" />
     <entry file="file://$PROJECT_DIR$/src/main/java/be/sandervl/neighbournet/NeighbournetApiApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-759">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2136,7 +1814,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="137" selection-start-line="0" selection-start-column="137" selection-end-line="0" selection-end-column="137" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -2146,7 +1823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2154,7 +1830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2162,7 +1837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2170,18 +1844,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/.gitignore" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -2190,10 +1856,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/mvnw">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvnw.cmd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/test-results/coverage/report-lcov/lcov-report/src/test/javascript/spec/app/account/activate/activate.controller.spec.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6864">
+          <caret line="208" column="25" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/javascript/spec/app/account/activate/activate.controller.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/javascript/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/test-results/karma/TESTS-results.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1221">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2253,7 +1993,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>react-app</last-edited>
+          <last-edited>neighbournet-api</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/neighbournet-api.iml" filepath="$PROJECT_DIR$/neighbournet-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/react-app/react-app.iml" filepath="$PROJECT_DIR$/react-app/react-app.iml" />
     </modules>
   </component>
 </project>
