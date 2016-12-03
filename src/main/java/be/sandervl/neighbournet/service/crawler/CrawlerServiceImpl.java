@@ -35,7 +35,7 @@ public class CrawlerServiceImpl implements CrawlerService {
             config.setCrawlStorageFolder(crawlerProperties.getCrawlStorageFolder());
             config.setMaxPagesToFetch(crawlerProperties.getMaxPagesToFetch());
             config.setPolitenessDelay(crawlerProperties.getPolitenessDelay());
-            config.setResumableCrawling(false);
+            config.setResumableCrawling(true);
 
             /*
              * Instantiate the controller for this crawl.

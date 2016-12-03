@@ -105,13 +105,14 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     }
 
     private void processDocument(Page page, org.jsoup.nodes.Document jsoupDocument) {
+        //remove protocol and domain
+        String url = page.getWebURL().getURL().replaceFirst(".*" + page.getWebURL().getDomain(), "");
         Document document = documentRepository
-            .findByUrl(page.getWebURL().getURL())
+            .findByUrl(url)
             .orElse(new Document());
         document.setSite(site);
         document.setCreated(LocalDate.now());
-        //remove protocol and domain
-        document.setUrl(page.getWebURL().getURL().replaceFirst(".*" + page.getWebURL().getDomain(), ""));
+        document.setUrl(url);
         documentRepository.save(document);
         Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
         Iterable<Selector> selectors = selectorRepository.findBySiteAndParentIsNull(site);
