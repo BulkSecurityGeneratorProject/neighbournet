@@ -1,12 +1,21 @@
 package be.sandervl.neighbournet.service.jsoup;
 
+import be.sandervl.neighbournet.service.handlers.ProcessorChain;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.BaseJsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.TextNode;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,6 +27,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class JsoupServiceImpl implements JsoupService {
+
+    @Autowired
+    private ProcessorChain processorChain;
 
     @Override
     public Optional<Document> getDocumentFromUrl(String url) {
@@ -32,7 +44,12 @@ public class JsoupServiceImpl implements JsoupService {
 
     @Override
     public Set<String> getElementsFromType(Document document, String selector, String attribute) {
-        return document.select(selector).stream().map(el -> elementToTextMapper(el, attribute)).collect(Collectors.toSet());
+        return document
+            .select(selector)
+            .stream()
+            .map(el -> elementToTextMapper(el,attribute))
+            .map(processorChain::process)
+            .collect(Collectors.toSet());
     }
 
     private String elementToTextMapper(Element element, String attribute) {
