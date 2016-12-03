@@ -1,9 +1,12 @@
-id;value;name;site_id;attribute;is_primary
-1;h1.cwb-restaurant-name;restaurant name;1;;true
-2;.m-detail-info__adress;address;1;;true
-3;.h-mobile-hidden img[data-src];image;1;data-src;false
-4;.post img;images;2;src;false
-5;.post header h1;name;2;;true
-6;.col-sm-6 .list-unstyled;address;2;;true
-7;.postdetails;topic;3;;false
-8;.threadtitle;name;3;;true
+id;value;name;site_id;attribute;is_primary;parent_id
+1;h1.cwb-restaurant-name;restaurant name;1;;true;null
+2;.m-detail-info__adress;restaurant address;1;;true;null
+3;.h-mobile-hidden img[data-src];restaurant image;1;data-src;false;null
+4;.post img;red light images;2;src;false;null
+5;.post header h1;red light name;2;;true;null
+6;.col-sm-6 .list-unstyled;red light address;2;;true;null
+7;.postcontainer;hookers post;3;;false;null
+8;.postdate;hookers post date;3;;false;7
+9;.postdetails .username;hookers post username;3;;false;7
+10;.postdetails .postcontent.restore;hookers post content;3;;false;7
+11;.threadtitle;hookers name;3;;true;null

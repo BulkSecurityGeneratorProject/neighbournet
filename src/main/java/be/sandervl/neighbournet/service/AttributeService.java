@@ -2,9 +2,11 @@ package be.sandervl.neighbournet.service;
 
 import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
+import be.sandervl.neighbournet.domain.Selector;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,6 +45,7 @@ public interface AttributeService {
      */
     void delete(Long id);
 
-
     Set<Attribute> findByDocument(Document document);
+
+    Attribute findBySelectorAndDocument(Selector selector, Document document);
 }

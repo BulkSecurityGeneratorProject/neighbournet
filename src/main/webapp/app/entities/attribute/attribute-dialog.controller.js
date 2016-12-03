@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     AttributeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Attribute', 'Document', 'Selector'];
 
-    function AttributeDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Attribute, Document, Selector) {
+    function AttributeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Attribute, Document, Selector) {
         var vm = this;
 
         vm.attribute = entity;
@@ -15,16 +15,17 @@
         vm.save = save;
         vm.documents = Document.query();
         vm.selectors = Selector.query();
+        vm.attributes = Attribute.query();
 
-        $timeout(function () {
+        $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
 
-        function clear() {
+        function clear () {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function save() {
+        function save () {
             vm.isSaving = true;
             if (vm.attribute.id !== null) {
                 Attribute.update(vm.attribute, onSaveSuccess, onSaveError);
@@ -33,13 +34,13 @@
             }
         }
 
-        function onSaveSuccess(result) {
+        function onSaveSuccess (result) {
             $scope.$emit('neighbournetApiApp:attributeUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
 
-        function onSaveError() {
+        function onSaveError () {
             vm.isSaving = false;
         }
 

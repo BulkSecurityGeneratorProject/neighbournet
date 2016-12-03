@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -7,9 +7,9 @@
 
     AttributeController.$inject = ['$scope', '$state', 'Attribute', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function AttributeController($scope, $state, Attribute, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function AttributeController ($scope, $state, Attribute, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
-
+        
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -18,7 +18,7 @@
 
         loadAll();
 
-        function loadAll() {
+        function loadAll () {
             Attribute.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
@@ -31,7 +31,6 @@
                 }
                 return result;
             }
-
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -39,18 +38,17 @@
                 vm.attributes = data;
                 vm.page = pagingParams.page;
             }
-
             function onError(error) {
                 AlertService.error(error.data.message);
             }
         }
 
-        function loadPage(page) {
+        function loadPage (page) {
             vm.page = page;
             vm.transition();
         }
 
-        function transition() {
+        function transition () {
             $state.transitionTo($state.$current, {
                 page: vm.page,
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc'),

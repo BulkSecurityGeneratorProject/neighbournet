@@ -26,15 +26,26 @@
             </column>
 
             <column name="document_id" type="bigint">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
             <column name="selector_id" type="bigint">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+
+        <createTable tableName="attribute_relatives">
+            <column name="relatives_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attributes_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="attributes_id, relatives_id" tableName="attribute_relatives"/>
 
     </changeSet>
 </databaseChangeLog>

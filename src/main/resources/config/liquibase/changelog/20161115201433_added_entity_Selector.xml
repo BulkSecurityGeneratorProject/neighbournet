@@ -22,27 +22,42 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="value" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
             <column name="name" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
             <column name="attribute" type="varchar(255)">
-                <constraints nullable="true"/>
+                <constraints nullable="true" />
             </column>
 
             <column name="is_primary" type="bit">
-                <constraints nullable="true"/>
+                <constraints nullable="true" />
             </column>
 
             <column name="site_id" type="bigint">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
+            </column>
+
+            <column name="parent_id" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+
+        <createTable tableName="selector_children">
+            <column name="child_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="selector_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="child_id, selector_id" tableName="selector_children"/>
 
     </changeSet>
 </databaseChangeLog>

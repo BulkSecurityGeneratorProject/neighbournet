@@ -7,7 +7,7 @@
         Added the constraints for entity Attribute.
     -->
     <changeSet id="20161115203609-2" author="jhipster">
-
+        
         <addForeignKeyConstraint baseColumnNames="document_id"
                                  baseTableName="attribute"
                                  constraintName="fk_attribute_document_id"
@@ -20,5 +20,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="selector"/>
 
+        <addForeignKeyConstraint baseColumnNames="attributes_id"
+                                 baseTableName="attribute_relatives"
+                                 constraintName="fk_attribute_relatives_attributes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attribute"/>
+        <addForeignKeyConstraint baseColumnNames="relatives_id"
+                                 baseTableName="attribute_relatives"
+                                 constraintName="fk_attribute_relatives_relatives_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attribute"/>
+        
     </changeSet>
 </databaseChangeLog>

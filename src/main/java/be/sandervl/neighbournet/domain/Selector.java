@@ -1,12 +1,18 @@
 package be.sandervl.neighbournet.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Selector.
@@ -14,6 +20,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "selector")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Selector implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +48,17 @@ public class Selector implements Serializable {
     @ManyToOne
     @NotNull
     private Site site;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinTable(name = "selector_children",
+        joinColumns = @JoinColumn(name="selector_id", referencedColumnName="ID"),
+        inverseJoinColumns = @JoinColumn(name="child_id", referencedColumnName="ID"))
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Selector> children = new HashSet<>();
+
+    @ManyToOne
+    private Selector parent;
 
     public Long getId() {
         return id;
@@ -113,6 +133,39 @@ public class Selector implements Serializable {
         this.site = site;
     }
 
+    public Selector getParent() {
+        return parent;
+    }
+
+    public void setParent(Selector parent) {
+        this.parent = parent;
+    }
+
+    public Set<Selector> getChildren() {
+        return children;
+    }
+
+    public Selector children(Set<Selector> selectors) {
+        this.children = selectors;
+        return this;
+    }
+
+    public Selector addChildren(Selector selector) {
+        children.add(selector);
+        selector.getChildren().add(this);
+        return this;
+    }
+
+    public Selector removeChildren(Selector selector) {
+        children.remove(selector);
+        selector.getChildren().remove(this);
+        return this;
+    }
+
+    public void setChildren(Set<Selector> selectors) {
+        this.children = selectors;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -122,7 +175,7 @@ public class Selector implements Serializable {
             return false;
         }
         Selector selector = (Selector) o;
-        if (selector.id == null || id == null) {
+        if(selector.id == null || id == null) {
             return false;
         }
         return Objects.equals(id, selector.id);
@@ -142,5 +195,9 @@ public class Selector implements Serializable {
             ", attribute='" + attribute + "'" +
             ", isPrimary='" + isPrimary + "'" +
             '}';
+    }
+
+    public boolean isChild() {
+        return this.parent != null && (this.children == null || this.children.isEmpty());
     }
 }

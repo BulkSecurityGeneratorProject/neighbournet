@@ -9,6 +9,14 @@
                 "required"
             ],
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "relatives",
+            "otherEntityName": "selector",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "relatives"
         }
     ],
     "fields": [

@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
         vm.attribute = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('neighbournetApiApp:attributeUpdate', function (event, result) {
+        var unsubscribe = $rootScope.$on('neighbournetApiApp:attributeUpdate', function(event, result) {
             vm.attribute = result;
         });
         $scope.$on('$destroy', unsubscribe);

@@ -1,10 +1,10 @@
 package be.sandervl.neighbournet.web.rest;
 
+import com.codahale.metrics.annotation.Timed;
 import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.web.rest.util.HeaderUtil;
 import be.sandervl.neighbournet.web.rest.util.PaginationUtil;
-import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -29,7 +29,7 @@ import java.util.Optional;
 public class AttributeResource {
 
     private final Logger log = LoggerFactory.getLogger(AttributeResource.class);
-
+        
     @Inject
     private AttributeService attributeService;
 
@@ -49,8 +49,8 @@ public class AttributeResource {
         }
         Attribute result = attributeService.save(attribute);
         return ResponseEntity.created(new URI("/api/attributes/" + result.getId()))
-                             .headers(HeaderUtil.createEntityCreationAlert("attribute", result.getId().toString()))
-                             .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("attribute", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -71,8 +71,8 @@ public class AttributeResource {
         }
         Attribute result = attributeService.save(attribute);
         return ResponseEntity.ok()
-                             .headers(HeaderUtil.createEntityUpdateAlert("attribute", attribute.getId().toString()))
-                             .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("attribute", attribute.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -104,10 +104,10 @@ public class AttributeResource {
         log.debug("REST request to get Attribute : {}", id);
         Attribute attribute = attributeService.findOne(id);
         return Optional.ofNullable(attribute)
-                       .map(result -> new ResponseEntity<>(
-                           result,
-                           HttpStatus.OK))
-                       .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**

@@ -1,12 +1,16 @@
 package be.sandervl.neighbournet.domain;
 
-import groovy.transform.builder.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -16,6 +20,8 @@ import java.util.Objects;
 @Table(name = "attribute")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Attribute implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,6 +40,13 @@ public class Attribute implements Serializable {
     @ManyToOne
     @NotNull
     private Selector selector;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "attribute_relatives",
+               joinColumns = @JoinColumn(name="attributes_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="relatives_id", referencedColumnName="ID"))
+    private Set<Attribute> relatives = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -82,6 +95,31 @@ public class Attribute implements Serializable {
         this.selector = selector;
     }
 
+    public Set<Attribute> getRelatives() {
+        return relatives;
+    }
+
+    public Attribute relatives(Set<Attribute> attributes) {
+        this.relatives = attributes;
+        return this;
+    }
+
+    public Attribute addRelatives(Attribute attribute) {
+        relatives.add(attribute);
+        attribute.getRelatives().add(this);
+        return this;
+    }
+
+    public Attribute removeRelatives(Attribute attribute) {
+        relatives.remove(attribute);
+        attribute.getRelatives().remove(this);
+        return this;
+    }
+
+    public void setRelatives(Set<Attribute> attributes) {
+        this.relatives = attributes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -91,7 +129,7 @@ public class Attribute implements Serializable {
             return false;
         }
         Attribute attribute = (Attribute) o;
-        if (attribute.id == null || id == null) {
+        if(attribute.id == null || id == null) {
             return false;
         }
         return Objects.equals(id, attribute.id);

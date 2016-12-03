@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
     angular
         .module('neighbournetApiApp')
@@ -6,11 +6,11 @@
 
     Attribute.$inject = ['$resource'];
 
-    function Attribute($resource) {
-        var resourceUrl = 'api/attributes/:id';
+    function Attribute ($resource) {
+        var resourceUrl =  'api/attributes/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': {method: 'GET', isArray: true},
+            'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -20,7 +20,7 @@
                     return data;
                 }
             },
-            'update': {method: 'PUT'}
+            'update': { method:'PUT' }
         });
     }
 })();

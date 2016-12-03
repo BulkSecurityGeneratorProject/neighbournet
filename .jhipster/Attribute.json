@@ -18,6 +18,14 @@
                 "required"
             ],
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "relatives",
+            "otherEntityName": "attribute",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "value",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "relatives"
         }
     ],
     "fields": [

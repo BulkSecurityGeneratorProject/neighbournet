@@ -1,9 +1,9 @@
-(function () {
+(function() {
     'use strict';
 
     angular
         .module('neighbournetApiApp')
-        .controller('AttributeDeleteController', AttributeDeleteController);
+        .controller('AttributeDeleteController',AttributeDeleteController);
 
     AttributeDeleteController.$inject = ['$uibModalInstance', 'entity', 'Attribute'];
 
@@ -13,12 +13,12 @@
         vm.attribute = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
-
-        function clear() {
+        
+        function clear () {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function confirmDelete(id) {
+        function confirmDelete (id) {
             Attribute.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

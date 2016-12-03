@@ -1,9 +1,9 @@
-(function () {
+(function() {
     'use strict';
 
     angular
         .module('neighbournetApiApp')
-        .controller('SelectorDeleteController', SelectorDeleteController);
+        .controller('SelectorDeleteController',SelectorDeleteController);
 
     SelectorDeleteController.$inject = ['$uibModalInstance', 'entity', 'Selector'];
 
@@ -13,12 +13,12 @@
         vm.selector = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
-
-        function clear() {
+        
+        function clear () {
             $uibModalInstance.dismiss('cancel');
         }
 
-        function confirmDelete(id) {
+        function confirmDelete (id) {
             Selector.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

@@ -1,17 +1,20 @@
 package be.sandervl.neighbournet.web.rest;
 
 import be.sandervl.neighbournet.NeighbournetApiApp;
+
 import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.domain.Site;
 import be.sandervl.neighbournet.repository.SelectorRepository;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,7 +27,6 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -71,22 +73,22 @@ public class SelectorResourceIntTest {
         SelectorResource selectorResource = new SelectorResource();
         ReflectionTestUtils.setField(selectorResource, "selectorRepository", selectorRepository);
         this.restSelectorMockMvc = MockMvcBuilders.standaloneSetup(selectorResource)
-                                                  .setCustomArgumentResolvers(pageableArgumentResolver)
-                                                  .setMessageConverters(jacksonMessageConverter).build();
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setMessageConverters(jacksonMessageConverter).build();
     }
 
     /**
      * Create an entity for this test.
-     * <p>
+     *
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
     public static Selector createEntity(EntityManager em) {
         Selector selector = new Selector()
-            .value(DEFAULT_VALUE)
-            .name(DEFAULT_NAME)
-            .attribute(DEFAULT_ATTRIBUTE)
-            .isPrimary(DEFAULT_IS_PRIMARY);
+                .value(DEFAULT_VALUE)
+                .name(DEFAULT_NAME)
+                .attribute(DEFAULT_ATTRIBUTE)
+                .isPrimary(DEFAULT_IS_PRIMARY);
         // Add required entity
         Site site = SiteResourceIntTest.createEntity(em);
         em.persist(site);
@@ -108,9 +110,9 @@ public class SelectorResourceIntTest {
         // Create the Selector
 
         restSelectorMockMvc.perform(post("/api/selectors")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(selector)))
-                           .andExpect(status().isCreated());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(selector)))
+                .andExpect(status().isCreated());
 
         // Validate the Selector in the database
         List<Selector> selectors = selectorRepository.findAll();
@@ -132,9 +134,9 @@ public class SelectorResourceIntTest {
         // Create the Selector, which fails.
 
         restSelectorMockMvc.perform(post("/api/selectors")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(selector)))
-                           .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(selector)))
+                .andExpect(status().isBadRequest());
 
         List<Selector> selectors = selectorRepository.findAll();
         assertThat(selectors).hasSize(databaseSizeBeforeTest);
@@ -150,9 +152,9 @@ public class SelectorResourceIntTest {
         // Create the Selector, which fails.
 
         restSelectorMockMvc.perform(post("/api/selectors")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(selector)))
-                           .andExpect(status().isBadRequest());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(selector)))
+                .andExpect(status().isBadRequest());
 
         List<Selector> selectors = selectorRepository.findAll();
         assertThat(selectors).hasSize(databaseSizeBeforeTest);
@@ -166,13 +168,13 @@ public class SelectorResourceIntTest {
 
         // Get all the selectors
         restSelectorMockMvc.perform(get("/api/selectors?sort=id,desc"))
-                           .andExpect(status().isOk())
-                           .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                           .andExpect(jsonPath("$.[*].id").value(hasItem(selector.getId().intValue())))
-                           .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())))
-                           .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                           .andExpect(jsonPath("$.[*].attribute").value(hasItem(DEFAULT_ATTRIBUTE.toString())))
-                           .andExpect(jsonPath("$.[*].isPrimary").value(hasItem(DEFAULT_IS_PRIMARY.booleanValue())));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(selector.getId().intValue())))
+                .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].attribute").value(hasItem(DEFAULT_ATTRIBUTE.toString())))
+                .andExpect(jsonPath("$.[*].isPrimary").value(hasItem(DEFAULT_IS_PRIMARY.booleanValue())));
     }
 
     @Test
@@ -183,13 +185,13 @@ public class SelectorResourceIntTest {
 
         // Get the selector
         restSelectorMockMvc.perform(get("/api/selectors/{id}", selector.getId()))
-                           .andExpect(status().isOk())
-                           .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                           .andExpect(jsonPath("$.id").value(selector.getId().intValue()))
-                           .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.toString()))
-                           .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-                           .andExpect(jsonPath("$.attribute").value(DEFAULT_ATTRIBUTE.toString()))
-                           .andExpect(jsonPath("$.isPrimary").value(DEFAULT_IS_PRIMARY.booleanValue()));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$.id").value(selector.getId().intValue()))
+            .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.attribute").value(DEFAULT_ATTRIBUTE.toString()))
+            .andExpect(jsonPath("$.isPrimary").value(DEFAULT_IS_PRIMARY.booleanValue()));
     }
 
     @Test
@@ -197,7 +199,7 @@ public class SelectorResourceIntTest {
     public void getNonExistingSelector() throws Exception {
         // Get the selector
         restSelectorMockMvc.perform(get("/api/selectors/{id}", Long.MAX_VALUE))
-                           .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -210,15 +212,15 @@ public class SelectorResourceIntTest {
         // Update the selector
         Selector updatedSelector = selectorRepository.findOne(selector.getId());
         updatedSelector
-            .value(UPDATED_VALUE)
-            .name(UPDATED_NAME)
-            .attribute(UPDATED_ATTRIBUTE)
-            .isPrimary(UPDATED_IS_PRIMARY);
+                .value(UPDATED_VALUE)
+                .name(UPDATED_NAME)
+                .attribute(UPDATED_ATTRIBUTE)
+                .isPrimary(UPDATED_IS_PRIMARY);
 
         restSelectorMockMvc.perform(put("/api/selectors")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedSelector)))
-                           .andExpect(status().isOk());
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(updatedSelector)))
+                .andExpect(status().isOk());
 
         // Validate the Selector in the database
         List<Selector> selectors = selectorRepository.findAll();
@@ -239,8 +241,8 @@ public class SelectorResourceIntTest {
 
         // Get the selector
         restSelectorMockMvc.perform(delete("/api/selectors/{id}", selector.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
-                           .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Selector> selectors = selectorRepository.findAll();

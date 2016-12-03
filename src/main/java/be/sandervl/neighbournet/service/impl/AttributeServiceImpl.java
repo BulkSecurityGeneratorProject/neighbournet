@@ -1,17 +1,19 @@
 package be.sandervl.neighbournet.service.impl;
 
-import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
-import be.sandervl.neighbournet.repository.AttributeRepository;
+import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.service.AttributeService;
+import be.sandervl.neighbournet.domain.Attribute;
+import be.sandervl.neighbournet.repository.AttributeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ import java.util.Set;
  */
 @Service
 @Transactional
-public class AttributeServiceImpl implements AttributeService {
+public class AttributeServiceImpl implements AttributeService{
 
     private final Logger log = LoggerFactory.getLogger(AttributeServiceImpl.class);
 
@@ -39,10 +41,10 @@ public class AttributeServiceImpl implements AttributeService {
     }
 
     /**
-     * Get all the attributes.
+     *  Get all the attributes.
      *
-     * @param pageable the pagination information
-     * @return the list of entities
+     *  @param pageable the pagination information
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<Attribute> findAll(Pageable pageable) {
@@ -52,22 +54,22 @@ public class AttributeServiceImpl implements AttributeService {
     }
 
     /**
-     * Get one attribute by id.
+     *  Get one attribute by id.
      *
-     * @param id the id of the entity
-     * @return the entity
+     *  @param id the id of the entity
+     *  @return the entity
      */
     @Transactional(readOnly = true)
     public Attribute findOne(Long id) {
         log.debug("Request to get Attribute : {}", id);
-        Attribute attribute = attributeRepository.findOne(id);
+        Attribute attribute = attributeRepository.findOneWithEagerRelationships(id);
         return attribute;
     }
 
     /**
-     * Delete the  attribute by id.
+     *  Delete the  attribute by id.
      *
-     * @param id the id of the entity
+     *  @param id the id of the entity
      */
     public void delete(Long id) {
         log.debug("Request to delete Attribute : {}", id);
@@ -78,5 +80,12 @@ public class AttributeServiceImpl implements AttributeService {
     public Set<Attribute> findByDocument(Document document) {
         log.debug("Request to get Attribute by document {} : ", document);
         return attributeRepository.findByDocument(document);
+    }
+
+    @Override
+    public Attribute findBySelectorAndDocument(Selector selector, Document document) {
+        log.debug("Request to get Attribute by document {} : ", document);
+        return attributeRepository.findBySelectorAndDocument(selector, document);
+
     }
 }

@@ -9,14 +9,12 @@ import java.util.List;
 @Component
 public class ProcessorChain {
 
-    private static final List<AbstractSelectorProcessor> processors = Arrays.asList(
-    );
+    private static final List<AbstractSelectorProcessor> processors = Arrays.asList();
 
     public String process(String value) {
         for (AbstractSelectorProcessor proc : processors) {
             value = proc.process(value);
         }
-
         return value;
     }
 

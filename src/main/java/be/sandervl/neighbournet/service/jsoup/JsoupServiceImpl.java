@@ -43,18 +43,18 @@ public class JsoupServiceImpl implements JsoupService {
 
 
     @Override
-    public Set<String> getElementsFromType(Document document, String selector, String attribute) {
+    public Set<String> getElementsFromType(Document document, String selector, String attribute, boolean innerHtml) {
         return document
             .select(selector)
             .stream()
-            .map(el -> elementToTextMapper(el,attribute))
+            .map(el -> elementToTextMapper(el,attribute, innerHtml))
             .map(processorChain::process)
             .collect(Collectors.toSet());
     }
 
-    private String elementToTextMapper(Element element, String attribute) {
+    public String elementToTextMapper(Element element, String attribute, boolean innerHtml) {
         if (org.apache.commons.lang3.StringUtils.isBlank(attribute)) {
-            return StringUtils.removeHtmlTags(element.html());
+            return innerHtml ? StringUtils.removeHtmlTags(element.html()) : element.toString();
         } else {
             return StringUtils.removeHtmlTags(element.attr(attribute));
         }

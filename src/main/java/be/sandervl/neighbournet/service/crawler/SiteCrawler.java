@@ -13,14 +13,18 @@ import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.url.WebURL;
 import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Component
 @Scope("prototype")
@@ -110,27 +114,42 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         document.setUrl(page.getWebURL().getURL().replaceFirst(".*" + page.getWebURL().getDomain(), ""));
         documentRepository.save(document);
         Set<Attribute> exitingAttributes = attributeService.findByDocument(document);
-        selectorRepository.findBySite(site)
-                          .forEach(selector ->
-                              jsoupService.getElementsFromType(jsoupDocument, selector.getValue(), selector.getAttribute())
-                                          .forEach(value -> {
-                                              Attribute attribute = exitingAttributes
-                                                  .stream()
-                                                  .filter(attributesFromSelectorName(selector))
-                                                  .filter(attributesFromValue(value))
-                                                  .findAny()
-                                                  .orElse(new Attribute());
-                                              attribute.setSelector(selector);
-                                              attribute.setDocument(document);
-
-                                              attribute.setValue(value);
-                                              logger.trace("Found attribute {}", attribute);
-                                              if (StringUtils.isNotBlank(attribute.getValue())) {
-                                                  attributeService.save(attribute);
-                                              }
-                                          })
-                          );
+        Iterable<Selector> selectors = selectorRepository.findBySiteAndParentIsNull(site);
+        selectors.forEach(selector -> processJsoupDocument(jsoupDocument, document, exitingAttributes, selector));
         controller.sendCrawlStatus(this.stats);
+    }
+
+    private Set<Attribute> processJsoupDocument(org.jsoup.nodes.Document jsoupDocument, Document document, Set<Attribute> exitingAttributes, Selector selector) {
+        Set<Attribute> result = new HashSet<>();
+        jsoupService.getElementsFromType(jsoupDocument, selector.getValue(), selector.getAttribute(), selector.isChild())
+                    .forEach(value -> {
+                        Attribute attribute = findExistingAttribute(exitingAttributes, selector, value);
+                        attribute.setSelector(selector);
+                        attribute.setDocument(document);
+                        if(selector.getChildren() != null){
+                            attribute.setRelatives(selector.getChildren()
+                                                           .stream()
+                                                           .flatMap(rel -> processJsoupDocument(Jsoup.parse(value), document, exitingAttributes, rel).stream())
+                                                           .collect(Collectors.toSet()));
+                            logger.trace("Setting {} relatives for selector {}",attribute.getRelatives().size(),selector);
+                        }
+                        attribute.setValue(value);
+                        if (StringUtils.isNotBlank(attribute.getValue())) {
+                            logger.trace("Saving attribute for selector {}", selector);
+                            attributeService.save(attribute);
+                        }
+                        result.add(attribute);
+                    });
+        return result;
+    }
+
+    private Attribute findExistingAttribute(Set<Attribute> exitingAttributes, Selector selector, String value) {
+        return exitingAttributes
+            .stream()
+            .filter(attributesFromSelectorName(selector))
+            .filter(attributesFromValue(value))
+            .findAny()
+            .orElse(new Attribute());
     }
 
     private Predicate<Attribute> attributesFromValue(String value) {

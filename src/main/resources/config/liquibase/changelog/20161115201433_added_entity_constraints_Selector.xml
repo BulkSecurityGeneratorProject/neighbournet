@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="site"/>
 
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="selector"
+                                 constraintName="fk_selector_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="selector"/>
+
+        <addForeignKeyConstraint baseColumnNames="selector_id"
+                                 baseTableName="selector_children"
+                                 constraintName="fk_selector_children_selectors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="selector"/>
+
     </changeSet>
 </databaseChangeLog>

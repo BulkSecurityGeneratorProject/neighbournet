@@ -1,3 +1,4 @@
+
 <div>
     <h2><span>Selector</span> {{vm.selector.id}}</h2>
     <hr>
@@ -22,6 +23,12 @@
         <dt><span>Site</span></dt>
         <dd>
             <a ui-sref="site-detail({id:vm.selector.site.id})">{{vm.selector.site.name}}</a>
+        </dd>
+        <dt><span>Relatives</span></dt>
+        <dd>
+            <span ng-repeat="relatives in vm.selector.relatives">
+                <a ui-sref="selector-detail({id: relatives.id})">{{relatives.name}}</a>{{$last ? '' : ', '}}
+            </span>
         </dd>
     </dl>
 

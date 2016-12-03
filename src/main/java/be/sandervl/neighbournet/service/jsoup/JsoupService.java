@@ -15,9 +15,11 @@ public interface JsoupService {
     Optional<Document> getDocumentFromUrl(String url);
 
     /**
-     * Select from a Jsoup document the String values from a given CSS-selector and attribute value.  If the given
-     * attriute value is blank, it will be discared and the value of the CSS-selector will be returned
+     * Select from a Jsoup document the values from a given CSS-selector and attribute.  If the given
+     * attriute value is blank, it will be discared and the value of the CSS-selector will be returned.
+     *
+     * If innerHtml is set to true, only the inner html of the CSS-selector will be returned.
      */
-    Set<String> getElementsFromType(Document document, String selector, String attribute);
+    Set<String> getElementsFromType(Document document, String selector, String attribute, boolean innerHtml);
 
 }

@@ -65,8 +65,16 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="be.sandervl.neighbournet.domain.Selector.children"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <cache name="be.sandervl.neighbournet.domain.Attribute"
            timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="be.sandervl.neighbournet.domain.Attribute.relatives"
+        timeToLiveSeconds="3600">
     </cache>
 
     <!-- jhipster-needle-ehcache-add-entry -->

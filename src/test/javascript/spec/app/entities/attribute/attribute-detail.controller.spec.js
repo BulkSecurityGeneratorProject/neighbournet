@@ -1,13 +1,13 @@
 'use strict';
 
-describe('Controller Tests', function () {
+describe('Controller Tests', function() {
 
-    describe('Attribute Management Detail Controller', function () {
+    describe('Attribute Management Detail Controller', function() {
         var $scope, $rootScope;
         var MockEntity, MockPreviousState, MockAttribute, MockDocument, MockSelector;
         var createController;
 
-        beforeEach(inject(function ($injector) {
+        beforeEach(inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
@@ -15,7 +15,7 @@ describe('Controller Tests', function () {
             MockAttribute = jasmine.createSpy('MockAttribute');
             MockDocument = jasmine.createSpy('MockDocument');
             MockSelector = jasmine.createSpy('MockSelector');
-
+            
 
             var locals = {
                 '$scope': $scope,
@@ -26,14 +26,14 @@ describe('Controller Tests', function () {
                 'Document': MockDocument,
                 'Selector': MockSelector
             };
-            createController = function () {
+            createController = function() {
                 $injector.get('$controller')("AttributeDetailController", locals);
             };
         }));
 
 
-        describe('Root Scope Listening', function () {
-            it('Unregisters root scope listener upon scope destruction', function () {
+        describe('Root Scope Listening', function() {
+            it('Unregisters root scope listener upon scope destruction', function() {
                 var eventType = 'neighbournetApiApp:attributeUpdate';
 
                 createController();

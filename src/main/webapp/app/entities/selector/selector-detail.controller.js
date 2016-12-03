@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
         vm.selector = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('neighbournetApiApp:selectorUpdate', function (event, result) {
+        var unsubscribe = $rootScope.$on('neighbournetApiApp:selectorUpdate', function(event, result) {
             vm.selector = result;
         });
         $scope.$on('$destroy', unsubscribe);

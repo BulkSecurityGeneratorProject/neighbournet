@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -7,15 +7,15 @@
 
     SelectorController.$inject = ['$scope', '$state', 'Selector'];
 
-    function SelectorController($scope, $state, Selector) {
+    function SelectorController ($scope, $state, Selector) {
         var vm = this;
-
+        
         vm.selectors = [];
 
         loadAll();
 
         function loadAll() {
-            Selector.query(function (result) {
+            Selector.query(function(result) {
                 vm.selectors = result;
             });
         }
