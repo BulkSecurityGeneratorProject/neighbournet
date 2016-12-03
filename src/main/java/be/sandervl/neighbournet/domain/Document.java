@@ -7,9 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A Document.
@@ -41,6 +39,10 @@ public class Document implements Serializable {
 
     @ManyToOne
     private Site site;
+
+    @OneToMany(mappedBy = "document")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private List<Attribute> attributes = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -112,6 +114,31 @@ public class Document implements Serializable {
 
     public void setSite(Site site) {
         this.site = site;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public Document attributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+        return this;
+    }
+
+    public Document addAttributes(Attribute attribute) {
+        attributes.add(attribute);
+        attribute.setDocument(this);
+        return this;
+    }
+
+    public Document removeAttributes(Attribute attribute) {
+        attributes.remove(attribute);
+        attribute.setDocument(null);
+        return this;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

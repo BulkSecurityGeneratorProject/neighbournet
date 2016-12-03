@@ -1,12 +1,10 @@
 package be.sandervl.neighbournet.repository;
 
 import be.sandervl.neighbournet.domain.Attribute;
-
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.domain.Selector;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -27,7 +25,8 @@ public interface AttributeRepository extends JpaRepository<Attribute, Long> {
     @Query("select distinct attribute from Attribute attribute left join fetch attribute.relatives where attribute.relatives IS NOT EMPTY")
     List<Attribute> findAllWithRelatives();
 
-    Set<Attribute> findByDocument(Document document);
+    @Query("select distinct attribute from Attribute attribute left join fetch attribute.relatives where attribute.relatives IS EMPTY and attribute.document =:document")
+    Set<Attribute> findByDocument(@Param("document") Document document);
 
     Attribute findBySelectorAndDocument(Selector selector, Document document);
 }

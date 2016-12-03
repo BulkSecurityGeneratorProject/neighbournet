@@ -18,25 +18,25 @@ public interface DocumentService {
     Document save(Document document);
 
     /**
-     * Get all the documents.
+     *  Get all the documents.
      *
-     * @param pageable the pagination information
-     * @return the list of entities
+     *  @param pageable the pagination information
+     *  @return the list of entities
      */
     Page<Document> findAll(Pageable pageable);
 
     /**
-     * Get the "id" document.
+     *  Get the "id" document.
      *
-     * @param id the id of the entity
-     * @return the entity
+     *  @param id the id of the entity
+     *  @return the entity
      */
     Document findOne(Long id);
 
     /**
-     * Delete the "id" document.
+     *  Delete the "id" document.
      *
-     * @param id the id of the entity
+     *  @param id the id of the entity
      */
     void delete(Long id);
 }

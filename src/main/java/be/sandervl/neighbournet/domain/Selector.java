@@ -202,6 +202,6 @@ public class Selector implements Serializable {
     }
 
     public boolean isChild() {
-        return this.parent != null && (this.children == null || this.children.isEmpty());
+        return this.children == null || this.children.isEmpty();
     }
 }

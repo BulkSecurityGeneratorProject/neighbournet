@@ -37,10 +37,10 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     /**
-     * Get all the documents.
+     *  Get all the documents.
      *
-     * @param pageable the pagination information
-     * @return the list of entities
+     *  @param pageable the pagination information
+     *  @return the list of entities
      */
     @Transactional(readOnly = true)
     public Page<Document> findAll(Pageable pageable) {
@@ -50,10 +50,10 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     /**
-     * Get one document by id.
+     *  Get one document by id.
      *
-     * @param id the id of the entity
-     * @return the entity
+     *  @param id the id of the entity
+     *  @return the entity
      */
     @Transactional(readOnly = true)
     public Document findOne(Long id) {
@@ -63,9 +63,9 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     /**
-     * Delete the  document by id.
+     *  Delete the  document by id.
      *
-     * @param id the id of the entity
+     *  @param id the id of the entity
      */
     public void delete(Long id) {
         log.debug("Request to delete Document : {}", id);

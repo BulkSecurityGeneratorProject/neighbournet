@@ -9,7 +9,7 @@
         </dd>
         <dt><span>Url</span></dt>
         <dd>
-            <span>{{vm.document.url}}</span>
+            <span><a href="{{vm.document.site.name+vm.document.url}}" target="_blank">{{vm.document.url}}</a>></span>
         </dd>
         <dt><span>Matches</span></dt>
         <dd>
@@ -21,6 +21,10 @@
         <dd>
             <a ui-sref="site-detail({id:vm.document.site.id})">{{vm.document.site.name}}</a>
         </dd>
+        <div ng-repeat="attribute in vm.document.attributes">
+            <dt>{{attribute.selector.name}}</dt>
+            <dd>{{attribute.value}}</dd>
+        </div>
     </dl>
 
     <button type="submit"

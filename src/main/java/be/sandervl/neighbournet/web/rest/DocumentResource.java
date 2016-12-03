@@ -1,6 +1,8 @@
 package be.sandervl.neighbournet.web.rest;
 
+import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
+import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.service.DocumentService;
 import be.sandervl.neighbournet.web.rest.util.HeaderUtil;
 import be.sandervl.neighbournet.web.rest.util.PaginationUtil;
@@ -20,6 +22,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Document.
@@ -32,6 +35,9 @@ public class DocumentResource {
 
     @Inject
     private DocumentService documentService;
+
+    @Inject
+    private AttributeService attributeService;
 
     /**
      * POST  /documents : Create a new document.
@@ -103,6 +109,11 @@ public class DocumentResource {
     public ResponseEntity<Document> getDocument(@PathVariable Long id) {
         log.debug("REST request to get Document : {}", id);
         Document document = documentService.findOne(id);
+        List<Attribute> attributes = attributeService.findByDocument(document)
+                                                     .stream()
+                                                     .sorted((a, b) -> -Boolean.compare(a.getSelector().isIsPrimary(), b.getSelector().isIsPrimary()))
+                                                     .collect(Collectors.toList());
+        document.setAttributes(attributes);
         return Optional.ofNullable(document)
                        .map(result -> new ResponseEntity<>(
                            result,

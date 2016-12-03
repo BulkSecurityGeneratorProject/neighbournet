@@ -5,9 +5,9 @@
         .module('neighbournetApiApp')
         .controller('DocumentDialogController', DocumentDialogController);
 
-    DocumentDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Document', 'Site'];
+    DocumentDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Document', 'Site', 'Attribute'];
 
-    function DocumentDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Document, Site) {
+    function DocumentDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Document, Site, Attribute) {
         var vm = this;
 
         vm.document = entity;
@@ -17,6 +17,7 @@
         vm.save = save;
         vm.documents = Document.query();
         vm.sites = Site.query();
+        vm.attributes = Attribute.query();
 
         $timeout(function () {
             angular.element('.form-group:eq(1)>input').focus();

@@ -49,6 +49,10 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="be.sandervl.neighbournet.domain.Document.attributes"
+           timeToLiveSeconds="3600">
+    </cache>
+
     <cache name="be.sandervl.neighbournet.domain.Selector"
            timeToLiveSeconds="3600">
     </cache>
