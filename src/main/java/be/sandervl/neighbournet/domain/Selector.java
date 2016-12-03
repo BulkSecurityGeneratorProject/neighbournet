@@ -1,6 +1,8 @@
 package be.sandervl.neighbournet.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -55,9 +57,11 @@ public class Selector implements Serializable {
         joinColumns = @JoinColumn(name="selector_id", referencedColumnName="ID"),
         inverseJoinColumns = @JoinColumn(name="child_id", referencedColumnName="ID"))
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
     private Set<Selector> children = new HashSet<>();
 
     @ManyToOne
+    @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
     private Selector parent;
 
     public Long getId() {

@@ -1,5 +1,8 @@
 package be.sandervl.neighbournet.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -46,6 +49,7 @@ public class Attribute implements Serializable {
     @JoinTable(name = "attribute_relatives",
                joinColumns = @JoinColumn(name="attributes_id", referencedColumnName="ID"),
                inverseJoinColumns = @JoinColumn(name="relatives_id", referencedColumnName="ID"))
+    @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
     private Set<Attribute> relatives = new HashSet<>();
 
     public Long getId() {

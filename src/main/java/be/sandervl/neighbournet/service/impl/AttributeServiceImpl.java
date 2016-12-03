@@ -8,6 +8,7 @@ import be.sandervl.neighbournet.repository.AttributeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,10 @@ public class AttributeServiceImpl implements AttributeService{
     @Transactional(readOnly = true)
     public Page<Attribute> findAll(Pageable pageable) {
         log.debug("Request to get all Attributes");
-        Page<Attribute> result = attributeRepository.findAll(pageable);
+        List<Attribute> allWithRelatives = attributeRepository.findAllWithRelatives();
+        int start = pageable.getOffset();
+        int end = (start + pageable.getPageSize()) > allWithRelatives.size() ? allWithRelatives.size() : (start + pageable.getPageSize());
+        Page<Attribute> result = new PageImpl<>(allWithRelatives.subList(start, end), pageable, allWithRelatives.size());
         return result;
     }
 
