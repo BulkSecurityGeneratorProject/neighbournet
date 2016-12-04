@@ -24,11 +24,9 @@
         <dd>
             <a ui-sref="site-detail({id:vm.selector.site.id})">{{vm.selector.site.name}}</a>
         </dd>
-        <dt><span>Relatives</span></dt>
+        <dt><span>Parent</span></dt>
         <dd>
-            <span ng-repeat="relatives in vm.selector.relatives">
-                <a ui-sref="selector-detail({id: relatives.id})">{{relatives.name}}</a>{{$last ? '' : ', '}}
-            </span>
+            <a ui-sref="selector-detail({id:vm.selector.parent.id})">{{vm.selector.parent.name}}</a>
         </dd>
     </dl>
 

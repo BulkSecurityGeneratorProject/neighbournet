@@ -24,7 +24,7 @@
                     <th><span>Attribute</span></th>
                     <th><span>Is Primary</span></th>
                     <th><span>Site</span></th>
-                    <th><span>Relatives</span></th>
+                    <th><span>Parent</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -39,9 +39,7 @@
                         <a ui-sref="site-detail({id:selector.site.id})">{{selector.site.name}}</a>
                     </td>
                     <td>
-                        <span ng-repeat="relatives in selector.relatives">
-                            <a class="form-control-static" ui-sref="selector-detail({id: relatives.id})">{{relatives.name}}</a>{{$last ? '' : ', '}}
-                        </span>
+                        <a ui-sref="selector-detail({id:selector.parent.id})">{{selector.parent.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -11,12 +11,20 @@
             "otherEntityField": "name"
         },
         {
-            "relationshipName": "relatives",
+            "relationshipName": "children",
             "otherEntityName": "selector",
-            "relationshipType": "many-to-many",
+            "relationshipType": "one-to-many",
             "otherEntityField": "name",
             "ownerSide": true,
-            "otherEntityRelationshipName": "relatives"
+            "otherEntityRelationshipName": "children"
+        },
+        {
+            "relationshipName": "parent",
+            "otherEntityName": "selector",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "parent"
         }
     ],
     "fields": [

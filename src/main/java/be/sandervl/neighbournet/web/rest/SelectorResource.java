@@ -1,13 +1,11 @@
 package be.sandervl.neighbournet.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
 import be.sandervl.neighbournet.domain.Selector;
-
 import be.sandervl.neighbournet.repository.SelectorRepository;
 import be.sandervl.neighbournet.web.rest.util.HeaderUtil;
+import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +25,7 @@ import java.util.Optional;
 public class SelectorResource {
 
     private final Logger log = LoggerFactory.getLogger(SelectorResource.class);
-        
+
     @Inject
     private SelectorRepository selectorRepository;
 
@@ -82,7 +80,7 @@ public class SelectorResource {
     @Timed
     public List<Selector> getAllSelectors() {
         log.debug("REST request to get all Selectors");
-        List<Selector> selectors = selectorRepository.findAllWithEagerRelationships();
+        List<Selector> selectors = selectorRepository.findAll();
         return selectors;
     }
 
@@ -96,7 +94,7 @@ public class SelectorResource {
     @Timed
     public ResponseEntity<Selector> getSelector(@PathVariable Long id) {
         log.debug("REST request to get Selector : {}", id);
-        Selector selector = selectorRepository.findOneWithEagerRelationships(id);
+        Selector selector = selectorRepository.findOne(id);
         return Optional.ofNullable(selector)
             .map(result -> new ResponseEntity<>(
                 result,

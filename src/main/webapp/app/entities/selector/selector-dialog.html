@@ -63,8 +63,11 @@
             </p>
         </div>
         <div class="form-group">
-            <label for="field_relatives">Relatives</label>
-            <select class="form-control" id="field_relatives" multiple name="relatives" ng-model="vm.selector.relatives" ng-options="selector as selector.name for selector in vm.selectors track by selector.id"></select>
+            <label for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" ng-model="vm.selector.parent"
+                    ng-options="selector as selector.name for selector in vm.selectors track by selector.id">
+                <option value=""></option>
+            </select>
         </div>
     </div>
     <div class="modal-footer">

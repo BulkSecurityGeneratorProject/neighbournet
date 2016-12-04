@@ -1,17 +1,17 @@
 package be.sandervl.neighbournet.service.impl;
 
+import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.domain.Selector;
-import be.sandervl.neighbournet.service.AttributeService;
-import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.repository.AttributeRepository;
+import be.sandervl.neighbournet.service.AttributeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -48,13 +48,17 @@ public class AttributeServiceImpl implements AttributeService{
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<Attribute> findAll(Pageable pageable) {
+    public Page<Attribute> findAll(Pageable pageable, Boolean withRelatives) {
         log.debug("Request to get all Attributes");
-        List<Attribute> allWithRelatives = attributeRepository.findAllWithRelatives();
-        int start = pageable.getOffset();
-        int end = (start + pageable.getPageSize()) > allWithRelatives.size() ? allWithRelatives.size() : (start + pageable.getPageSize());
-        Page<Attribute> result = new PageImpl<>(allWithRelatives.subList(start, end), pageable, allWithRelatives.size());
-        return result;
+        if (withRelatives != null && withRelatives) {
+            List<Attribute> allWithRelatives = attributeRepository.findAllWithRelatives();
+            int start = pageable.getOffset();
+            int end = (start + pageable.getPageSize()) > allWithRelatives.size() ? allWithRelatives.size() : (start + pageable.getPageSize());
+            Page<Attribute> result = new PageImpl<>(allWithRelatives.subList(start, end), pageable, allWithRelatives.size());
+            return result;
+        } else {
+            return attributeRepository.findAll(pageable);
+        }
     }
 
     /**

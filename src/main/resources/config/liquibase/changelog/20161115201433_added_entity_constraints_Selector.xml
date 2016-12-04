@@ -20,11 +20,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="selector"/>
 
-        <addForeignKeyConstraint baseColumnNames="selector_id"
-                                 baseTableName="selector_children"
-                                 constraintName="fk_selector_children_selectors_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="selector"/>
-
     </changeSet>
 </databaseChangeLog>

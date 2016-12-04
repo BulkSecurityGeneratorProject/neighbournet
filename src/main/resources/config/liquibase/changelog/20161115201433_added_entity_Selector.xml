@@ -48,16 +48,5 @@
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
 
-        <createTable tableName="selector_children">
-            <column name="child_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="selector_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="child_id, selector_id" tableName="selector_children"/>
-
     </changeSet>
 </databaseChangeLog>

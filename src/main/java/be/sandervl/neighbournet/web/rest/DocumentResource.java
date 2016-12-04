@@ -1,6 +1,5 @@
 package be.sandervl.neighbournet.web.rest;
 
-import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.service.DocumentService;
@@ -109,15 +108,14 @@ public class DocumentResource {
     public ResponseEntity<Document> getDocument(@PathVariable Long id) {
         log.debug("REST request to get Document : {}", id);
         Document document = documentService.findOne(id);
-        List<Attribute> attributes = attributeService.findByDocument(document)
-                                                     .stream()
-                                                     .sorted((a, b) -> -Boolean.compare(a.getSelector().isIsPrimary(), b.getSelector().isIsPrimary()))
-                                                     .collect(Collectors.toList());
-        document.setAttributes(attributes);
         return Optional.ofNullable(document)
-                       .map(result -> new ResponseEntity<>(
-                           result,
-                           HttpStatus.OK))
+                       .map(result -> {
+                           result.setAttributes(attributeService.findByDocument(document)
+                                                                .stream()
+                                                                .sorted((a, b) -> -Boolean.compare(a.getSelector().isIsPrimary(), b.getSelector().isIsPrimary()))
+                                                                .collect(Collectors.toList()));
+                           return new ResponseEntity<>(result, HttpStatus.OK);
+                       })
                        .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 

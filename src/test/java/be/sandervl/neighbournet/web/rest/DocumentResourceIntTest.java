@@ -3,6 +3,7 @@ package be.sandervl.neighbournet.web.rest;
 import be.sandervl.neighbournet.NeighbournetApiApp;
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.repository.DocumentRepository;
+import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.service.DocumentService;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,6 +53,9 @@ public class DocumentResourceIntTest {
     private DocumentService documentService;
 
     @Inject
+    private AttributeService attributeService;
+
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Inject
@@ -69,6 +73,8 @@ public class DocumentResourceIntTest {
         MockitoAnnotations.initMocks(this);
         DocumentResource documentResource = new DocumentResource();
         ReflectionTestUtils.setField(documentResource, "documentService", documentService);
+        ReflectionTestUtils.setField(documentResource, "attributeService", attributeService);
+        //when(attributeService.findByDocument(any(Document.class))).thenReturn(Collections.emptySet());
         this.restDocumentMockMvc = MockMvcBuilders.standaloneSetup(documentResource)
                                                   .setCustomArgumentResolvers(pageableArgumentResolver)
                                                   .setMessageConverters(jacksonMessageConverter).build();

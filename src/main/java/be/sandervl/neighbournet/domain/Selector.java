@@ -1,7 +1,6 @@
 package be.sandervl.neighbournet.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,17 +50,12 @@ public class Selector implements Serializable {
     @NotNull
     private Site site;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JsonIgnore
-    @JoinTable(name = "selector_children",
-        joinColumns = @JoinColumn(name="selector_id", referencedColumnName="ID"),
-        inverseJoinColumns = @JoinColumn(name="child_id", referencedColumnName="ID"))
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(mappedBy = "children")
     @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Selector> children = new HashSet<>();
 
     @ManyToOne
-    @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
     private Selector parent;
 
     public Long getId() {
@@ -137,14 +131,6 @@ public class Selector implements Serializable {
         this.site = site;
     }
 
-    public Selector getParent() {
-        return parent;
-    }
-
-    public void setParent(Selector parent) {
-        this.parent = parent;
-    }
-
     public Set<Selector> getChildren() {
         return children;
     }
@@ -162,12 +148,25 @@ public class Selector implements Serializable {
 
     public Selector removeChildren(Selector selector) {
         children.remove(selector);
-        selector.getChildren().remove(this);
+        selector.setChildren(null);
         return this;
     }
 
     public void setChildren(Set<Selector> selectors) {
         this.children = selectors;
+    }
+
+    public Selector getParent() {
+        return parent;
+    }
+
+    public Selector parent(Selector selector) {
+        this.parent = selector;
+        return this;
+    }
+
+    public void setParent(Selector selector) {
+        this.parent = selector;
     }
 
     @Override

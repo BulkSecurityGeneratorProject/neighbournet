@@ -1,10 +1,10 @@
 package be.sandervl.neighbournet.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
 import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.web.rest.util.HeaderUtil;
 import be.sandervl.neighbournet.web.rest.util.PaginationUtil;
+import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -29,7 +29,7 @@ import java.util.Optional;
 public class AttributeResource {
 
     private final Logger log = LoggerFactory.getLogger(AttributeResource.class);
-        
+
     @Inject
     private AttributeService attributeService;
 
@@ -84,10 +84,10 @@ public class AttributeResource {
      */
     @GetMapping("/attributes")
     @Timed
-    public ResponseEntity<List<Attribute>> getAllAttributes(Pageable pageable)
+    public ResponseEntity<List<Attribute>> getAllAttributes(Pageable pageable, @RequestParam(value = "withRelatives", defaultValue = "false") Boolean withRelatives)
         throws URISyntaxException {
         log.debug("REST request to get a page of Attributes");
-        Page<Attribute> page = attributeService.findAll(pageable);
+        Page<Attribute> page = attributeService.findAll(pageable, withRelatives);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/attributes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -6,7 +6,6 @@ import be.sandervl.neighbournet.domain.Selector;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +27,7 @@ public interface AttributeService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<Attribute> findAll(Pageable pageable);
+    Page<Attribute> findAll(Pageable pageable, Boolean withRelatives);
 
     /**
      * Get the "id" attribute.
