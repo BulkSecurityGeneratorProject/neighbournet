@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -122,7 +121,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
 
     private Set<Attribute> processJsoupDocument(org.jsoup.nodes.Document jsoupDocument, Document document, Set<Attribute> exitingAttributes, Selector selector) {
         Set<Attribute> result = new HashSet<>();
-        jsoupService.getElementsFromType(jsoupDocument, selector.getValue(), selector.getAttribute(), selector.isChild())
+        jsoupService.getElementsFromType(jsoupDocument, selector, document)
                     .forEach(value -> {
                         Attribute attribute = findExistingAttribute(exitingAttributes, selector, value);
                         attribute.setSelector(selector);

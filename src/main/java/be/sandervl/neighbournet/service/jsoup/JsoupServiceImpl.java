@@ -1,21 +1,15 @@
 package be.sandervl.neighbournet.service.jsoup;
 
+import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.service.handlers.ProcessorChain;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.BaseJsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.TextNode;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -43,11 +37,11 @@ public class JsoupServiceImpl implements JsoupService {
 
 
     @Override
-    public Set<String> getElementsFromType(Document document, String selector, String attribute, boolean innerHtml) {
-        return document
-            .select(selector)
+    public Set<String> getElementsFromType(Document jsoupDocument, Selector selector, be.sandervl.neighbournet.domain.Document document) {
+        return jsoupDocument
+            .select(selector.getValue())
             .stream()
-            .map(el -> elementToTextMapper(el,attribute, innerHtml))
+            .map(el -> elementToTextMapper(el, selector.getAttribute(), selector.isChild()))
             .map(processorChain::process)
             .collect(Collectors.toSet());
     }

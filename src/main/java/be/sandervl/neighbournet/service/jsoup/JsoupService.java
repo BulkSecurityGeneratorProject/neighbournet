@@ -1,6 +1,6 @@
 package be.sandervl.neighbournet.service.jsoup;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import be.sandervl.neighbournet.domain.Selector;
 import org.jsoup.nodes.Document;
 
 import java.util.Optional;
@@ -20,6 +20,6 @@ public interface JsoupService {
      *
      * If innerHtml is set to true, only the inner html of the CSS-selector will be returned.
      */
-    Set<String> getElementsFromType(Document document, String selector, String attribute, boolean innerHtml);
+    Set<String> getElementsFromType(Document jsoupDocument, Selector selector, be.sandervl.neighbournet.domain.Document document);
 
 }
