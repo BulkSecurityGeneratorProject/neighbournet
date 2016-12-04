@@ -1,7 +1,6 @@
 package be.sandervl.neighbournet.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -50,8 +49,8 @@ public class Selector implements Serializable {
     @NotNull
     private Site site;
 
-    @OneToMany(mappedBy = "children")
-    @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Selector> children = new HashSet<>();
 
@@ -131,6 +130,7 @@ public class Selector implements Serializable {
         this.site = site;
     }
 
+    @JsonIgnore
     public Set<Selector> getChildren() {
         return children;
     }
@@ -152,6 +152,7 @@ public class Selector implements Serializable {
         return this;
     }
 
+    @JsonIgnore
     public void setChildren(Set<Selector> selectors) {
         this.children = selectors;
     }
@@ -200,6 +201,7 @@ public class Selector implements Serializable {
             '}';
     }
 
+    @JsonIgnore
     public boolean isChild() {
         return this.children == null || this.children.isEmpty();
     }
