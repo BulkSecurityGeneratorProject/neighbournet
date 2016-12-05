@@ -11,7 +11,6 @@ import be.sandervl.neighbournet.service.handlers.ProcessorChain;
 import be.sandervl.neighbournet.service.jsoup.JsoupService;
 import be.sandervl.neighbournet.service.jsoup.JsoupServiceImpl;
 import edu.uci.ics.crawler4j.crawler.Page;
-import edu.uci.ics.crawler4j.url.WebURL;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +20,10 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Optional;
 
 import static be.sandervl.neighbournet.utils.TestObjectCreation.documentFromFileName;
 import static be.sandervl.neighbournet.utils.TestObjectCreation.pageFromUrl;
@@ -71,7 +73,7 @@ public class SiteCrawlerTest {
 
         when(selectorRepository.findBySiteAndParentIsNull(any(Site.class))).thenReturn(Collections.emptySet());
 
-        when(processorChain.process(anyString())).thenAnswer(invocation -> invocation.getArguments()[0]);
+        when(processorChain.process(anyString(), any(Document.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
     }
 
     @Test

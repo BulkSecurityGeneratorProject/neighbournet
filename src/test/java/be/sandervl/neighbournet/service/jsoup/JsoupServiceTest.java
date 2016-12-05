@@ -37,7 +37,7 @@ public class JsoupServiceTest {
     public void setUp() throws Exception {
         initMocks(this);
         doReturn(Optional.of(documentFromFileName("testinput.html"))).when(jsoupService).getDocumentFromUrl(anyString());
-        when(processorChain.process(anyString())).thenAnswer(invocation -> invocation.getArguments()[0]);
+        when(processorChain.process(anyString(), any(be.sandervl.neighbournet.domain.Document.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
     }
 
     @Test

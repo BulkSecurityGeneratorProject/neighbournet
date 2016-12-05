@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="neighbournet" />
+          <element id="module-output" name="neighbournet-api" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: io.dropwizard.metrics:metrics-core:3.1.2" />
@@ -172,6 +172,10 @@
           <element id="library" level="project" name="Maven: com.googlecode.juniversalchardet:juniversalchardet:1.0.3" />
           <element id="library" level="project" name="Maven: com.uwyn:jhighlight:1.0" />
           <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.7.2" />
+          <element id="library" level="project" name="Maven: com.google.maps:google-maps-services:0.1.17" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.7.5" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-undertow:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: io.undertow:undertow-core:1.3.25.Final" />
           <element id="library" level="project" name="Maven: org.jboss.xnio:xnio-api:3.3.6.Final" />
@@ -187,7 +191,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/neighbournet-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="neighbournet/web/Web" />
+      <element id="javaee-facet-resources" facet="neighbournet-api/web/Web" />
     </root>
   </artifact>
 </component>
