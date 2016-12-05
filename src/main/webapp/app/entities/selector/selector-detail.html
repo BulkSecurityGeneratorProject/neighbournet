@@ -28,6 +28,10 @@
         <dd>
             <a ui-sref="selector-detail({id:vm.selector.parent.id})">{{vm.selector.parent.name}}</a>
         </dd>
+        <dt><span>Processors</span></dt>
+        <dd>
+            <span ng-repeat="selector in vm.selector.processors">{{selector}}</span>
+        </dd>
     </dl>
 
     <button type="submit"
