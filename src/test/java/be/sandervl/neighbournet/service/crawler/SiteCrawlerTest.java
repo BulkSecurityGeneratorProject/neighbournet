@@ -73,7 +73,7 @@ public class SiteCrawlerTest {
 
         when(selectorRepository.findBySiteAndParentIsNull(any(Site.class))).thenReturn(Collections.emptySet());
 
-        when(processorChain.process(anyString(), any(Document.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
+        when(processorChain.process(anyString(), any(Selector.class), any(Document.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
     }
 
     @Test

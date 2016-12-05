@@ -10,6 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -56,6 +57,11 @@ public class Selector implements Serializable {
 
     @ManyToOne
     private Selector parent;
+
+    @ElementCollection(targetClass = Processors.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "selector_processor", joinColumns = @JoinColumn(name = "selector_id"))
+    @Column(name = "processor_id", nullable = false)
+    private Collection<Processors> processors;
 
     public Long getId() {
         return id;
@@ -168,6 +174,14 @@ public class Selector implements Serializable {
 
     public void setParent(Selector selector) {
         this.parent = selector;
+    }
+
+    public Collection<Processors> getProcessors() {
+        return processors;
+    }
+
+    public void setProcessors(Collection<Processors> processors) {
+        this.processors = processors;
     }
 
     @Override

@@ -49,4 +49,19 @@
         </createTable>
 
     </changeSet>
+
+    <changeSet id="20161205133600" author="svl">
+
+        <createTable tableName="selector_processor">
+            <column name="selector_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="processor_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="selector_id, processor_id" tableName="selector_processor"/>
+
+    </changeSet>
 </databaseChangeLog>

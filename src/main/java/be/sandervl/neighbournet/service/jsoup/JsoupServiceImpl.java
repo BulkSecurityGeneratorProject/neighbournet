@@ -42,7 +42,7 @@ public class JsoupServiceImpl implements JsoupService {
             .select(selector.getValue())
             .stream()
             .map(el -> elementToTextMapper(el, selector.getAttribute(), selector.isChild()))
-            .map(val -> processorChain.process(val, document))
+            .map(val -> processorChain.process(val, selector, document))
             .collect(Collectors.toSet());
     }
 
