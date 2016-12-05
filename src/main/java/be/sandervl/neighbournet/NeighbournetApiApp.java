@@ -26,7 +26,7 @@ import java.util.Collection;
 @ComponentScan
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
 @EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class, CrawlerProperties.class})
-@PropertySource("classpath:config/secret-properties.yml")
+@PropertySource(value = "classpath:config/secret-properties.yml", ignoreResourceNotFound = true)
 public class NeighbournetApiApp {
 
     private static final Logger log = LoggerFactory.getLogger(NeighbournetApiApp.class);
