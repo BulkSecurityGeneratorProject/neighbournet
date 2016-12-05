@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -110,7 +110,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
             .findByUrl(url)
             .orElse(new Document());
         document.setSite(site);
-        document.setCreated(LocalDate.now());
+        document.setCreated(LocalDateTime.now());
         document.setUrl(url);
         documentRepository.save(document);
         Set<Attribute> exitingAttributes = attributeService.findByDocument(document);

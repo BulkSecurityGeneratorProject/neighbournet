@@ -22,8 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,8 +39,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = NeighbournetApiApp.class)
 public class DocumentResourceIntTest {
 
-    private static final LocalDate DEFAULT_CREATED = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_CREATED = LocalDateTime.now();
+    private static final LocalDateTime UPDATED_CREATED = LocalDateTime.now().plusDays(1);
 
     private static final String DEFAULT_URL = "AAAAA";
     private static final String UPDATED_URL = "BBBBB";

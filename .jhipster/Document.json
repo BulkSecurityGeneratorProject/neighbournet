@@ -25,7 +25,7 @@
     "fields": [
         {
             "fieldName": "created",
-            "fieldType": "LocalDate"
+            "fieldType": "LocalDateTime"
         },
         {
             "fieldName": "url",

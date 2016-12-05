@@ -6,7 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -24,7 +24,7 @@ public class Document implements Serializable {
     private Long id;
 
     @Column(name = "created")
-    private LocalDate created;
+    private LocalDateTime created;
 
     @NotNull
     @Column(name = "url", nullable = false)
@@ -52,16 +52,16 @@ public class Document implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public Document created(LocalDate created) {
+    public Document created(LocalDateTime created) {
         this.created = created;
         return this;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 

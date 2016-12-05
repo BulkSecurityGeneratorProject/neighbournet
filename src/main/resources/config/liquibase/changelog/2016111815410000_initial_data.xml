@@ -13,6 +13,10 @@
                   file="config/liquibase/init_selector_data.csv"
                   separator=";"
                   tableName="selector"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init_selector_processor.csv"
+                  separator=";"
+                  tableName="selector_processor"/>
     </changeSet>
 
 </databaseChangeLog>

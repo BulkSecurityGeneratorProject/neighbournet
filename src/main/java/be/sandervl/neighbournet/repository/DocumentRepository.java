@@ -1,6 +1,8 @@
 package be.sandervl.neighbournet.repository;
 
 import be.sandervl.neighbournet.domain.Document;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +23,6 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
     Document findOneWithEagerRelationships(@Param("id") Long id);
 
     Optional<Document> findByUrl(String url);
+
+    Page<Document> findAllOrderByCreated(Pageable pageable);
 }
