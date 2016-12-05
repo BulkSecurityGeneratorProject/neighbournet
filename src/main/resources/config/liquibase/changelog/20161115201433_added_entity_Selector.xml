@@ -56,7 +56,7 @@
             <column name="selector_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="processor_id" type="bigint">
+            <column name="processor_id" type="integer">
                 <constraints nullable="false"/>
             </column>
         </createTable>
