@@ -63,12 +63,14 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     public void onStart() {
         this.stats.incCrawlersRunning();
         this.stats.setTotal(this.config.getMaxPagesToFetch());
+        controller.sendCrawlStatus(this.stats);
         super.onStart();
     }
 
     @Override
     public void onBeforeExit() {
         this.stats.decCrawlersRunning();
+        controller.sendCrawlStatus(this.stats);
         super.onBeforeExit();
     }
 

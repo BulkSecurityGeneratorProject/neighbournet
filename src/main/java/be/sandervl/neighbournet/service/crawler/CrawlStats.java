@@ -32,7 +32,7 @@ public class CrawlStats {
     }
 
     public synchronized void decCrawlersRunning() {
-        this.crawlersRunning++;
+        this.crawlersRunning--;
         if (this.crawlersRunning <= 0) {
             this.status = CrawlStatus.NOT_RUNNING;
         }

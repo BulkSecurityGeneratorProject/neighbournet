@@ -31,8 +31,8 @@
             var url = '//' + loc.host + loc.pathname + 'websocket/tracker';
             var socket = new SockJS(url);
             stompClient = Stomp.over(socket);
+            stompClient.debug = null;
             stompClient.connect({}, function () {
-                console.info("Connected Site WS");
                 connected.resolve('success');
             });
         }

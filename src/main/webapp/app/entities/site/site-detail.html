@@ -17,21 +17,27 @@
         </dd>
     </dl>
 
-    <div class="row">
+    <div class="row crawl-stats" ng-if="vm.stats['crawlersRunning']">
         <div class="col-md-12">
-            <uib-progressbar min="0" max="vm.metrics.gauges['jvm.memory.total.max'].value"
-                             value="(vm.stats['numberProcessed'] / vm.stats['total'])*100  | number:0"
+            <uib-progressbar min="0" max="100"
+                             value="100"
                              class="progress-striped active"
-                             type="success" ng-if="vm.stats['numberProcessed']">
-                <span>
-                    {{(vm.stats['numberProcessed'] / vm.stats['total'])*100 | number:0}}%
-                </span>
+                             type="success">
             </uib-progressbar>
+            <dl class="dl-horizontal">
+                <dt>Visited</dt>
+                <dd>{{vm.stats['numberVisited']}}</dd>
+                <dt>Processed</dt>
+                <dd>{{vm.stats['numberProcessed']}}</dd>
+                <dt># Crawlers</dt>
+                <dd>{{vm.stats['crawlersRunning']}}</dd>
+            </dl>
         </div>
     </div>
 
     <button type="button"
             ng-click="initCrawl()"
+            ng-class="{disabled : vm.stats['crawlersRunning'] > 0}"
             class="btn btn-success js-start-crawl">
         <span class="glyphicon glyphicon-play"></span>&nbsp;<span> Start crawling</span>
     </button>

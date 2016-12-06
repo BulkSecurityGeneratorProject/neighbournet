@@ -22,18 +22,11 @@
         $scope.$on('$destroy', unsubscribe);
 
         SiteWS.receive().then(null, null, function (stats) {
-            console.log(stats);
             vm.stats = stats;
-            if (vm.stats['numberVisited'] == vm.stats['total']) {
-                $('.js-start-crawl').removeClass('disabled');
-            } else {
-                $('.js-start-crawl').addClass('disabled');
-            }
         });
 
         $scope.initCrawl = function () {
             $('.js-start-crawl').addClass('disabled');
-            console.log('staring crawl for site ' + entity);
             var data = $.param({
                 'id': entity.id
             });
