@@ -36,24 +36,24 @@ notifications:
     on_start: false
 deploy:
 - provider: s3
-  access_key_id: AKIAJNLX5QWSQNIPJCIA
+  access_key_id: AKIAJT3BP4B4BHED7YTA
   secret_access_key: &1
-    secure: dtL1ZHABSJptbT5tNIbPG5xw0kKJEcbVLzsMHCupZhYYXOwyJqCOU3unaYYvOnLhWSnIBZNBow7LszbOgOfVdxm0NdUHjpLCRjFMbxpQ976yh0ViWzuZ3YE+o+CKH12U7lg45RRTpeoxQbYqOTxQaocQvUbtyfF0U6utgv6z/GitFEvy2uu8Xh+S6VOxHpQaHpEPIO3fVtCx6l1DB3Dmc69t8LYQj1rxek1KKOFdN3GhtKZ46IHz4qo1PWXJUd81Jh0/nD0rv1Kp7wTEA3Te3YikfuUfrBi2m3saCY1N7WdxAt/jsC/lwsvFE/pGMTsgGH8fPyA6rimvnxML1k0DPNV6OK+0YARTqiAGZcWaLmrjbnWid0gtEU2OrMIxCUJ4/+GrR+eKENJ6QqPn3zxeDdiTzYtlBsZd74b26UY4FIO4LaAEO93hK4kS3maGY9rxtAxw5W2YyO+Gbo36ySEWm80B9dW+uuSV1CY9XXE/vGi4gaGZov8U4pwGEazIb1sCaQQFN9IOBjaMAFCWW8Xiqg6IfP6+IrLNk8tG017HrQXkSAxuVtVgLExlKiqpc7XltXSUyzIWRbs6Ir006o2fZzR8RIF+99btjfC0c/ETObb9o8REddCHdBwzv7GRu82dneD8ImXhriA5FMyN1Nr7y1DNqHRP1Y2lllAQk2fZZ7U=
+    secure: j8+Ov93bcxFNNI0nAlhnt490gy9sMM//0BS7g6kqI2Gxw53BnCRzHcfVDGZgoio/HVC6zS0Kgd+zE7bUXTZlTeS69j3RolrxWo2EpmQCgHKWmoeMsWQQJNVXXgp/PKg98aOv7GSXz/vLUqDJ4bkeLPSkdMNq9pWY5vxI9HYwedTZFIOBxHRZD9NoxWGYtNBCcY7y7WNMTNv4thLtK/8VEbvtvZbW4TxQ3EHiD3kskxTKgs8m1NGWe593EXpAtZEmocXnjb8AMvysivgT+fSRsKEBPIjjB0xdnTHqsuLa5pCI1g6edj2X79yDEd3KKf06OkD0PMDgPp2+t8kIdZStzatIoJ7vZYE/tVD/D27HQ0/0EmNjwuYXuxXkVzWNZ4OnWQzzEm18F7ap419qeFsOi5vhdJcCVLw9vTJ8uOQ+XJdwmHXByZ6JFJEAonSYFp3rDV35Qibejhwd8sLQ/spBErjGK6x6G12LqDHy5fdO47SZzpZbCcdwcN3uiTVIMf0eyc3s6sAZQ1UT0KklOw04OGMKtGRcAkaCcndnITBGhcgZeWMbtl0k5ox1IpUevVleiWPgxs24K9nHSmTEP/3ONxwJkP6cTJkFJcUrpxNm4LguDnzePDR8xvJ/EOrk+7Oj6h2r2lr8pm9EsHOEpD/2j5mUcYNavEfs7F7IyRpmCes=
   local_dir: dpl_cd_upload
   skip_cleanup: true
   on: &2
     repo: sandervanloock/neighbournet
   bucket: neighbournet
 - provider: codedeploy
-  access_key_id: AKIAJNLX5QWSQNIPJCIA
+  access_key_id: AKIAJT3BP4B4BHED7YTA
   secret_access_key: *1
   bucket: neighbournet
-  key: latest.zip
-  bundle_type: 'zip'
+  key: neighbournet
+  bundle_type: zip
   application: neighbournet
   deployment_group: neighbournetDeploymentGroup
   on: *2
 before_deploy:
-- zip -r latest *
+- zip -r latest target/*
 - mkdir -p dpl_cd_upload
-- mv latest.zip dpl_cd_upload/latest.zip
+- mv latest.zip dpl_cd_upload/neighbournet
