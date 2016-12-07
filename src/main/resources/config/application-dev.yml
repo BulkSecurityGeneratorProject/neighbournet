@@ -96,5 +96,5 @@ jhipster:
 crawler:
     crawlStorageFolder: ./target/crawler
     numberOfCrawlers: 3
-    maxPagesToFetch: 50
-    politenessDelay: 20
+    maxPagesToFetch: -1
+    politenessDelay: 300

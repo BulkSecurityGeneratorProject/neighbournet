@@ -31,7 +31,7 @@ public class GoogleAddressProcessor implements SelectorProcessor {
 
     public static final String GOOGLE_GEOCODE_API_KEY = "google-geocode-api-key";
     public static final String LATITUDE_SELECTOR_NAME = "latitude";
-    public static final String LANGITUDE_SELECTOR_NAME = "langitude";
+    public static final String LANGITUDE_SELECTOR_NAME = "longitude";
 
     @Autowired
     private Environment environment;

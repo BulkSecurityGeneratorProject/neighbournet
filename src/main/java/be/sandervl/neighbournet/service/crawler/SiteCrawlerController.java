@@ -2,14 +2,12 @@ package be.sandervl.neighbournet.service.crawler;
 
 import be.sandervl.neighbournet.domain.Site;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 
@@ -27,13 +25,26 @@ public class SiteCrawlerController {
     @Inject
     SimpMessageSendingOperations messagingTemplate;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/crawler")
+    @ResponseBody
+    public CrawlStats getCrawler(@RequestParam(name = "id") Site site) {
+        return crawlerService.getStats(site).orElse(new CrawlStats());
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/crawler")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    public void stopCrawler(@RequestParam(name = "id") Site site) {
+        crawlerService.stopCrawler(site);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/crawler")
     @ResponseBody
-    public CrawlStats startCrawl(@RequestParam(name = "id") Site site) {
+    public CrawlStats startCrawler(@RequestParam(name = "id") Site site) {
         log.debug("Starting crawl for site {}", site);
         CrawlStats response = new CrawlStats();
         try {
-            crawlerService.crawlSite(site);
+            crawlerService.startCrawler(site);
         } catch (Exception e) {
             log.error("Exception occured while starting new crawl for site {}", site);
         }

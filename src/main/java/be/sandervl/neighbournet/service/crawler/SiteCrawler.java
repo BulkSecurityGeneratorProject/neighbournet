@@ -8,7 +8,6 @@ import be.sandervl.neighbournet.repository.DocumentRepository;
 import be.sandervl.neighbournet.repository.SelectorRepository;
 import be.sandervl.neighbournet.service.AttributeService;
 import be.sandervl.neighbournet.service.jsoup.JsoupService;
-import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.url.WebURL;
@@ -33,7 +32,6 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     private Site site;
 
     private CrawlStats stats;
-    private CrawlConfig config;
 
     @Inject
     private AttributeService attributeService;
@@ -51,9 +49,8 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     private JsoupService jsoupService;
 
     @Override
-    public SiteCrawler setUp(Site site, CrawlConfig config, CrawlStats crawlStats) {
+    public SiteCrawler setUp(Site site, CrawlStats crawlStats) {
         this.site = site;
-        this.config = config;
         this.stats = crawlStats;
         this.pattern = Pattern.compile(site.getRegex());
         return this;
@@ -62,7 +59,6 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     @Override
     public void onStart() {
         this.stats.incCrawlersRunning();
-        this.stats.setTotal(this.config.getMaxPagesToFetch());
         controller.sendCrawlStatus(this.stats);
         super.onStart();
     }
@@ -88,7 +84,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     public boolean shouldVisit(Page referringPage, WebURL url) {
         this.stats.incNumberVisited();
         String href = url.getURL().toLowerCase();
-        return pattern.matcher(href).matches();
+        return pattern.matcher(href).find();
     }
 
     /**
@@ -97,6 +93,9 @@ public class SiteCrawler extends WebCrawler implements Crawler {
      */
     @Override
     public void visit(Page page) {
+        if (!shouldVisit(page, page.getWebURL())) {
+            return;
+        }
         String url = page.getWebURL().getURL();
         logger.debug("Fetching URL: " + url);
         if (this.stats != null) {
@@ -110,7 +109,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         String url = page.getWebURL().getURL().replaceFirst(".*" + page.getWebURL().getDomain(), "");
         Document document = documentRepository
             .findByUrl(url)
-            .orElse(new Document());
+            .orElse(createDocument());
         document.setSite(site);
         document.setCreated(LocalDateTime.now());
         document.setUrl(url);
@@ -119,6 +118,12 @@ public class SiteCrawler extends WebCrawler implements Crawler {
         Iterable<Selector> selectors = selectorRepository.findBySiteAndParentIsNull(site);
         selectors.forEach(selector -> processJsoupDocument(jsoupDocument, document, exitingAttributes, selector));
         controller.sendCrawlStatus(this.stats);
+    }
+
+    private Document createDocument() {
+        this.stats.incNewDocuments();
+        this.controller.sendCrawlStatus(this.stats);
+        return new Document();
     }
 
     private Set<Attribute> processJsoupDocument(org.jsoup.nodes.Document jsoupDocument, Document document, Set<Attribute> exitingAttributes, Selector selector) {
@@ -151,7 +156,13 @@ public class SiteCrawler extends WebCrawler implements Crawler {
             .filter(attributesFromSelectorName(selector))
             .filter(attributesFromValue(value))
             .findAny()
-            .orElse(new Attribute());
+            .orElse(createNewAttribute());
+    }
+
+    private Attribute createNewAttribute() {
+        this.stats.incNewAttributes();
+        this.controller.sendCrawlStatus(this.stats);
+        return new Attribute();
     }
 
     private Predicate<Attribute> attributesFromValue(String value) {

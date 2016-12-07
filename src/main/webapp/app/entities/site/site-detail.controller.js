@@ -21,15 +21,24 @@
         });
         $scope.$on('$destroy', unsubscribe);
 
+
         SiteWS.receive().then(null, null, function (stats) {
             vm.stats = stats;
         });
 
-        $scope.initCrawl = function () {
-            $('.js-start-crawl').addClass('disabled');
-            var data = $.param({
-                'id': entity.id
-            });
+        const data = $.param({
+            'id': entity.id
+        });
+        $http({
+            method: 'GET',
+            url: 'crawler',
+            params: {'id': entity.id},
+        }).then(function (response) {
+            if (response.data) {
+                vm.stats = angular.fromJson(response.data);
+            }
+        }.bind(this));
+        $scope.startCrawler = function () {
             $http({
                 method: 'POST',
                 url: 'crawler',
@@ -37,6 +46,14 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            });
+        }.bind(this);
+        $scope.stopCrawler = function () {
+            vm.stats['status'] = 'SHUTTING_DOWN';
+            $http({
+                method: 'DELETE',
+                url: 'crawler',
+                params: {'id': entity.id},
             });
         }.bind(this)
     }

@@ -5,5 +5,5 @@ package be.sandervl.neighbournet.service.crawler;
  * @date: 17/11/2016
  */
 public enum CrawlStatus {
-    RUNNING, NOT_RUNNING
+    RUNNING, SHUTTING_DOWN, NOT_RUNNING
 }
