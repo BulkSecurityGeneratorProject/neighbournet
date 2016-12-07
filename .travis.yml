@@ -1,37 +1,59 @@
 os:
-  - linux
+- linux
 services:
-  - docker
+- docker
 language: java
 node_js:
-  - "4.5.0"
+- 4.5.0
 jdk:
-  - oraclejdk8
+- oraclejdk8
 sudo: false
 cache:
   directories:
-    - node
-    - node_modules
-    - $HOME/.m2
+  - node
+  - node_modules
+  - "$HOME/.m2"
 env:
-  - NODE_VERSION=4.5.0
+- NODE_VERSION=4.5.0
 before_install:
-  - nvm install $NODE_VERSION
-  - npm install -g npm
-  - npm install -g bower gulp-cli
-  - node -v
-  - npm -v
-  - bower -v
-  - gulp -v
-  - java -version
+- nvm install $NODE_VERSION
+- npm install -g npm
+- npm install -g bower gulp-cli
+- node -v
+- npm -v
+- bower -v
+- gulp -v
+- java -version
 install: npm install
 script:
-  - ./mvnw clean
-  - ./mvnw test
-#  - gulp test
-  - ./mvnw package -Pprod -DskipTests
+- "./mvnw clean"
+- "./mvnw test"
+- "./mvnw package -Pprod -DskipTests"
 notifications:
   webhooks:
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: false     # default: false
+    on_success: change
+    on_failure: always
+    on_start: false
+deploy:
+- provider: s3
+  access_key_id: AKIAJNLX5QWSQNIPJCIA
+  secret_access_key: &1
+    secure: dtL1ZHABSJptbT5tNIbPG5xw0kKJEcbVLzsMHCupZhYYXOwyJqCOU3unaYYvOnLhWSnIBZNBow7LszbOgOfVdxm0NdUHjpLCRjFMbxpQ976yh0ViWzuZ3YE+o+CKH12U7lg45RRTpeoxQbYqOTxQaocQvUbtyfF0U6utgv6z/GitFEvy2uu8Xh+S6VOxHpQaHpEPIO3fVtCx6l1DB3Dmc69t8LYQj1rxek1KKOFdN3GhtKZ46IHz4qo1PWXJUd81Jh0/nD0rv1Kp7wTEA3Te3YikfuUfrBi2m3saCY1N7WdxAt/jsC/lwsvFE/pGMTsgGH8fPyA6rimvnxML1k0DPNV6OK+0YARTqiAGZcWaLmrjbnWid0gtEU2OrMIxCUJ4/+GrR+eKENJ6QqPn3zxeDdiTzYtlBsZd74b26UY4FIO4LaAEO93hK4kS3maGY9rxtAxw5W2YyO+Gbo36ySEWm80B9dW+uuSV1CY9XXE/vGi4gaGZov8U4pwGEazIb1sCaQQFN9IOBjaMAFCWW8Xiqg6IfP6+IrLNk8tG017HrQXkSAxuVtVgLExlKiqpc7XltXSUyzIWRbs6Ir006o2fZzR8RIF+99btjfC0c/ETObb9o8REddCHdBwzv7GRu82dneD8ImXhriA5FMyN1Nr7y1DNqHRP1Y2lllAQk2fZZ7U=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &2
+    repo: sandervanloock/neighbournet
+  bucket: neighbournet
+- provider: codedeploy
+  access_key_id: AKIAJNLX5QWSQNIPJCIA
+  secret_access_key: *1
+  bucket: neighbournet
+  key: latest.zip
+  bundle_type: 'zip'
+  application: neighbournet
+  deployment_group: neighbournetDeploymentGroup
+  on: *2
+before_deploy:
+- zip -r latest *
+- mkdir -p dpl_cd_upload
+- mv latest.zip dpl_cd_upload/latest.zip
