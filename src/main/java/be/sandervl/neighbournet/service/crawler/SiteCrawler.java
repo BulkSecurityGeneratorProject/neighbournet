@@ -28,10 +28,10 @@ import java.util.stream.Collectors;
 @Scope("prototype")
 public class SiteCrawler extends WebCrawler implements Crawler {
 
-    private Pattern pattern;
+    private Pattern pattern = Pattern.compile(".*");
     private Site site;
 
-    private CrawlStats stats;
+    private CrawlStats stats = new CrawlStats();
 
     @Inject
     private AttributeService attributeService;
@@ -84,7 +84,7 @@ public class SiteCrawler extends WebCrawler implements Crawler {
     public boolean shouldVisit(Page referringPage, WebURL url) {
         this.stats.incNumberVisited();
         String href = url.getURL().toLowerCase();
-        return pattern.matcher(href).find();
+        return this.pattern.matcher(href).find();
     }
 
     /**
