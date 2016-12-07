@@ -54,6 +54,7 @@ deploy:
   deployment_group: neighbournetDeploymentGroup
   on: *2
 before_deploy:
+- rm -rf node
 - rm -rf node_modules
 - zip -r latest *
 - mkdir -p dpl_cd_upload

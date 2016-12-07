@@ -95,3 +95,9 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
+
+crawler:
+    crawlStorageFolder: ./target/crawler
+    numberOfCrawlers: 3
+    maxPagesToFetch: -1
+    politenessDelay: 300

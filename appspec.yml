@@ -4,3 +4,10 @@ os: linux
 files:
    - source: /
      destination: /var/www/webapps
+hooks:
+ BeforeInstall:
+   - locations: /etc/init.d/neighbournet stop
+     runas: root
+ AfterInstall:
+   - location: /etc/init.d/neighbournet start
+     runas: root
