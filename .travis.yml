@@ -54,6 +54,6 @@ deploy:
   deployment_group: neighbournetDeploymentGroup
   on: *2
 before_deploy:
-- zip -r latest target/*
+- zip -r latest *
 - mkdir -p dpl_cd_upload
 - mv latest.zip dpl_cd_upload/neighbournet
