@@ -22,7 +22,7 @@ To run the API, in neighbournet-api run:
 To enable Google Geolocation API for converting adresses to latitude/longitude coordinates, put a file named `secret-properties.yml` on the classpath and add a property `google-geocode-api-key:XXXX`
 ### Prepare for production
 To create executable JAR for production run:
-`mvnw clean package -Pprod`
+`mvnw package -Pprod -DskipTests`
 
 In react-app folder run
 `npm install`
