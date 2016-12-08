@@ -51,6 +51,7 @@ deploy:
   key: latest.zip
   bundle_type: zip
   application: neighbournet
+  region: eu-west-1
   deployment_group: neighbournetDeploymentGroup
   on: *2
 before_deploy:
