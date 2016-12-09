@@ -28,7 +28,7 @@
             <tbody>
             <tr ng-repeat="document in vm.documents track by document.id">
                 <td><a ui-sref="document-detail({id:document.id})">{{document.id}}</a></td>
-                <td>{{document.created | date:'mediumDate'}}</td>
+                <td>{{document.created | date:'medium'}}</td>
                 <td>{{document.url}}</td>
                 <td>
                     <a ui-sref="site-detail({id:document.site.id})">{{document.site.name}}</a>
