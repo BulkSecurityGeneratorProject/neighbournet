@@ -6,6 +6,7 @@ import be.sandervl.neighbournet.service.DocumentService;
 import be.sandervl.neighbournet.web.rest.util.HeaderUtil;
 import be.sandervl.neighbournet.web.rest.util.PaginationUtil;
 import com.codahale.metrics.annotation.Timed;
+import net.logstash.logback.encoder.org.apache.commons.lang.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -112,7 +113,7 @@ public class DocumentResource {
                        .map(result -> {
                            result.setAttributes(attributeService.findByDocument(document)
                                                                 .stream()
-                                                                .sorted((a, b) -> -Boolean.compare(a.getSelector().isIsPrimary(), b.getSelector().isIsPrimary()))
+                                                                .sorted((a, b) -> -ObjectUtils.compare(a.getSelector().isIsPrimary(), b.getSelector().isIsPrimary()))
                                                                 .collect(Collectors.toList()));
                            return new ResponseEntity<>(result, HttpStatus.OK);
                        })
