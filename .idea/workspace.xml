@@ -1576,14 +1576,7 @@
       <workItem from="1481149306304" duration="464000" />
       <workItem from="1481150469039" duration="4256000" />
       <workItem from="1481188623184" duration="2537000" />
-      <workItem from="1481220308563" duration="4307000" />
-    </task>
-    <task id="LOCAL-00023" summary="shared stats object">
-      <created>1479768427224</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1479768427224</updated>
+      <workItem from="1481220308563" duration="4325000" />
     </task>
     <task id="LOCAL-00024" summary="ignored bower">
       <created>1479768548210</created>
@@ -1921,7 +1914,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481273462395</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="rm intellij workspace">
+      <created>1481273499175</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1481273499175</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1957,7 +1957,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227749000" />
+    <option name="totallyTimeSpent" value="227767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
@@ -2072,7 +2072,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="refactored jsoupservice" />
     <MESSAGE value="google address processor" />
     <MESSAGE value="fix tests" />
     <MESSAGE value="processor enum" />
@@ -2097,7 +2096,8 @@
     <MESSAGE value="seperate includes for liquibase" />
     <MESSAGE value="region identifier" />
     <MESSAGE value="wrong ending tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrong ending tag" />
+    <MESSAGE value="rm intellij workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm intellij workspace" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

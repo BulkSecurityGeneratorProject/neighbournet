@@ -28,9 +28,9 @@ public class JsoupServiceImpl implements JsoupService {
     @Override
     public Optional<Document> getDocumentFromUrl(String url) {
         try {
-            return Optional.ofNullable(Jsoup.connect(url).get());
+            return Optional.ofNullable(Jsoup.connect(url).validateTLSCertificates(false).get());
         } catch (IOException e) {
-            log.error("Unable to get url {}", url);
+            log.error("Unable to get url {} due to {}", url,e.getMessage());
             return Optional.empty();
         }
     }
