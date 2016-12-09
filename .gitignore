@@ -54,6 +54,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
+.idea/workspace.xml
 
 ######################
 # Visual Studio Code
