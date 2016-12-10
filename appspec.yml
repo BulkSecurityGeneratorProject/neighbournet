@@ -10,6 +10,6 @@ hooks:
      runas: root
  AfterInstall:
    - location: chown a+x /var/www/webapps/neighbournet-0.0.1-SNAPSHOT.war
-      runas: root
+     runas: root
    - location: /etc/init.d/neighbournet start
      runas: root
