@@ -5,10 +5,10 @@ files:
    - source: /
      destination: /var/www/webapps
 hooks:
- BeforeInstall:
+   BeforeInstall:
    - locations: /etc/init.d/neighbournet stop
      runas: root
- AfterInstall:
+   AfterInstall:
    - location: chown a+x /var/www/webapps/neighbournet-0.0.1-SNAPSHOT.war
      runas: root
    - location: /etc/init.d/neighbournet start
