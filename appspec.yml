@@ -2,14 +2,12 @@ version: 0.0
 
 os: linux
 files:
-   - source: /
+   - source: /target/neighbournet-0.0.1-SNAPSHOT.war
      destination: /var/www/webapps
 hooks:
    BeforeInstall:
-   - location: /etc/init.d/neighbournet stop
+   - location: scripts/install_dependencies
+     timeout: 300
      runas: root
-   AfterInstall:
-   - location: chown a+x /var/www/webapps/neighbournet-0.0.1-SNAPSHOT.war
-     runas: root
-   - location: /etc/init.d/neighbournet start
+   - location: scripts/start_server
      runas: root

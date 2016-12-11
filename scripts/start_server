@@ -1,0 +1,3 @@
+#!/bin/bash
+ln -s /var/www/webapps/neighbournet-0.0.1-SNAPSHOT.war /etc/init.d/neighbournet
+/etc/init.d/neighbournet start
