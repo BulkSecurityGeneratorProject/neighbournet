@@ -35,25 +35,15 @@ notifications:
     on_failure: always
     on_start: false
 deploy:
-- provider: s3
-  access_key_id: AKIAJT3BP4B4BHED7YTA
-  secret_access_key: &1
-    secure: j8+Ov93bcxFNNI0nAlhnt490gy9sMM//0BS7g6kqI2Gxw53BnCRzHcfVDGZgoio/HVC6zS0Kgd+zE7bUXTZlTeS69j3RolrxWo2EpmQCgHKWmoeMsWQQJNVXXgp/PKg98aOv7GSXz/vLUqDJ4bkeLPSkdMNq9pWY5vxI9HYwedTZFIOBxHRZD9NoxWGYtNBCcY7y7WNMTNv4thLtK/8VEbvtvZbW4TxQ3EHiD3kskxTKgs8m1NGWe593EXpAtZEmocXnjb8AMvysivgT+fSRsKEBPIjjB0xdnTHqsuLa5pCI1g6edj2X79yDEd3KKf06OkD0PMDgPp2+t8kIdZStzatIoJ7vZYE/tVD/D27HQ0/0EmNjwuYXuxXkVzWNZ4OnWQzzEm18F7ap419qeFsOi5vhdJcCVLw9vTJ8uOQ+XJdwmHXByZ6JFJEAonSYFp3rDV35Qibejhwd8sLQ/spBErjGK6x6G12LqDHy5fdO47SZzpZbCcdwcN3uiTVIMf0eyc3s6sAZQ1UT0KklOw04OGMKtGRcAkaCcndnITBGhcgZeWMbtl0k5ox1IpUevVleiWPgxs24K9nHSmTEP/3ONxwJkP6cTJkFJcUrpxNm4LguDnzePDR8xvJ/EOrk+7Oj6h2r2lr8pm9EsHOEpD/2j5mUcYNavEfs7F7IyRpmCes=
-  local_dir: dpl_cd_upload
   skip_cleanup: true
-  on: &2
-    repo: sandervanloock/neighbournet
-  bucket: neighbournet
-- provider: codedeploy
-  access_key_id: AKIAJT3BP4B4BHED7YTA
-  secret_access_key: *1
-  bucket: neighbournet
-  key: neighbournet
-  bundle_type: zip
-  application: neighbournet
+  provider: elasticbeanstalk
+  access-key-id: AKIAJT3BP4B4BHED7YTA
+  secret-access-key: j8+Ov93bcxFNNI0nAlhnt490gy9sMM//0BS7g6kqI2Gxw53BnCRzHcfVDGZgoio/HVC6zS0Kgd+zE7bUXTZlTeS69j3RolrxWo2EpmQCgHKWmoeMsWQQJNVXXgp/PKg98aOv7GSXz/vLUqDJ4bkeLPSkdMNq9pWY5vxI9HYwedTZFIOBxHRZD9NoxWGYtNBCcY7y7WNMTNv4thLtK/8VEbvtvZbW4TxQ3EHiD3kskxTKgs8m1NGWe593EXpAtZEmocXnjb8AMvysivgT+fSRsKEBPIjjB0xdnTHqsuLa5pCI1g6edj2X79yDEd3KKf06OkD0PMDgPp2+t8kIdZStzatIoJ7vZYE/tVD/D27HQ0/0EmNjwuYXuxXkVzWNZ4OnWQzzEm18F7ap419qeFsOi5vhdJcCVLw9vTJ8uOQ+XJdwmHXByZ6JFJEAonSYFp3rDV35Qibejhwd8sLQ/spBErjGK6x6G12LqDHy5fdO47SZzpZbCcdwcN3uiTVIMf0eyc3s6sAZQ1UT0KklOw04OGMKtGRcAkaCcndnITBGhcgZeWMbtl0k5ox1IpUevVleiWPgxs24K9nHSmTEP/3ONxwJkP6cTJkFJcUrpxNm4LguDnzePDR8xvJ/EOrk+7Oj6h2r2lr8pm9EsHOEpD/2j5mUcYNavEfs7F7IyRpmCes=
   region: eu-west-1
-  deployment_group: neighbournetDeploymentGroup
-  on: *2
+  app: neighbournet
+  env: LowCost
+  bucket_name: neighbournet
+  zip_file: './target/neighbournet.war'
 before_deploy:
 - rm -rf node
 - rm -rf node_modules

@@ -802,6 +802,7 @@
                 </dependency>
             </dependencies>
             <build>
+                <finalName>neighbournet</finalName>
                 <plugins>
                     <plugin>
                         <groupId>com.github.eirslett</groupId>
