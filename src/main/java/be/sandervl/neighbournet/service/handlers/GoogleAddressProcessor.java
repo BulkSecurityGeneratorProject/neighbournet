@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet.service.handlers;
 
 import be.sandervl.neighbournet.domain.Attribute;
+import be.sandervl.neighbournet.domain.AttributeMatcher;
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.domain.Selector;
 import be.sandervl.neighbournet.repository.SelectorRepository;
@@ -115,6 +116,7 @@ public class GoogleAddressProcessor implements SelectorProcessor {
                                                           .name(name)
                                                           .isPrimary(false)
                                                           .site(document.getSite())
+                                                          .matcher(AttributeMatcher.GEOLOCATION)
                                                           .build()
                                               );
         if (selector.getId() == null) {

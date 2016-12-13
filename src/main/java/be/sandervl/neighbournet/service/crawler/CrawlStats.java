@@ -12,7 +12,22 @@ public class CrawlStats {
 
     @Getter
     @Setter
-    private int numberProcessed = 0, total = 0, numberVisited = 0, crawlersRunning = 0, newDocuments = 0, newAttributes = 0;
+    private int numberProcessed = 0;
+    @Getter
+    @Setter
+    private int total = 0;
+    @Getter
+    @Setter
+    private int numberVisited = 0;
+    @Getter
+    @Setter
+    private int crawlersRunning = 0;
+    @Getter
+    @Setter
+    private int newDocuments = 0;
+    @Getter
+    @Setter
+    private int newAttributes = 0;
 
     @Getter
     @Setter

@@ -1,5 +1,6 @@
 package be.sandervl.neighbournet.service.crawler;
 
+import be.sandervl.neighbournet.controllers.SiteCrawlerController;
 import be.sandervl.neighbournet.domain.Attribute;
 import be.sandervl.neighbournet.domain.Document;
 import be.sandervl.neighbournet.domain.Selector;

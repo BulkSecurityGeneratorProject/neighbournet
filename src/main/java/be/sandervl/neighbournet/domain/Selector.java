@@ -63,6 +63,10 @@ public class Selector implements Serializable {
     @Column(name = "processor_id", nullable = false)
     private Collection<Processors> processors;
 
+    @Column(name = "matcher", nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private AttributeMatcher matcher;
+
     public Long getId() {
         return id;
     }
@@ -182,6 +186,14 @@ public class Selector implements Serializable {
 
     public void setProcessors(Collection<Processors> processors) {
         this.processors = processors;
+    }
+
+    public AttributeMatcher getMatcher() {
+        return matcher;
+    }
+
+    public void setMatcher(AttributeMatcher matcher) {
+        this.matcher = matcher;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package be.sandervl.neighbournet.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,6 +18,9 @@ import java.util.*;
 @Entity
 @Table(name = "document")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Document implements Serializable {
 
     private static final long serialVersionUID = 1L;

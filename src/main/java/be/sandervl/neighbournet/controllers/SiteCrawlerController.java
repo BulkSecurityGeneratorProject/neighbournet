@@ -1,6 +1,8 @@
-package be.sandervl.neighbournet.service.crawler;
+package be.sandervl.neighbournet.controllers;
 
 import be.sandervl.neighbournet.domain.Site;
+import be.sandervl.neighbournet.service.crawler.CrawlStats;
+import be.sandervl.neighbournet.service.crawler.CrawlerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -46,7 +48,7 @@ public class SiteCrawlerController {
         try {
             crawlerService.startCrawler(site);
         } catch (Exception e) {
-            log.error("Exception occured while starting new crawl for site {}", site);
+            log.error("Exception occured while starting new crawl for site {}", site, e);
         }
         return response;
     }

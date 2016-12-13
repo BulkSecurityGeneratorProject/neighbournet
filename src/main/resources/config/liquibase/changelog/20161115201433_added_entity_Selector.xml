@@ -64,4 +64,12 @@
         <addPrimaryKey columnNames="selector_id, processor_id" tableName="selector_processor"/>
 
     </changeSet>
+
+    <changeSet id="20161213001212" author="svl">
+        <addColumn tableName="selector">
+            <column type="varchar(255)" name="matcher" defaultValue="UNKNOWN">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

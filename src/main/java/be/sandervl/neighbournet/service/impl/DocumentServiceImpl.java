@@ -1,6 +1,7 @@
 package be.sandervl.neighbournet.service.impl;
 
 import be.sandervl.neighbournet.domain.Document;
+import be.sandervl.neighbournet.domain.Site;
 import be.sandervl.neighbournet.repository.DocumentRepository;
 import be.sandervl.neighbournet.service.DocumentService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Set;
 
 /**
  * Service Implementation for managing Document.
@@ -70,5 +72,11 @@ public class DocumentServiceImpl implements DocumentService {
     public void delete(Long id) {
         log.debug("Request to delete Document : {}", id);
         documentRepository.delete(id);
+    }
+
+    @Override
+    public Set<Document> findBySite(Site site) {
+        log.debug("Request to find by Site : {}", site);
+        return documentRepository.findBySite(site);
     }
 }

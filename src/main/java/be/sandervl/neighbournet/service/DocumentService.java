@@ -1,8 +1,11 @@
 package be.sandervl.neighbournet.service;
 
 import be.sandervl.neighbournet.domain.Document;
+import be.sandervl.neighbournet.domain.Site;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.Set;
 
 /**
  * Service Interface for managing Document.
@@ -39,4 +42,6 @@ public interface DocumentService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Set<Document> findBySite(Site site);
 }
