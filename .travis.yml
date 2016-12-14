@@ -42,6 +42,10 @@ deploy:
       secure: j8+Ov93bcxFNNI0nAlhnt490gy9sMM//0BS7g6kqI2Gxw53BnCRzHcfVDGZgoio/HVC6zS0Kgd+zE7bUXTZlTeS69j3RolrxWo2EpmQCgHKWmoeMsWQQJNVXXgp/PKg98aOv7GSXz/vLUqDJ4bkeLPSkdMNq9pWY5vxI9HYwedTZFIOBxHRZD9NoxWGYtNBCcY7y7WNMTNv4thLtK/8VEbvtvZbW4TxQ3EHiD3kskxTKgs8m1NGWe593EXpAtZEmocXnjb8AMvysivgT+fSRsKEBPIjjB0xdnTHqsuLa5pCI1g6edj2X79yDEd3KKf06OkD0PMDgPp2+t8kIdZStzatIoJ7vZYE/tVD/D27HQ0/0EmNjwuYXuxXkVzWNZ4OnWQzzEm18F7ap419qeFsOi5vhdJcCVLw9vTJ8uOQ+XJdwmHXByZ6JFJEAonSYFp3rDV35Qibejhwd8sLQ/spBErjGK6x6G12LqDHy5fdO47SZzpZbCcdwcN3uiTVIMf0eyc3s6sAZQ1UT0KklOw04OGMKtGRcAkaCcndnITBGhcgZeWMbtl0k5ox1IpUevVleiWPgxs24K9nHSmTEP/3ONxwJkP6cTJkFJcUrpxNm4LguDnzePDR8xvJ/EOrk+7Oj6h2r2lr8pm9EsHOEpD/2j5mUcYNavEfs7F7IyRpmCes=
   region: eu-west-1
   app: neighbournet
-  env: LowCost-env
+  env: production
   bucket_name: neighbournet
-  zip_file: './target/neighbournet.war'
+  zip_file: './latest.zip'
+before_deploy:
+  - rm -rf node
+  - rm -rf node_modules
+  - zip -r latest *

@@ -1,0 +1,1 @@
+web: ./target/neighbournet.war
