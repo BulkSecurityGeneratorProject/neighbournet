@@ -1,1 +1,1 @@
-web: ./target/neighbournet.war
+web: java -jar neighbournet.war

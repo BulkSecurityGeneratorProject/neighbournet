@@ -46,6 +46,4 @@ deploy:
   bucket_name: neighbournet
   zip_file: './latest.zip'
 before_deploy:
-  - rm -rf node
-  - rm -rf node_modules
-  - zip -r latest *
+  - zip latest target/neighbournet.war
