@@ -1,1 +1,1 @@
-web: java -jar target/neighbournet.war
+web: /etc/init.d/neighbournet restart
